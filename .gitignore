@@ -1,0 +1,18 @@
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Data and Logs
+logs/
+data/
+ckpts_dapt/
+results/
+
+# Weights (Ignore large pre-trained models)
+weights/*.pt
+
+# Allow everything inside weights/cced2/ (Make sure stats and small models are tracked)
+!weights/cced2/
+
+# System files
+.DS_Store
