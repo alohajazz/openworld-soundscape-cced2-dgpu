@@ -252,7 +252,7 @@ If you use this code or the provided weights in your research, please cite:
 
 ```bibtex
 @article{noda2025embodied,
-  title={Embodied acoustic agents with self-supervised audio for unknown-aware underwater soundscapes under label and false-positive constraints},
+  title={Embodied acoustic agents with self-supervised audio for unknown-aware underwater soundscapes under label scarcity and false-positive constraints},
   author={Noda, Takuji and Koizumi, Takuya},
   journal={npj Artificial Intelligence (Special Collection: Embodied AI)},
   note={Under Review},
