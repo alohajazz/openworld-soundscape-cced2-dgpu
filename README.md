@@ -1,16 +1,16 @@
-# CCED2 and Detect–Group–Promote–Union for Underwater Acoustic Agents
+# CCED2 and DGPU for Open-world Discovery in Underwater Soundscapes
 
-This repository provides a minimal implementation of the **CCED2 unknownness score** and the **Detect–Group–Promote–Union (DGPU) pipeline**, developed for our paper *"Embodied acoustic agents with self-supervised audio for unknown-aware underwater soundscapes"*.
+This repository provides a minimal implementation of the **CCED2 unknownness score** and the **Detect–Group–Promote–Union (DGPU) pipeline**, developed for our paper *"A stethoscope for the ocean: Open-world discovery in underwater soundscapes"*. This repository is intended for research reproducibility and does not include product deployment workflows (e.g., OTA pipelines, production monitoring, or operational tooling).
 
-It includes the pretrained BEATs+DAPT encoder, the 56-class SED head, and evaluation scripts for the public underwater acoustic datasets used in the study (DCLDE2013, FRDR, and HICEAS).
+The repository includes evaluation scripts for public datasets (DCLDE2013, FRDR, HICEAS) and supports the pretrained BEATs+DAPT encoder and 56-class SED head (downloaded separately; see “**Setup: Downloading Weights**”). Lightweight CCED2 parameters in weights/cced2/ are included to reproduce the reported CCED2 configurations under the non-commercial weights license.
 
 ## Overview
 
-In addition to the source code, this repository ships with:
+In addition to the source code, this repository provides:
 
-* **Pretrained BEATs+DAPT encoder** (World-DAPT, Top-up version).
-* **56-class SED head** trained on our internal underwater SED dataset.
-* **Pre-fitted CCED2 model parameters** (kNN index, Mahalanobis statistics, normalisation factors, and decision thresholds).
+* **Pretrained BEATs+DAPT encoder** (World-DAPT, Top-up version) (downloaded separately; see **Setup: Downloading Weights**).
+* **56-class SED head** trained on our internal underwater SED dataset (downloaded separately; see **Setup: Downloading Weights**).
+* **Pre-fitted CCED2 model parameters** (kNN index, Mahalanobis statistics, normalisation factors, and decision thresholds) (included in this repository).
 * **Bundled BEATs source code** (`beats_core/`) for easy setup without external dependencies.
 
 These weights and parameters are released **for non-commercial research use only**. They match the exact configuration used in the paper, enabling reproduction of the main results on DCLDE2013, FRDR, and HICEAS using only public datasets.
@@ -18,6 +18,8 @@ These weights and parameters are released **for non-commercial research use only
 > **⚠️ Important Note on Data Availability**
 >
 > The 56-class underwater SED training dataset used to train the SED head contains sensitive operational data and is **not publicly available**. However, the provided weights allow you to reproduce the inference and evaluation steps described in the paper. Reference training scripts are also provided for those wishing to train their own models on their own datasets.
+
+> **Perch baseline (optional)**. The Perch 2.0 baseline reported in the paper is optional and is not included in this repository due to external dependencies and distribution constraints. Users can reproduce the main BEATs+DAPT results with the provided weights; Perch-based evaluations can be run by supplying Perch embeddings in the same manifest format (see the paper/Methods for the “win10” window definition).
 
 ## Repository Structure
 
@@ -76,7 +78,7 @@ Before running the scripts, please download the weights and place them in the `w
 Ensure the directory structure looks like this:
 
 ```text
-embodied-ocean-cced2-dgpu/
+openworld-soundscape-cced2-dgpu/
 └── weights/
     ├── beats_dapt_topup_encoder.pt  <-- Place here
     ├── sed_head_56_topup_ep8.pt     <-- Place here
@@ -251,10 +253,10 @@ python run_hiceas_multi_species_eval.py \
 If you use this code or the provided weights in your research, please cite:
 
 ```bibtex
-@article{noda2025embodied,
-  title={Embodied acoustic agents with self-supervised audio for unknown-aware underwater soundscapes under label scarcity and false-positive constraints},
+@article{noda2025stethoscope,
+  title={A stethoscope for the ocean: Open-world discovery in underwater soundscapes},
   author={Noda, Takuji and Koizumi, Takuya},
-  journal={npj Artificial Intelligence (Special Collection: Embodied AI)},
+  journal={npj Artificial Intelligence (Special Collection: Sensing Intelligence and Machine Learning)},
   note={Under Review},
   year={2025}
 }
@@ -268,4 +270,11 @@ This repository contains materials under two different licenses:
 * **Model Weights (`weights/` directory):** Released under **CC BY-NC 4.0** (Attribution-NonCommercial). Commercial use is strictly prohibited without prior permission. See `LICENSE_WEIGHTS` for details.
 
 > **Note:** The `beats_core` directory contains code from the official BEATs implementation (Microsoft), which is licensed under the MIT License.
-```
+
+## Patent notice (important)
+
+No patent rights are granted under this repository, whether expressly or by implication. Commercial use of the methods described here may require a separate patent license from Biologging Solutions Inc.
+
+## Commercial use
+
+The source code is released under the MIT License. The pretrained model weights and parameters are released under CC BY-NC 4.0 and are not permitted for commercial use. For commercial licensing of the weights and/or patent licensing, please contact Biologging Solutions Inc.
