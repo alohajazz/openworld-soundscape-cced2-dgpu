@@ -6,6 +6,11 @@ Large-scale DAPT manifest generator (Streaming version).
 - Output TSV columns: path, start_sec, duration_sec, site_id, month, diel
 - Scans audio files, infers timestamp/site from filenames/paths.
 - Writes to TSV incrementally to handle massive datasets without memory issues.
+
+Log-aligned defaults (World-DAPT):
+- SEG_S=10s
+- STRIDE_S defaults to SEG_S//2 (i.e., 5s) to realize 50% overlap
+- diel uses 4 bins: 00-06 / 06-12 / 12-18 / 18-24
 """
 
 import os, sys, re, json, time, datetime as dt
@@ -17,8 +22,13 @@ import soundfile as sf
 # Default paths should be overridden by user
 ROOTS = os.environ.get("ROOTS", "./data/raw_audio")
 OUT = os.environ.get("OUT", "./data/dapt_manifest.tsv")
+
 SEG_S = int(os.environ.get("SEG_S", "10"))
-STRIDE_S = int(os.environ.get("STRIDE_S", str(SEG_S)))
+# Default stride = SEG_S//2 to realize 50% overlap (e.g., 10s window -> 5s stride).
+# Users can override by explicitly setting STRIDE_S.
+_default_stride = max(1, SEG_S // 2)
+STRIDE_S = int(os.environ.get("STRIDE_S", str(_default_stride)))
+
 MIN_AUDIO_S = int(os.environ.get("MIN_AUDIO_S", str(SEG_S)))
 TZ_OFFSET_HOURS = int(os.environ.get("TZ_OFFSET_HOURS", "0"))
 EXTS = [x.strip().lower() for x in os.environ.get("EXTS", ".flac,.wav").split(",") if x.strip()]
@@ -51,7 +61,8 @@ def parse_datetime_from_path(p: Path) -> Optional[dt.datetime]:
     s = p.as_posix()
     for pat in _PATTERNS:
         m = pat.search(s)
-        if not m: continue
+        if not m:
+            continue
         gd = m.groups()
         try:
             if len(gd) >= 6:
@@ -69,7 +80,7 @@ def infer_datetime(p: Path) -> dt.datetime:
     if t is None:
         try:
             t = dt.datetime.fromtimestamp(p.stat().st_mtime)
-        except:
+        except Exception:
             t = dt.datetime.utcnow()
     if TZ_OFFSET_HOURS != 0:
         t = t + dt.timedelta(hours=TZ_OFFSET_HOURS)
@@ -81,10 +92,17 @@ def infer_site_id(p: Path) -> str:
     # Users can customize this logic for specific dataset structures
     return p.parent.name or "unknown"
 
-# ---------- Diel Cycle ----------
+# ---------- Diel Cycle (4-bin) ----------
 def infer_diel(t: dt.datetime) -> str:
+    # 4-bin diel cycle: 00-06 / 06-12 / 12-18 / 18-24
     h = t.hour
-    return "day" if 6 <= h < 18 else "night"
+    if 0 <= h < 6:
+        return "00-06"
+    if 6 <= h < 12:
+        return "06-12"
+    if 12 <= h < 18:
+        return "12-18"
+    return "18-24"
 
 # ---------- Audio Info ----------
 def safe_audio_info(path: Path) -> Optional[Tuple[int, int]]:
@@ -114,7 +132,10 @@ def main():
     log("==== dapt_make_manifest_all: START ====")
     log(f"ROOTS = {ROOTS}")
     log(f"OUT = {OUT}")
-    
+    log(f"SEG_S = {SEG_S}")
+    log(f"STRIDE_S = {STRIDE_S} (default={_default_stride})")
+    log("diel bins = 00-06 / 06-12 / 12-18 / 18-24")
+
     root_dirs = [Path(x.strip()) for x in ROOTS.split(",") if x.strip()]
     files = list_audio_files(root_dirs, EXTS)
     log(f"Found files: {len(files)}")
@@ -123,16 +144,20 @@ def main():
         fw.write("path\tstart_sec\tduration_sec\tsite_id\tmonth\tdiel\n")
 
     stats = {
-        "files_scanned": 0, "files_skipped_short": 0, "segments_written": 0,
-        "by_site": {}, "by_diel": {"day": 0, "night": 0},
+        "files_scanned": 0,
+        "files_skipped_short": 0,
+        "segments_written": 0,
+        "by_site": {},
+        "by_diel": {"00-06": 0, "06-12": 0, "12-18": 0, "18-24": 0},
     }
 
     for i, path in enumerate(files, 1):
         ai = safe_audio_info(path)
-        if ai is None: continue
+        if ai is None:
+            continue
         sr, frames = ai
         dur = frames / max(sr, 1)
-        
+
         if dur < max(MIN_AUDIO_S, SEG_S):
             stats["files_skipped_short"] += 1
             continue
@@ -146,7 +171,9 @@ def main():
         start_sec = 0
         with open(OUT, "a") as fw:
             while start_sec + SEG_S <= dur + 1e-6:
-                fw.write(f"{path.as_posix()}\t{int(start_sec)}\t{SEG_S}\t{site}\t{month}\t{diel}\n")
+                fw.write(
+                    f"{path.as_posix()}\t{int(start_sec)}\t{SEG_S}\t{site}\t{month}\t{diel}\n"
+                )
                 nseg += 1
                 start_sec += STRIDE_S
 

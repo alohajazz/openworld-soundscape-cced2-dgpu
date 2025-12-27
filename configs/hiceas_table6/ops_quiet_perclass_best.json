@@ -1,0 +1,18 @@
+{
+  "quiet_perclass_ops": [
+    {
+      "species_name": "False killer whale",
+      "q_cut": 0.98,
+      "hour_cap": 1,
+      "min_sep": 10.0,
+      "shift_sec": 0.0
+    },
+    {
+      "species_name": "Offshore spotted dolphin",
+      "q_cut": 0.98,
+      "hour_cap": 1,
+      "min_sep": 10.0,
+      "shift_sec": 0.0
+    }
+  ]
+}

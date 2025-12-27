@@ -1,0 +1,23 @@
+species_name,method,tol,TP,FP,FN,P,R,F1,FP/h
+Cuvier's beaked whale,promoter,15.0,38,4,21,0.9048,0.6441,0.7525,0.0022
+Cuvier's beaked whale,promoter,20.0,38,4,21,0.9048,0.6441,0.7525,0.0022
+Cuvier's beaked whale,union,15.0,4,0,55,1.0,0.0678,0.127,0.0
+Cuvier's beaked whale,union,20.0,4,0,55,1.0,0.0678,0.127,0.0
+False killer whale,quiet_perclass_best,15.0,73,0,0,1.0,1.0,1.0,0.0
+False killer whale,quiet_perclass_best,20.0,73,0,0,1.0,1.0,1.0,0.0
+Longman's beaked whale,quiet_best,15.0,1,0,2,1.0,0.3333,0.5,0.0
+Longman's beaked whale,quiet_best,20.0,1,0,2,1.0,0.3333,0.5,0.0
+Offshore spotted dolphin,quiet_perclass_best,15.0,84,0,0,1.0,1.0,1.0,0.0
+Offshore spotted dolphin,quiet_perclass_best,20.0,84,0,0,1.0,1.0,1.0,0.0
+Risso's dolphin,quiet_best,15.0,2,0,0,1.0,1.0,1.0,0.0
+Risso's dolphin,quiet_best,20.0,2,0,0,1.0,1.0,1.0,0.0
+Rough-toothed dolphin,quiet_best,15.0,2,0,2,1.0,0.5,0.6667,0.0
+Rough-toothed dolphin,quiet_best,20.0,2,0,2,1.0,0.5,0.6667,0.0
+Short-finned pilot whale,union,15.0,10,0,58,1.0,0.1471,0.2564,0.0
+Short-finned pilot whale,union,20.0,10,0,58,1.0,0.1471,0.2564,0.0
+Striped dolphin,quiet_best,15.0,1,0,0,1.0,1.0,1.0,0.0
+Striped dolphin,quiet_best,20.0,1,0,0,1.0,1.0,1.0,0.0
+Unidentified beaked whale,quiet_best,15.0,1,0,0,1.0,1.0,1.0,0.0
+Unidentified beaked whale,quiet_best,20.0,1,0,0,1.0,1.0,1.0,0.0
+Unidentified dolphin,union,15.0,1,0,444,1.0,0.0022,0.0045,0.0
+Unidentified dolphin,union,20.0,1,0,444,1.0,0.0022,0.0045,0.0

@@ -1,0 +1,8 @@
+{
+  "post_filter": {
+    "use_offset": false,
+    "minus4p5": true,
+    "q_s_hat_near": 0.993,
+    "topK_per_hour": 2
+  }
+}

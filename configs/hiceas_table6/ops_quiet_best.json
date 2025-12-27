@@ -1,0 +1,44 @@
+{
+  "quiet_ops": [
+    {
+      "species_name": "Longman's beaked whale",
+      "q": 0.995,
+      "hour_cap": 1,
+      "min_sep": 10.0,
+      "dens2": false,
+      "shift_sec": 0.0
+    },
+    {
+      "species_name": "Striped dolphin",
+      "q": 0.995,
+      "hour_cap": 1,
+      "min_sep": 10.0,
+      "dens2": false,
+      "shift_sec": 0.0
+    },
+    {
+      "species_name": "Unidentified beaked whale",
+      "q": 0.995,
+      "hour_cap": 1,
+      "min_sep": 10.0,
+      "dens2": false,
+      "shift_sec": 0.0
+    },
+    {
+      "species_name": "Rough-toothed dolphin",
+      "q": 0.98,
+      "hour_cap": 1,
+      "min_sep": 20.0,
+      "dens2": false,
+      "shift_sec": 29.0
+    },
+    {
+      "species_name": "Risso's dolphin",
+      "q": 0.94,
+      "hour_cap": 1,
+      "min_sep": 20.0,
+      "dens2": false,
+      "shift_sec": 37.0
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "promoter_ops": [
+    {
+      "species_name": "Cuvier's beaked whale",
+      "promoter": {
+        "shift_sec": -2.5,
+        "min_sep": 10.0,
+        "hour_cap": 1
+      }
+    }
+  ]
+}

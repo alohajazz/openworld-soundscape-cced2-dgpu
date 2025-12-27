@@ -1,0 +1,3 @@
+HICEAS precision80_rule_ext/run_ops.sh requires an annotation CSV (HICEAS_OP_ANN) with base/center.
+Some manifest CSVs in this environment have center fixed at 5.0 (template-like) and will yield very few rows.
+The paper’s Table 6 is reproduced from _FINAL_SPECIES_TABLE.csv (truth) and FINAL_table_15s.tex / FINAL_summary.md.

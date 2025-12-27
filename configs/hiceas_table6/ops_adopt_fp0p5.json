@@ -1,0 +1,70 @@
+{
+  "ops": [
+    {
+      "species": "33",
+      "q": 0.992,
+      "mode": "hour",
+      "K": 2,
+      "dens2": true,
+      "fp_bound": 0.5,
+      "display_name": "False killer whale"
+    },
+    {
+      "species": "46",
+      "q": 0.999,
+      "mode": "hour",
+      "K": 1,
+      "dens2": false,
+      "fp_bound": 0.5,
+      "display_name": "Sperm whale"
+    },
+    {
+      "species": "77",
+      "q": 0.995,
+      "mode": "hour",
+      "K": 1,
+      "dens2": true,
+      "fp_bound": 0.5,
+      "display_name": "Unidentified dolphin"
+    },
+    {
+      "species": "minke",
+      "q": 0.992,
+      "mode": "hour",
+      "K": 2,
+      "dens2": true,
+      "fp_bound": 0.5,
+      "display_name": "minke"
+    },
+    {
+      "species": "61",
+      "q": null,
+      "mode": null,
+      "K": null,
+      "dens2": null,
+      "promoter": {
+        "recipe": "PROM_ONLY_ALLWINDOWS",
+        "p_thr": 0.75,
+        "hour_cap": 2,
+        "dens_min": 1
+      },
+      "fp_bound": 0.5,
+      "display_name": "Cuvier's beaked whale"
+    },
+    {
+      "species": "36",
+      "q": null,
+      "mode": null,
+      "K": null,
+      "dens2": null,
+      "promoter": {
+        "recipe": "PROM_ONLY_ALLWINDOWS",
+        "p_thr": 0.7999999999999999,
+        "hour_cap": 2,
+        "dens_min": 1
+      },
+      "fp_bound": 0.5,
+      "display_name": "Short-finned pilot whale"
+    }
+  ]
+}
