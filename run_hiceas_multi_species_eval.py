@@ -17,7 +17,9 @@ DNS (canon-level):
 
 CAP-style selection:
 - Species-wise quantile threshold on window-level s_hat (q)
-- Then keep top-K events per hour per canon
+- Then keep K most extreme events per hour per canon.
+  * tail=high: higher s_hat is more "unknown" -> keep top (1-q) tail, then top-K by s_hat desc
+  * tail=low : lower  s_hat is more "unknown" -> keep bottom (1-q) tail, then top-K by s_hat asc
 
 FP/h denominator (hours_total):
 - Computed per species over the scored canons (based on window-level predictions), using hop-derived windows_per_hour.
@@ -41,11 +43,18 @@ def to_canon(s: str) -> str:
     return m.group(1) if m else None
 
 
-def topk_per_hour(events: pd.DataFrame, K: int) -> pd.DataFrame:
-    """Keep at most K events per hour per canon, based on s_hat descending."""
+def topk_per_hour(events: pd.DataFrame, K: int, tail: str = "high") -> pd.DataFrame:
+    """
+    Keep at most K events per hour per canon.
+    tail=high: larger s_hat is more extreme -> sort desc
+    tail=low : smaller s_hat is more extreme -> sort asc
+    """
     x = events.copy()
     x["hour_bucket"] = (x["event_center"] // 3600).astype(int)
-    x = x.sort_values(["canon", "hour_bucket", "s_hat"], ascending=[True, True, False])
+
+    # high tail -> descending; low tail -> ascending
+    asc = True if tail == "low" else False
+    x = x.sort_values(["canon", "hour_bucket", "s_hat"], ascending=[True, True, asc])
     x = x.groupby(["canon", "hour_bucket"]).head(K).reset_index(drop=True)
     return x
 
@@ -115,12 +124,13 @@ def score_events_for_species(
     windows_per_hour: int,
     tol_list=(15.0, 20.0),
     use_m45: bool = True,
+    tail: str = "high",
 ) -> dict:
     """Compute P/R/F1/FP/h for a single species."""
     sp_str = str(species_id)
     man_sp = man[man["species"].astype(str) == sp_str].copy()
 
-    out = {"species": sp_str, "q": q, "K": K}
+    out = {"species": sp_str, "q": q, "K": K, "tail": tail}
     if man_sp.empty:
         return {}
 
@@ -143,9 +153,18 @@ def score_events_for_species(
     # FP/h denominator: scored hours for THIS species (DNS canons)
     hours_total = len(pred_sp) / float(max(1, windows_per_hour))
 
-    # Species-wise quantile threshold on s_hat
-    thr = float(pred_sp["s_hat"].quantile(q))
-    cand = pred_sp[pred_sp["s_hat"] >= thr].copy()
+    # Species-wise quantile threshold on s_hat, with tail direction
+    s = pred_sp["s_hat"].astype(float)
+
+    if tail == "high":
+        # keep top (1-q) tail
+        thr = float(s.quantile(q))
+        cand = pred_sp[s >= thr].copy()
+    else:
+        # keep bottom (1-q) tail
+        thr = float(s.quantile(1.0 - q))
+        cand = pred_sp[s <= thr].copy()
+
     if cand.empty:
         return zero_metrics(out)
 
@@ -155,8 +174,8 @@ def score_events_for_species(
     else:
         cand["event_center"] = cand["center_sec"].astype(float)
 
-    # Apply per-hour Top-K per canon
-    events = topk_per_hour(cand[["canon", "event_center", "s_hat"]], K)
+    # Apply per-hour Top-K per canon (direction-aware)
+    events = topk_per_hour(cand[["canon", "event_center", "s_hat"]], K, tail=tail)
 
     # Build GT arrays per canon
     gt_by_canon = (
@@ -199,6 +218,7 @@ def compute_summary(
     tol15: float = 15.0,
     tol20: float = 20.0,
     use_m45: bool = True,
+    tail: str = "high",
 ) -> None:
     man_path = Path(man_csv)
     pred_path = Path(pred_csv)
@@ -257,6 +277,7 @@ def compute_summary(
     hop = float(diffs.mode().iloc[0]) if not diffs.empty else 2.0
     windows_per_hour = max(1, int(round(3600.0 / max(hop, 1e-6))))
     print(f"Estimated hop: {hop}s, windows_per_hour: {windows_per_hour}")
+    print(f"Selection tail: {tail} (q={q}, K={K})")
 
     # Score each species
     rows = []
@@ -273,6 +294,7 @@ def compute_summary(
             windows_per_hour=windows_per_hour,
             tol_list=(tol15, tol20),
             use_m45=use_m45,
+            tail=tail,
         )
         if row:
             rows.append(row)
@@ -324,13 +346,16 @@ def compute_summary(
 def main():
     ap = argparse.ArgumentParser(description="HICEAS multi-species Quiet evaluation (CAP-like manifest).")
     ap.add_argument("--manifest", required=True, help="Path to manifest CSV.")
-    ap.add_argument("--predictions", required=True, help="Path to Quiet predictions CSV.")
+    ap.add_argument("--predictions", required=True, help="Path to predictions CSV (Quiet or alternative s_hat).")
     ap.add_argument("--out-summary", required=True, help="Output CSV path for per-species summary.")
     ap.add_argument("--out-macro", required=True, help="Output CSV path for macro/micro summary.")
-    ap.add_argument("--q", type=float, default=0.99, help="Quantile threshold on s_hat (default: 0.99).")
+    ap.add_argument("--q", type=float, default=0.99, help="Quantile threshold parameter q (default: 0.99).")
     ap.add_argument("--K", type=int, default=2, help="Top-K events per hour per canon (default: 2).")
     ap.add_argument("--tol15", type=float, default=15.0, help="Tolerance (seconds) for first evaluation.")
     ap.add_argument("--tol20", type=float, default=20.0, help="Tolerance (seconds) for second evaluation.")
+    ap.add_argument("--tail", choices=["high", "low"], default="high",
+                    help="Which tail is considered 'more unknown/extreme'. "
+                         "high: keep top (1-q) tail; low: keep bottom (1-q) tail.")
     ap.add_argument("--no-minus4p5", action="store_true",
                     help="If set, do NOT subtract 4.5 s from center_sec when computing event_center.")
     args = ap.parse_args()
@@ -347,6 +372,7 @@ def main():
         tol15=args.tol15,
         tol20=args.tol20,
         use_m45=use_m45,
+        tail=args.tail,
     )
 
 if __name__ == "__main__":

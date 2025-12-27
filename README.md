@@ -57,7 +57,7 @@ For HICEAS operational evaluation, we apply **canon-level DNS** per species:
 │
 ├── run_dclde2013_cced2_eval.py        # DCLDE2013 InD/OOD benchmark (Table 2)
 ├── run_frdr_cced2_op_eval.py          # FRDR CCED2-only continuous detection (Table 5 support)
-├── run_hiceas_multi_species_eval.py   # HICEAS multi-species sanity check using unknownness scores (Methods-aligned matching)
+├── run_hiceas_multi_species_eval.py   # HICEAS multi-species sanity check using unknownness scores (Methods-aligned matching; supports --tail high/low)
 │
 ├── configs/
 │   └── hiceas_table6/                 # Table 6 policy configs (ops_*.json, fewshot labels, lookup table)
@@ -203,7 +203,7 @@ python scripts/dclde_table3_ablation.py \
   --out-csv paper_artifacts/dclde_table3.csv
 ```
 
-> **Note:** Table 3 includes optional Perch 2.0 rows; reproducing the Perch entries requires providing Perch embeddings computed on explicit **10-s windows (“win10”)**, defined as `start_sec = center_sec - 5` and `duration_sec = 10`, and evaluating `-kNN_z/−Mahalanobis_z/−CCED2` under the same DNS protocol and tolerance settings as in the paper.
+> **Note:** Table 3 includes optional Perch 2.0 rows. Reproducing the Perch entries requires providing Perch embeddings computed on explicit **10-s windows (“win10”)**, defined as `start_sec = center_sec - 5` and `duration_sec = 10`. We then compute distance-based unknownness scores (kNN_z, Mahalanobis_z, CCED2) and report AUROC/AUPR on the DCLDE2013 Test split, treating OOD segments as the positive class (as in the paper).
 
 ### 3. FRDR: Quiet / Union / Fusion (Table 4)
 Table 4 is reproduced from the published operating-point pick files under `paper_artifacts/frdr_table4/`.
@@ -252,6 +252,36 @@ Policy configurations used for Table 6 are under `configs/hiceas_table6/`, and t
 Note that `precision80_rule_ext/run_ops.sh` requires an annotation CSV (see `notes/HICEAS_run_ops_note.txt`).
 
 These files are the **exact outputs used in the paper**. If you re-run the ops-point scripts on your environment, ensure that your evaluation conventions (matching, DNS, tolerance) are consistent with the paper; otherwise numbers may differ slightly.
+
+
+### 6. HICEAS sanity-check (Table S3-style CAP selection)
+This script corresponds to the Table S3 "unknownness-only" sanity-check protocol in the paper.
+
+`run_hiceas_multi_species_eval.py` applies CAP-style selection:
+- species-wise quantile threshold `q` on window-level `s_hat`
+- then keeps top-K events per hour per canon
+
+(Added in this repository revision; if your local copy predates this option, please pull the latest changes.)
+
+**Tail direction matters.**
+- Use `--tail high` when larger `s_hat` means more unknown/extreme (default; typical Quiet-style scores).
+- Use `--tail low` when smaller `s_hat` means more unknown/extreme (e.g., if you saved `s_hat = -kNN_z`, `-Mahalanobis_z`, or `-CCED2`).
+
+Examples:
+
+```bash
+# Quiet-style score (higher is more extreme)
+python run_hiceas_multi_species_eval.py \
+  --manifest manifest.csv --predictions pred_quiet.csv \
+  --out-summary out/hiceas_summary.csv --out-macro out/hiceas_macro.csv \
+  --q 0.99 --K 2 --tail high
+
+# Negative distance score (lower is more extreme)
+python run_hiceas_multi_species_eval.py \
+  --manifest manifest.csv --predictions pred_neg_knn.csv \
+  --out-summary out/hiceas_summary.csv --out-macro out/hiceas_macro.csv \
+  --q 0.99 --K 2 --tail low
+```  
 
 ## Citation
 

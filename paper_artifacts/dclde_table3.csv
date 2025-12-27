@@ -1,4 +1,7 @@
-score,AUROC,AUPR_out,AUPR_in
-kNN_z,0.9997404523403778,0.9999867172072389,0.9981993109080386
-Mahalanobis_z,1.0,1.0,0.9999999999999999
-CCED2,1.0,1.0,1.0
+embedding,score,auroc,aupr_out,aupr_in
+beats_dapt,kNN_z,0.994243,0.999161,0.99092
+beats_dapt,Mahalanobis_z,1,1,1
+beats_dapt,CCED2,1,1,1
+perch2,kNN_z,0.99131,0.995427,0.984888
+perch2,Mahalanobis_z,0.992042,0.997003,0.982951
+perch2,CCED2,0.992376,0.996758,0.985023
