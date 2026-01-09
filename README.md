@@ -289,11 +289,11 @@ If you use this code or the provided weights in your research, please cite:
 
 ```bibtex
 @article{noda2025stethoscope,
-  title={A stethoscope for the ocean: Open-world discovery in underwater soundscapes},
+  title={A stethoscope for the ocean: Unknownness-aware monitoring under FP/h constraints in underwater soundscapes},
   author={Noda, Takuji and Koizumi, Takuya},
-  journal={npj Artificial Intelligence (Special Collection: Sensing Intelligence and Machine Learning)},
+  journal={Scientific Reports},
   note={Under Review},
-  year={2025}
+  year={2026}
 }
 ```
 
