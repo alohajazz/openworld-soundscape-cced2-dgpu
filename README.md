@@ -288,8 +288,8 @@ python run_hiceas_multi_species_eval.py \
 If you use this code or the provided weights in your research, please cite:
 
 ```bibtex
-@article{noda2025stethoscope,
-  title={A stethoscope for the ocean: Unknownness-aware monitoring under FP/h constraints in underwater soundscapes},
+@article{noda2026stethoscope,
+  title={A stethoscope for the ocean: Unknownness-aware monitoring under false-positives-per-hour constraints in underwater soundscapes},
   author={Noda, Takuji and Koizumi, Takuya},
   journal={Scientific Reports},
   note={Under Review},
