@@ -8,11 +8,13 @@ data/
 ckpts_dapt/
 results/
 
-# Weights (Ignore large pre-trained models)
+# Weights (Ignore large pre-trained models — distributed via HuggingFace)
 weights/*.pt
+legacy/weights/*.pt
 
-# Allow everything inside weights/cced2/ (Make sure stats and small models are tracked)
+# Allow everything inside weights/cced2/ and legacy/weights/cced2/ (small CCED2 fit files tracked)
 !weights/cced2/
+!legacy/weights/cced2/
 
 # System files
 .DS_Store

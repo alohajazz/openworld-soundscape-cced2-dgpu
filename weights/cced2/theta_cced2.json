@@ -1,5 +1,8 @@
 {
-  "theta": 3.4576044929130147,
+  "theta": 3.287374760712524,
   "basis": "InD_q95",
-  "score": "cced2"
+  "score": "cced2",
+  "source": "hiceas_ood_fulldata.json (BEATs+DAPT fulldata step120000, n_ind=1623)",
+  "encoder_sha256": "0fe9f7dd92780c2e564f1df06a192482dbcb9a56bdab4202f4d94862b9168f89",
+  "note": "Recomputed 2026-05-04 from new fulldata DAPT InD reference. Previous value 3.4576 was computed against PRETRAIN-equivalent (legacy buggy) DAPT encoder."
 }
