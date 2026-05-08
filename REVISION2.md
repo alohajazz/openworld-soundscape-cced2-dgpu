@@ -112,6 +112,47 @@ historical record. **They should not be used for any new analysis.**
 - The FRDR North Atlantic right whale upcall continuous-detection setup.
 - The general philosophy of FP/h-constrained operating-point design.
 
+## 2026-05-09 follow-up: window-aware extraction + bandwidth-consistent 7-species HICEAS Supplementary Table S3
+
+While preparing revision 2.1 of the manuscript, two further refinements were applied to ensure that the published numbers are bandwidth-consistent with the 0–8 kHz analysis band and that per-window scores are computed from the manifest-specified window boundaries:
+
+1. **Window-aware extraction**. A sliding-window evaluation manifest (e.g., FRDR continuous detection at 2 s hop) requires each row's `center_sec` to be wired through to the audio slicer. The previous extractor (`dump_known56_features.py`, designed for the known56 1-clip-per-row setting) loaded the first `target_seconds` of the file regardless of `center_sec`, which produced per-file constant per-window embeddings when reused on sliding-window manifests. The new `scripts/winaware_2026-05-09/dump_winaware_features.py` reads `center_sec` and slices `[start_sec, start_sec + target_seconds]` of each row. An optional 16 kHz mono pre-cache (`scripts/winaware_2026-05-09/build_16k_cache.py` + `dump_winaware_cached.py`) eliminates redundant decode/resample for high-sample-rate sources (e.g., 500 kHz × 6 ch HICEAS hydrophone FLAC).
+
+2. **Bandwidth-consistent seven-species HICEAS Supplementary Table S3**. Supplementary Table S3 was previously evaluated on a ten-species OP subset that included beaked whales (Cuvier's, Longman's, unidentified beaked). The echolocation clicks of all classified Hawaiian odontocete types peak at ≥ 12.5 kHz (Ziegenhorn et al. 2024) and therefore lie above the 8 kHz Nyquist frequency of the 0–8 kHz analysis band. To match Table 4 (per-recording Promoter discrimination on the seven-species PR set, all of which have lower-frequency in-band signal classes within 0–8 kHz), Supplementary Table S3 was re-evaluated on the same seven-species PR set with a per-recording top-1 cap. New paper_artifacts under `paper_artifacts/supp_table_s3_winaware_2026-05-09/` contain the re-evaluated values for BEATs+DAPT and Perch 2.0.
+
+### Per-table impact (2026-05-09)
+
+| Manuscript | v2.2 (Apr 2026 reorganisation) | v2.1 / 2026-05-09 (window-aware re-extraction) |
+|---|---|---|
+| Table 2 (FRDR Quiet/Union/Fusion) | Quiet 0.069 / Union 0.126 / Fusion 0.084 (FP/h ≈ 10) | Quiet 0.074 / Union 0.427 / Fusion 0.070 (FP/h ≈ 10) |
+| Table 3 (FRDR ablation kNN_z / Maha_z / CCED2_z) | BEATs 0.077 / 0.049 / 0.072 ; Perch 0.109 / 0.095 / 0.104 | BEATs 0.052 / 0.078 / 0.074 ; Perch 0.090 / 0.081 / 0.084 |
+| Table 4 (HICEAS canon Promoter, 7 species AUC range) | 0.893–0.997 | 0.919–0.996 |
+| Supplementary Table S3 (HICEAS unknownness-only) | 10-species OP subset; per-file constant CCED2 ⇒ degenerate single-FP/h cluster | 7-species PR set; per-recording top-1; tolerance-sensitive |
+| Fig. 3 caption | Quiet 0.069 / Union 0.126 / Fusion 0.084 | Quiet 0.074 / Union 0.427 / Fusion 0.070 |
+
+Updated CSVs are in `paper_artifacts/table2_frdr_quiet_union_fusion/`, `paper_artifacts/table3_frdr_fp_recall/`, `paper_artifacts/table4_hiceas_canon_promoter/` (in-place updates), with full sweep curves and per-encoder breakdowns under `paper_artifacts/winaware_2026-05-09/` and `paper_artifacts/supp_table_s3_winaware_2026-05-09/`.
+
+### Reproducing the 2026-05-09 numbers
+
+```
+# 1. Pre-cache 16 kHz mono npy files for high-sample-rate sources (one-time)
+python scripts/winaware_2026-05-09/build_16k_cache.py
+
+# 2. Extract window-aware embeddings using cached audio
+python scripts/winaware_2026-05-09/dump_winaware_cached.py \
+    --csv <manifest_winsafe.csv> \
+    --ckpt_beats <beats_dapt.pt> \
+    --outdir <emb_dir> \
+    --batch_size 32 --num_workers 4 --shard_size 10000
+
+# 3. Run per-task evaluations
+python scripts/winaware_2026-05-09/frdr_supervised_promoter.py        # Table 2 + Fig 3
+python scripts/winaware_2026-05-09/run_frdr_table3_winaware.py        # Table 3
+python scripts/winaware_2026-05-09/groupkfold_table4_eval_winaware.py # Table 4
+python scripts/winaware_2026-05-09/supp_s3_7sp_full.py                # Supp Table S3 (BEATs+DAPT)
+python scripts/winaware_2026-05-09/supp_s3_perch.py                   # Supp Table S3 (Perch)
+```
+
 ## Acknowledgement
 
 The bug discovery and the choice of DCLDE 2013 replacement were prompted

@@ -1,8 +1,8 @@
 common_name,latin_name,in_band_signal_0_8_kHz,in_band_signal_source,n_canons,promoter_auc_mean,promoter_auc_std,F1,P,R
-Short-finned pilot whale,Globicephala macrorhynchus,tonal call peak ~3.9 kHz,Jensen et al. 2011 (Proc R Soc B 278:3017-3025),234,0.997,0.004,0.98,0.98,0.98
-False killer whale,Pseudorca crassidens,whistle 3.8-13.6 kHz (mean 6.9 kHz),Sanino & Fowle 2006 (Bol Mus Nac Hist Nat 55:21-39),753,0.985,0.003,0.91,0.91,0.91
-Rough-toothed dolphin,Steno bredanensis,whistle fundamental 2.24-13.94 kHz,Lima et al. 2012 (J Acoust Soc Am 131:4173-4181),105,0.981,0.019,0.93,0.92,0.93
-Minke whale,Balaenoptera acutorostrata,boing fundamental ~1.4 kHz,Martin et al. 2013 (Mar Mamm Sci 29:142-158),1094,0.959,0.005,0.84,0.83,0.84
-Offshore spotted dolphin,Stenella attenuata,whistle 9.7±2.8 to 19.8±4.2 kHz (Hawaii),Silva et al. 2016 (J Acoust Soc Am 140:421-429),123,0.939,0.028,0.84,0.83,0.85
-Striped dolphin,Stenella coeruleoalba,whistle 7.88±1.72 to 17.17±3.50 kHz (Atlantic),Papale et al. 2013 (J Acoust Soc Am 133:1126-1134),261,0.930,0.016,0.80,0.80,0.79
-Sperm whale,Physeter macrocephalus,p0 pulse centroid 7.2 kHz; IPI ~5 ms,Møhl et al. 2003 (J Acoust Soc Am 114:1143-1154),1375,0.893,0.010,0.79,0.79,0.79
+Short-finned pilot whale,Globicephala macrorhynchus,tonal call peak ~3.9 kHz,Jensen et al. 2011 (Proc R Soc B 278:3017-3025),234,0.996,0.005,0.94,0.94,0.94
+False killer whale,Pseudorca crassidens,whistle 3.8-13.6 kHz (mean 6.9 kHz),Sanino & Fowle 2006 (Bol Mus Nac Hist Nat 55:21-39),753,0.989,0.003,0.91,0.92,0.90
+Rough-toothed dolphin,Steno bredanensis,whistle fundamental 2.24-13.94 kHz,Lima et al. 2012 (J Acoust Soc Am 131:4173-4181),105,0.984,0.014,0.75,0.84,0.69
+Minke whale,Balaenoptera acutorostrata,boing fundamental ~1.4 kHz,Martin et al. 2013 (Mar Mamm Sci 29:142-158),1094,0.977,0.002,0.88,0.87,0.90
+Offshore spotted dolphin,Stenella attenuata,whistle 9.7±2.8 to 19.8±4.2 kHz (Hawaii),Silva et al. 2016 (J Acoust Soc Am 140:421-429),123,0.962,0.020,0.54,0.87,0.41
+Striped dolphin,Stenella coeruleoalba,whistle 7.88±1.72 to 17.17±3.50 kHz (Atlantic),Papale et al. 2013 (J Acoust Soc Am 133:1126-1134),261,0.966,0.005,0.70,0.88,0.59
+Sperm whale,Physeter macrocephalus,p0 pulse centroid 7.2 kHz; IPI ~5 ms,Møhl et al. 2003 (J Acoust Soc Am 114:1143-1154),1375,0.919,0.015,0.81,0.82,0.80

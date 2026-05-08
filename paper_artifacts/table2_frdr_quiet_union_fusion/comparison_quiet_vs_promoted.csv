@@ -1,3 +1,5 @@
 mode,Recall,FP_events_per_hr
-Quiet (tol=10s),0.06914433880720039,10.262806236080179
-Promoted (θ=0.0975),0.0890233362142705,10.142538975501116
+Quiet (tol=10s),0.0743,9.78
+Promoted (supervised LogReg 5-fold OOF),0.4339,9.78
+Union (Quiet OR Promoted),0.4270,10.34
+Fusion (alpha=0.9 sweep best),0.0700,9.98
