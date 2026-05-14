@@ -16,6 +16,12 @@ The repository targets research reproducibility (manuscript Tables 1–4 and
 the FP/h-recall evaluation on FRDR continuous recordings); it does not
 include product-deployment workflows.
 
+The framework addresses practical PAM operational constraints — limited
+annotation budgets and multi-day deployments under variable recording
+conditions — through label-efficiency analysis of the Promoter stage
+(paper §2.2) and cross-day generalisation analysis under 5-fold
+GroupKFold by deployment day (paper §2.3).
+
 > **About revision 2.2** (May 2026). The original December 2026 submission
 > contained a numerical-instability bug in the SimCLR DAPT training (AMP
 > fp16 prevented BEATs encoder weight updates) and used an evaluation
