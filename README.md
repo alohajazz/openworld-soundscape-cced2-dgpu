@@ -38,9 +38,13 @@ include product-deployment workflows.
   using the new fulldata DAPT encoder)
 - **Bundled BEATs source code** (`beats_core/`)
 
-These are released for **non-commercial research use only**. Encoder + SED
-head are distributed via HuggingFace
-(`BiologgingSolutions/OceanBEATs`); CCED2 fits ship inside this repo.
+These are released under **CC BY 4.0** (open, including for commercial use,
+with attribution). Encoder + SED head are distributed via HuggingFace
+(`BiologgingSolutions/OceanBEATs`); CCED2 fits ship inside this repo. The
+Detect-Group-Promote-Union (DGPU) framework and the CCED2 unknownness score
+are subject to patent applications filed by Biologging Solutions Inc.; the
+CC BY 4.0 license on the released weights does not grant rights under those
+patents.
 
 > **⚠️ Data Availability.** The internally curated 56-class underwater
 > SED training dataset is **not publicly available**. The provided weights
@@ -265,9 +269,13 @@ underwater soundscapes. Scientific Reports (revision 2.2, in review).
 
 ## Licence
 
-- Code under `LICENSE_CODE.txt` (MIT-style for non-commercial research).
-- Weights and CCED2 fits under `LICENSE_WEIGHTS.txt` (non-commercial
-  research only).
+- Code under `LICENSE_CODE.txt` (MIT License — permissive, commercial use
+  permitted).
+- Weights and CCED2 fits under `LICENSE_WEIGHTS.txt` (CC BY 4.0 — open,
+  commercial use permitted with attribution).
+- The DGPU framework and CCED2 unknownness score are subject to patent
+  applications filed by Biologging Solutions Inc.; the open licenses on
+  the code and weights do not grant rights under those patents.
 
 ## Contact / issues
 

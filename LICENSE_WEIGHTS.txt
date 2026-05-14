@@ -1,6 +1,6 @@
 LICENSE FOR PRETRAINED MODEL WEIGHTS AND PARAMETERS
 
-The files listed below (collectively, the "Weights") are released by Biologging Solutions Inc. for non-commercial research purposes only.
+The files listed below (collectively, the "Weights") are released by Biologging Solutions Inc. under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
 
 Applicable Files:
 - weights/beats_dapt_topup_encoder.pt
@@ -8,18 +8,18 @@ Applicable Files:
 - weights/cced2/* (CCED2 model parameters and statistics)
 
 --------------------------------------------------------------------------------
-Copyright (c) 2025 Biologging Solutions Inc. and Takuji Noda
+Copyright (c) 2024-2026 Biologging Solutions Inc. and Takuji Noda
 --------------------------------------------------------------------------------
 
-These Weights are licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0).
+These Weights are licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0).
 
 You are free to:
 - Share — copy and redistribute the material in any medium or format
 - Adapt — remix, transform, and build upon the material
+for any purpose, even commercially.
 
 Under the following terms:
 1. Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-2. NonCommercial — You may not use the material for commercial purposes.
 
 No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
 
@@ -27,11 +27,26 @@ No additional restrictions — You may not apply legal terms or technological me
 FULL LICENSE TEXT
 --------------------------------------------------------------------------------
 To view a copy of this license, visit:
-http://creativecommons.org/licenses/by-nc/4.0/legalcode
+http://creativecommons.org/licenses/by/4.0/legalcode
 
 --------------------------------------------------------------------------------
-COMMERCIAL USE INQUIRIES
+NOTES
 --------------------------------------------------------------------------------
-For commercial use, licensing, or integration into products, please contact:
+The released Weights do not redistribute the underlying training audio. The
+internal 56-class SED training corpus itself remains non-public under an
+in-progress data-sharing agreement within the original collaboration;
+representative class examples and a per-class taxonomy are planned for
+release in a forthcoming companion paper.
+
+The Detect-Group-Promote-Union (DGPU) framework and the CCED2 unknownness
+score (the methods implemented in this repository and applied via these
+Weights) are subject to patent applications filed by Biologging Solutions
+Inc.; the CC BY 4.0 license on the Weights does not grant any rights under
+those patents.
+
+--------------------------------------------------------------------------------
+CONTACT
+--------------------------------------------------------------------------------
+For collaboration, integration, or patent licensing inquiries, please contact:
 Biologging Solutions Inc.
-(Contact information or URL, e.g., https://biologging-solutions.com/)
+https://biologging-solutions.com/
