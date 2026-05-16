@@ -1,7 +1,8 @@
 # CCED2 and DGPU for Open-world Discovery in Underwater Soundscapes
 
-This repository accompanies *"A stethoscope for the ocean: Open-world
-discovery in underwater soundscapes"* (Noda et al., Sci. Rep., **revision 2.2**).
+This repository accompanies *"Discovery and promotion of unknown sounds into operational detection
+targets for underwater passive acoustic monitoring under false alarm
+constraints"* (Noda et al., Sci. Rep., **revision** in review).
 It provides a minimal implementation of:
 
 - **BEATs+DAPT** — a self-supervised audio encoder adapted to underwater
@@ -22,11 +23,11 @@ conditions — through label-efficiency analysis of the Promoter stage
 (paper §2.2) and cross-day generalisation analysis under 5-fold
 GroupKFold by deployment day (paper §2.3).
 
-> **About revision 2.2** (May 2026). The original December 2026 submission
+> **About this revision** (May 2026). The original December 2026 submission
 > contained a numerical-instability bug in the SimCLR DAPT training (AMP
 > fp16 prevented BEATs encoder weight updates) and used an evaluation
 > dataset (DCLDE 2013) with a bandwidth mismatch against the InD reference.
-> Revision 2.2 corrects both: DAPT is now Masked Audio Modeling on a
+> This revision corrects both: DAPT is now Masked Audio Modeling on a
 > 5,673-h corpus with bfloat16 precision, and the species-wise HICEAS
 > evaluation is reformulated as canon-level Promoter discrimination on
 > seven cetacean species. See `REVISION2.md` for the detailed change log
@@ -61,7 +62,7 @@ patents.
 > the same manifest format (see Methods §4.2 for the "win10" window
 > definition).
 
-## Evaluation conventions (revision 2.2)
+## Evaluation conventions
 
 ### FRDR continuous evaluation (manuscript Methods §4.5.1)
 
@@ -269,8 +270,9 @@ Training of the published model:
 If you use this code or weights, please cite:
 
 ```
-Noda, T. et al. A stethoscope for the ocean: Open-world discovery in
-underwater soundscapes. Scientific Reports (revision 2.2, in review).
+Noda, T. et al. Discovery and promotion of unknown sounds into
+operational detection targets for underwater passive acoustic monitoring
+under false alarm constraints. Scientific Reports (revision, in review).
 ```
 
 ## Licence
