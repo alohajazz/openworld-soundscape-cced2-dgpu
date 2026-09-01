@@ -13,8 +13,10 @@ It provides a minimal implementation of:
   unknown events for triage and incorporates them into FP/h-constrained
   detection policies.
 
-The repository targets research reproducibility (manuscript Tables 1–4 and
-the FP/h-recall evaluation on FRDR continuous recordings); it does not
+The repository provides code, released weights, and source artifacts for the
+public-data analyses in the manuscript. Its reproducibility scope is stated
+explicitly below; in particular, the exact numerical results in Table 1 cannot
+be reproduced without the non-public 56-class dataset. The repository does not
 include product-deployment workflows.
 
 The framework addresses practical PAM operational constraints — limited
@@ -23,7 +25,7 @@ conditions — through label-efficiency analysis of the Promoter stage
 (paper §2.2) and cross-day generalisation analysis under 5-fold
 GroupKFold by deployment day (paper §2.3).
 
-> **About this revision** (May 2026). The original December 2026 submission
+> **About this revision** (May 2026). The original December 2025 submission
 > contained a numerical-instability bug in the SimCLR DAPT training (AMP
 > fp16 prevented BEATs encoder weight updates) and used an evaluation
 > dataset (DCLDE 2013) with a bandwidth mismatch against the InD reference.
@@ -45,17 +47,24 @@ GroupKFold by deployment day (paper §2.3).
   using the new fulldata DAPT encoder)
 - **Bundled BEATs source code** (`beats_core/`)
 
-These are released under **CC BY 4.0** (open, including for commercial use,
-with attribution). Encoder + SED head are distributed via HuggingFace
-(`BiologgingSolutions/OceanBEATs`); CCED2 fits ship inside this repo. The
-Detect-Group-Promote-Union (DGPU) framework and the CCED2 unknownness score
-are subject to patent applications filed by Biologging Solutions Inc.; the
-CC BY 4.0 license on the released weights does not grant rights under those
-patents.
+The source code is released under the MIT License. The current encoder, SED
+head, and CCED2 parameters are released under CC BY 4.0. Encoder + SED head
+are distributed via HuggingFace (`BiologgingSolutions/OceanBEATs`); CCED2 fits
+ship inside this repository. The Detect-Group-Promote-Union (DGPU) framework
+and the CCED2 unknownness score are subject to patent applications filed by
+Biologging Solutions Inc.; these copyright licences do not grant patent
+rights.
 
-> **⚠️ Data Availability.** The internally curated 56-class underwater
-> SED training dataset is **not publicly available**. The provided weights
-> nevertheless allow inference and evaluation reproduction.
+> **⚠️ Data Availability.** The internally curated 56-class underwater SED
+> dataset is **not publicly available** because its raw clips and row-level
+> metadata contain sensitive location and operational information, and no
+> controlled-access mechanism has been approved by the original collaboration.
+> Consequently, the exact Table 1 training and evaluation results, and a refit
+> of the 56-class in-distribution reference statistics, cannot be reproduced
+> from public materials alone. Supplementary Table S2 provides aggregate
+> per-class statistics and the complete label taxonomy. Released weights,
+> pre-fitted CCED2 parameters, scripts, and public evaluation datasets support
+> inference and the public-data analyses described below.
 
 > **Perch baseline (optional).** Perch 2.0 baseline rows in Tables 2–3 are
 > not included in this repository. Users can supply Perch embeddings in
@@ -90,7 +99,7 @@ patents.
 ```text
 .
 ├── README.md                              # This file
-├── REVISION2.md                           # Change log from v1 (Dec 2026) to v2.2 (May 2026)
+├── REVISION2.md                           # Change log from v1 (Dec 2025) to v2.2 (May 2026)
 ├── SCRIPTS.md                             # Per-script index with manuscript role
 ├── requirements.txt
 ├── LICENSE_CODE.txt
@@ -188,16 +197,35 @@ shasum -a 256 weights/sed_head_56_fulldata_ep8.pt
 CCED2 fits (`weights/cced2/`) are tracked directly in this repository and
 do not require separate download.
 
-## Reproducing manuscript Tables
+## Reproducibility scope
+
+This repository does **not** reproduce every table and figure in the
+manuscript from public materials alone.
+
+- **Table 1 (56-class SED):** the training code, configuration, released model
+  weights, and aggregate results are provided, but exact numerical
+  reproduction requires the non-public 56-class dataset.
+- **Tables 2–4:** evaluation code and source result artifacts are provided.
+  Users must obtain the public FRDR and HICEAS data from their respective
+  providers and construct the manifests described in the Methods and repository
+  documentation.
+- **Figures 1–2:** conceptual schematics rather than computational outputs.
+- **Figure 3:** the generating script and source artifacts are provided under
+  `scripts/winaware_2026-05-09/` and `paper_artifacts/winaware_2026-05-09/`.
+- **Figure 4 and supplementary computational outputs:** the final frozen
+  release accompanying the revised manuscript will identify the exact scripts
+  and artifacts corresponding to the final analyses.
+
+## Reproducing manuscript analyses
 
 ### Table 1 — SED Performance (56-class)
 
-Train + evaluate the 56-class SED head on top of the BEATs+DAPT encoder.
-The published headline value (Stage 1 single-seed Event F1 = 0.483) was
-produced by `scripts/train_sed_beats_weak_plus.py` with default
-hyperparameters and the training manifest described in Methods §4.1.2.
-Ten-seed variance (mean ± std = 0.475 ± 0.017) is reported in the
-manuscript footnote.
+`scripts/train_sed_beats_weak_plus.py` documents the training and evaluation
+workflow for a compatible 56-class SED head. The manuscript headline value
+(Stage 1 single-seed Event F1 = 0.483) and ten-seed variance (mean ± std =
+0.475 ± 0.017) were obtained from the non-public dataset described in Methods
+§4.1.2. These exact values cannot be independently regenerated from the public
+repository because the underlying clips, labels, and splits are unavailable.
 
 ### Table 2 — FRDR: Quiet / Union / Fusion
 

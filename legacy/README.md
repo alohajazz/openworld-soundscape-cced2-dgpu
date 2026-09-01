@@ -1,7 +1,7 @@
 # Legacy artifacts (pre-revision-2.2)
 
 This folder preserves scripts, weights, and CCED2 fits from the original
-December 2026 paper submission, **before** the major revision (revision 2.2,
+December 2025 paper submission, **before** the major revision (revision 2.2,
 2026-05).
 
 ## Why kept

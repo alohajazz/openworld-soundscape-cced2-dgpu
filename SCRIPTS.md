@@ -30,7 +30,7 @@ them. For paths and runtime context see the docstrings in each file.
 ## Legacy (`legacy/`)
 
 See `legacy/README.md` for the per-file rationale. In short: scripts and
-weights from the original December 2026 submission that have been superseded
+weights from the original December 2025 submission that have been superseded
 by the revision 2.2 changes (DCLDE 2013 removal, MAM DAPT replacing buggy
 SimCLR DAPT, canon-level Promoter replacing OP event-level grid search).
 

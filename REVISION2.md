@@ -1,7 +1,7 @@
 # Revision 2.2 change log
 
 This document describes the substantive changes between the original
-December 2026 manuscript submission (paired with `README.md.v1_dec2026_backup`)
+December 2025 manuscript submission (paired with `README.md.v1_dec2025_backup`)
 and the May 2026 revision 2.2.
 
 ## Summary
@@ -61,8 +61,8 @@ Revision 2.2 replaces both with a corrected pipeline:
 | (new) | `scripts/dapt_extract_kmeans_labels.py` | k-means k=1024 tokeniser |
 | (new) | `scripts/dapt_train_beats_mam_545h_legacy.py` | Earlier 545-h variant, kept for reference |
 | (new) | `scripts/eval_b2_canon_promoter_compare.py` | Original analysis snapshot for Table 4 (PRETRAIN vs DAPT comparison) |
-| `weights/beats_dapt_topup_encoder.pt` (Dec 2026, buggy = PRETRAIN) | `legacy/weights/beats_dapt_topup_encoder_buggy.pt` (gitignored) | Replaced by `weights/beats_dapt_mam_step120000.pt` |
-| `weights/sed_head_56_topup_ep8.pt` (Dec 2026) | `legacy/weights/sed_head_56_topup_ep8_buggy.pt` (gitignored) | Replaced by `weights/sed_head_56_fulldata_ep8.pt` |
+| `weights/beats_dapt_topup_encoder.pt` (Dec 2025, buggy = PRETRAIN) | `legacy/weights/beats_dapt_topup_encoder_buggy.pt` (gitignored) | Replaced by `weights/beats_dapt_mam_step120000.pt` |
+| `weights/sed_head_56_topup_ep8.pt` (Dec 2025) | `legacy/weights/sed_head_56_topup_ep8_buggy.pt` (gitignored) | Replaced by `weights/sed_head_56_fulldata_ep8.pt` |
 | `weights/cced2/{cced2_norm.json,knn_dapt.pkl,maha_dapt.pkl,theta_cced.json,theta_cced2.json}` | `legacy/weights/cced2/...` | Replaced by new fit against fulldata DAPT encoder; new `theta_cced2.json` = 3.287 (was 3.4576) |
 | `paper_artifacts/dclde_table3.csv` | `legacy/paper_artifacts/dclde_table3.csv` | DCLDE 2013 removed |
 | `paper_artifacts/frdr_table4/` | `paper_artifacts/table2_frdr_quiet_union_fusion/` | Renumbered |
@@ -89,7 +89,7 @@ q95 = 3.287 (n = 1,623 56-class held-out validation segments).
 
 ## Reproducing the v1 numbers (legacy)
 
-If you specifically need to reproduce the original December 2026 numbers
+If you specifically need to reproduce the original December 2025 numbers
 (e.g. for a delta comparison), the legacy weights and scripts are
 preserved under `legacy/`:
 
@@ -156,5 +156,5 @@ python scripts/winaware_2026-05-09/supp_s3_perch.py                   # Supp Tab
 ## Acknowledgement
 
 The bug discovery and the choice of DCLDE 2013 replacement were prompted
-by reviewer comments on the December 2026 submission. We thank the
+by reviewer comments on the December 2025 submission. We thank the
 reviewers for the rigorous read.
