@@ -1,5 +1,12 @@
 # Revision 2.2 change log
 
+> **Superseded historical record.** This file documents the May 2026 revision
+> and its then-current numbers. It is retained only to distinguish that
+> superseded analysis from the corrected September 2026 analysis. Do not use
+> the configurations, checkpoints, commands or numerical results below as the
+> current manuscript specification; see `MINOR_REVISION_2026-09.md`,
+> `README.md` and `MANUSCRIPT_ARTIFACT_MAP.md` instead.
+
 This document describes the substantive changes between the original
 December 2025 manuscript submission (paired with `README.md.v1_dec2025_backup`)
 and the May 2026 revision 2.2.
@@ -114,7 +121,7 @@ historical record. **They should not be used for any new analysis.**
 
 ## 2026-05-09 follow-up: window-aware extraction + bandwidth-consistent 7-species HICEAS Supplementary Table S3
 
-While preparing revision 2.1 of the manuscript, two further refinements were applied to ensure that the published numbers are bandwidth-consistent with the 0–8 kHz analysis band and that per-window scores are computed from the manifest-specified window boundaries:
+While preparing revision 2.1 of the manuscript, two further corrections were applied to ensure that the published numbers were bandwidth-consistent with the 0–8 kHz analysis band and that per-window scores were computed from the manifest-specified window boundaries:
 
 1. **Window-aware extraction**. A sliding-window evaluation manifest (e.g., FRDR continuous detection at 2 s hop) requires each row's `center_sec` to be wired through to the audio slicer. The previous extractor (`dump_known56_features.py`, designed for the known56 1-clip-per-row setting) loaded the first `target_seconds` of the file regardless of `center_sec`, which produced per-file constant per-window embeddings when reused on sliding-window manifests. The new `scripts/winaware_2026-05-09/dump_winaware_features.py` reads `center_sec` and slices `[start_sec, start_sec + target_seconds]` of each row. An optional 16 kHz mono pre-cache (`scripts/winaware_2026-05-09/build_16k_cache.py` + `dump_winaware_cached.py`) eliminates redundant decode/resample for high-sample-rate sources (e.g., 500 kHz × 6 ch HICEAS hydrophone FLAC).
 

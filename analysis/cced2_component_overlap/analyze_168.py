@@ -1,4 +1,8 @@
-"""Analyze the 168 windows that differ between top-1% selections of -kNN_z and -CCED2.
+"""Historical May 2026 analysis of 168 differing top-1% selections.
+
+This script records the superseded May 2026 comparison with negative-looking
+labels. It is not the September 2026 manuscript analysis; see
+``plot_fixed_step127641.py`` and the frozen minor-revision artifacts instead.
 Compute qualitative characterization (mean z-distances, species distribution if available)
 and generate Venn diagram + scatter plot."""
 import sys, glob, json

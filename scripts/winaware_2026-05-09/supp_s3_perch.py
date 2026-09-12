@@ -4,12 +4,15 @@ import os, json, glob, joblib
 import numpy as np, pandas as pd
 from pathlib import Path
 
-EMB_DIR = "/workspace/embeddings/perch_hiceas_op2s_10s_win10"
-DET_XLSX = "/workspace/data/externaldata/bls-sound-eval/hiceas/metadata_DCLDE2020 DetectionData.xlsx"
-KNN_PKL = "/workspace/embeddings/perch_ind_models/knn_perch.pkl"
-MAHA_PKL = "/workspace/embeddings/perch_ind_models/maha_perch.pkl"
-NORM_JSON = "/workspace/embeddings/perch_ind_models/cced2_norm_perch.json"
-OUT_CSV = "/workspace/release_repo/paper_artifacts/supp_table_s3_perch_winaware_2026-05-09.csv"
+REPO_ROOT = Path(__file__).resolve().parents[2]
+ROOT = os.environ.get("DGPU_ROOT", "/workspace")
+EMB_DIR = os.environ.get("DGPU_PERCH_OP_DIR", f"{ROOT}/embeddings/perch_hiceas_op2s_10s_win10")
+OP_MAN = os.environ.get("DGPU_OP_MAN", str(REPO_ROOT / "paper_artifacts/minor_revision_2026-09/manifests/hiceas_op_manifest_winaware.csv.gz"))
+DET_XLSX = os.environ.get("DGPU_DET_XLSX", f"{ROOT}/data/externaldata/bls-sound-eval/hiceas/metadata_DCLDE2020 DetectionData.xlsx")
+KNN_PKL = os.environ.get("DGPU_PERCH_KNN_PKL", f"{ROOT}/embeddings/perch_ind_models/knn_perch.pkl")
+MAHA_PKL = os.environ.get("DGPU_PERCH_MAHA_PKL", f"{ROOT}/embeddings/perch_ind_models/maha_perch.pkl")
+NORM_JSON = os.environ.get("DGPU_PERCH_NORM_JSON", f"{ROOT}/embeddings/perch_ind_models/cced2_norm_perch.json")
+OUT_CSV = Path(os.environ.get("DGPU_OUT_CSV", f"{ROOT}/outputs/supp_table_s3_perch_unknown_high.csv"))
 
 SEVEN_SP = {
     71: "Minke whale",
@@ -22,6 +25,26 @@ SEVEN_SP = {
 }
 ODONTO_CODES = [46, 33, 36, 15, 2, 13]
 Q_QUANTILE = 0.99
+SCORE_DIRECTION = os.environ.get("DGPU_SCORE_DIRECTION", "unknown_high")
+
+def load_embeddings_and_validate(emb_dir, manifest):
+    """Refuse row truncation: embedding, index, and manifest must align exactly."""
+    emb_paths = sorted(Path(emb_dir).glob("embeddings_*.npy"))
+    idx_paths = sorted(Path(emb_dir).glob("index_*.csv"))
+    if not emb_paths or len(emb_paths) != len(idx_paths):
+        raise FileNotFoundError(f"require matching non-empty embeddings_*.npy and index_*.csv shards in {emb_dir}")
+    embeddings = np.concatenate([np.load(path) for path in emb_paths]).astype("float32")
+    index = pd.concat([pd.read_csv(path) for path in idx_paths], ignore_index=True)
+    required = {"path", "center_sec"}
+    if not required.issubset(index.columns) or not required.issubset(manifest.columns):
+        raise ValueError(f"index and manifest require {sorted(required)}")
+    if len(embeddings) != len(index) or len(index) != len(manifest):
+        raise ValueError(f"row-count mismatch embeddings={len(embeddings)}, index={len(index)}, manifest={len(manifest)}")
+    if not index["path"].astype(str).equals(manifest["path"].astype(str)):
+        raise ValueError("index/manifest path order mismatch")
+    if not np.array_equal(index["center_sec"].to_numpy(dtype=float), manifest["center_sec"].to_numpy(dtype=float)):
+        raise ValueError("index/manifest center_sec order mismatch")
+    return embeddings, index
 
 def cced2(E):
     KNN = joblib.load(KNN_PKL); MAHA = joblib.load(MAHA_PKL); cfg = json.load(open(NORM_JSON))
@@ -39,9 +62,9 @@ def parse_ts(fname):
     try: return pd.to_datetime(parts[1] + parts[2], format="%Y%m%d%H%M%S", utc=True)
     except Exception: return None
 
-# Load Perch embeddings + index
-E = np.load(f"{EMB_DIR}/embeddings_000.npy").astype("float32")
-idx = pd.read_csv(f"{EMB_DIR}/index_000.csv")
+# Load Perch embeddings + index.  Perch evaluates the 1705 OP set only.
+manifest = pd.read_csv(OP_MAN)
+E, idx = load_embeddings_and_validate(EMB_DIR, manifest)
 idx["base"] = idx["path"].apply(lambda p: Path(p).name)
 idx["center_sec"] = idx["center_sec"].astype(float)
 print(f"Perch embeddings: {E.shape}, files: {idx['base'].nunique()}")
@@ -89,7 +112,15 @@ for sp_id, name in SEVEN_SP.items():
 print("\nComputing Perch CCED2...")
 knn_z, maha_z, cced2_z = cced2(E)
 results = []
-for score_name, S_full in [("-kNN_z", -knn_z), ("-Mahalanobis_z", -maha_z), ("-CCED2_z", -cced2_z)]:
+if SCORE_DIRECTION == "unknown_high":
+    score_arms = [("kNN_z", knn_z), ("Mahalanobis_z", maha_z), ("CCED2", cced2_z)]
+elif SCORE_DIRECTION == "submitted_negated_high":
+    # Reproduces the submitted implementation, including its sign/tail mismatch.
+    score_arms = [("-kNN_z", -knn_z), ("-Mahalanobis_z", -maha_z), ("-CCED2_z", -cced2_z)]
+else:
+    raise ValueError(f"Unsupported DGPU_SCORE_DIRECTION={SCORE_DIRECTION!r}")
+
+for score_name, S_full in score_arms:
     for tol_sec in [15.0, 20.0]:
         per_sp = []
         tot_TP = tot_FP = tot_FN = 0
@@ -142,6 +173,7 @@ for score_name, S_full in [("-kNN_z", -knn_z), ("-Mahalanobis_z", -maha_z), ("-C
                             "P": P, "R": R, "F1": F1, "FP_h": FPh, "n_species": len(per_sp)})
 
 df = pd.DataFrame(results)
+OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
 df.to_csv(OUT_CSV, index=False)
 print("\n=== Perch 2.0 (win10) Supp S3 ===")
 df["row_label"] = df["score"] + " " + df["avg"] + "@" + df["tol"].astype(str)

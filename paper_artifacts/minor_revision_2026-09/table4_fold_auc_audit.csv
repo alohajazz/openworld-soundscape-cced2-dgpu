@@ -1,0 +1,133 @@
+config,species,mode,fold,auc
+submitted-era,Minke whale,stratified,0,0.9921254275007163
+submitted-era,Minke whale,stratified,1,0.9928399444760767
+submitted-era,Minke whale,stratified,2,0.9924119785793765
+submitted-era,Minke whale,stratified,3,0.993498639812737
+submitted-era,Minke whale,stratified,4,0.9931211353117546
+submitted-era,Minke whale,group,0,0.9378067484662578
+submitted-era,Minke whale,group,1,0.9952723535457348
+submitted-era,Minke whale,group,2,0.9874049133308392
+submitted-era,Minke whale,group,3,0.9684612796645992
+submitted-era,Sperm whale,stratified,0,0.9483966920266922
+submitted-era,Sperm whale,stratified,1,0.9381740781651422
+submitted-era,Sperm whale,stratified,2,0.9421725226399249
+submitted-era,Sperm whale,stratified,3,0.9407935530296904
+submitted-era,Sperm whale,stratified,4,0.9480994834211579
+submitted-era,Sperm whale,group,0,0.8430212186100837
+submitted-era,Sperm whale,group,1,0.6704425003630028
+submitted-era,Sperm whale,group,2,0.6923938221108031
+submitted-era,Sperm whale,group,3,0.5288580606749356
+submitted-era,Sperm whale,group,4,0.8861124987703946
+submitted-era,False killer whale,stratified,0,0.9914495929250458
+submitted-era,False killer whale,stratified,1,0.9857418013947993
+submitted-era,False killer whale,stratified,2,0.9885136511817442
+submitted-era,False killer whale,stratified,3,0.9923848818255909
+submitted-era,False killer whale,stratified,4,0.9933357104047813
+submitted-era,False killer whale,group,0,0.4058219284362102
+submitted-era,False killer whale,group,1,0.9776935468587131
+submitted-era,False killer whale,group,2,0.915721998833837
+submitted-era,False killer whale,group,3,0.9085073851834756
+submitted-era,False killer whale,group,4,0.9291019734113548
+submitted-era,Short-finned pilot whale,stratified,0,0.9739896561180701
+submitted-era,Short-finned pilot whale,stratified,1,0.9765968705701495
+submitted-era,Short-finned pilot whale,stratified,2,0.9729274576375934
+submitted-era,Short-finned pilot whale,stratified,3,0.9768749734450379
+submitted-era,Short-finned pilot whale,stratified,4,0.9699111266348431
+submitted-era,Short-finned pilot whale,group,0,0.5379335628016864
+submitted-era,Short-finned pilot whale,group,1,0.8517508211323276
+submitted-era,Short-finned pilot whale,group,2,0.7771627881922001
+submitted-era,Short-finned pilot whale,group,3,0.9179655395092168
+submitted-era,Short-finned pilot whale,group,4,0.8145470631719256
+submitted-era,Rough-toothed dolphin,stratified,0,0.9927139364303179
+submitted-era,Rough-toothed dolphin,stratified,1,0.9943449262345525
+submitted-era,Rough-toothed dolphin,stratified,2,0.9933303394707516
+submitted-era,Rough-toothed dolphin,stratified,3,0.9867771069307919
+submitted-era,Rough-toothed dolphin,stratified,4,0.9972556259667682
+submitted-era,Rough-toothed dolphin,group,0,0.4825302004513474
+submitted-era,Rough-toothed dolphin,group,1,0.3436195488579461
+submitted-era,Rough-toothed dolphin,group,2,0.17496068860833128
+submitted-era,Rough-toothed dolphin,group,3,0.9945054945054945
+submitted-era,Offshore spotted dolphin,stratified,0,0.976199100485979
+submitted-era,Offshore spotted dolphin,stratified,1,0.9644938567759991
+submitted-era,Offshore spotted dolphin,stratified,2,0.9474712060401963
+submitted-era,Offshore spotted dolphin,stratified,3,0.9791791607079701
+submitted-era,Offshore spotted dolphin,stratified,4,0.9773492641970752
+submitted-era,Offshore spotted dolphin,group,0,0.5180392156862745
+submitted-era,Offshore spotted dolphin,group,1,0.5993582589285715
+submitted-era,Offshore spotted dolphin,group,2,0.424736233559763
+submitted-era,Offshore spotted dolphin,group,3,0.2970369896326635
+submitted-era,Striped dolphin,stratified,0,0.9753871230643847
+submitted-era,Striped dolphin,stratified,1,0.9880834379611886
+submitted-era,Striped dolphin,stratified,2,0.9703627833212186
+submitted-era,Striped dolphin,stratified,3,0.9718496002114583
+submitted-era,Striped dolphin,stratified,4,0.9632921429987445
+submitted-era,Striped dolphin,group,0,0.8480769230769231
+submitted-era,Striped dolphin,group,1,0.46788962892483343
+submitted-era,Striped dolphin,group,2,0.9664727657324168
+submitted-era,Striped dolphin,group,3,0.465212084223375
+FIXED,Minke whale,stratified,0,0.9910127161692959
+FIXED,Minke whale,stratified,1,0.9909234015473758
+FIXED,Minke whale,stratified,2,0.9900897984094554
+FIXED,Minke whale,stratified,3,0.9929776378515368
+FIXED,Minke whale,stratified,4,0.9922911853330642
+FIXED,Minke whale,group,0,0.9348597721297108
+FIXED,Minke whale,group,1,0.9954136690647483
+FIXED,Minke whale,group,2,0.9833431314912796
+FIXED,Minke whale,group,3,0.9714266612606861
+FIXED,Sperm whale,stratified,0,0.9271985239058578
+FIXED,Sperm whale,stratified,1,0.9202979492716749
+FIXED,Sperm whale,stratified,2,0.9158775272113486
+FIXED,Sperm whale,stratified,3,0.9180773561781047
+FIXED,Sperm whale,stratified,4,0.9284275970477655
+FIXED,Sperm whale,group,0,0.8524949711245214
+FIXED,Sperm whale,group,1,0.6350261361986351
+FIXED,Sperm whale,group,2,0.7369925671812465
+FIXED,Sperm whale,group,3,0.5493501701261628
+FIXED,Sperm whale,group,4,0.8999187978220071
+FIXED,False killer whale,stratified,0,0.9850903686658038
+FIXED,False killer whale,stratified,1,0.9835139578627367
+FIXED,False killer whale,stratified,2,0.9849338947749706
+FIXED,False killer whale,stratified,3,0.9874609481119261
+FIXED,False killer whale,stratified,4,0.9899936611428055
+FIXED,False killer whale,group,0,0.6584923812183843
+FIXED,False killer whale,group,1,0.9774904901788253
+FIXED,False killer whale,group,2,0.9368378806121599
+FIXED,False killer whale,group,3,0.9599314129933072
+FIXED,False killer whale,group,4,0.9370008973479221
+FIXED,Short-finned pilot whale,stratified,0,0.9598682101376224
+FIXED,Short-finned pilot whale,stratified,1,0.9595553444033729
+FIXED,Short-finned pilot whale,stratified,2,0.9620466826575821
+FIXED,Short-finned pilot whale,stratified,3,0.96077204448101
+FIXED,Short-finned pilot whale,stratified,4,0.9547948926922032
+FIXED,Short-finned pilot whale,group,0,0.6596196799663265
+FIXED,Short-finned pilot whale,group,1,0.8557590602905972
+FIXED,Short-finned pilot whale,group,2,0.7965888278388279
+FIXED,Short-finned pilot whale,group,3,0.8979027239638371
+FIXED,Short-finned pilot whale,group,4,0.7968026961426301
+FIXED,Rough-toothed dolphin,stratified,0,0.9827872860635697
+FIXED,Rough-toothed dolphin,stratified,1,0.9865442509522147
+FIXED,Rough-toothed dolphin,stratified,2,0.9905859654375198
+FIXED,Rough-toothed dolphin,stratified,3,0.9686975034512583
+FIXED,Rough-toothed dolphin,stratified,4,0.990020458060975
+FIXED,Rough-toothed dolphin,group,0,0.8338776052037701
+FIXED,Rough-toothed dolphin,group,1,0.5287051674034248
+FIXED,Rough-toothed dolphin,group,2,0.18951272053009025
+FIXED,Rough-toothed dolphin,group,3,0.9870486656200942
+FIXED,Offshore spotted dolphin,stratified,0,0.9561260527030698
+FIXED,Offshore spotted dolphin,stratified,1,0.9460564961326137
+FIXED,Offshore spotted dolphin,stratified,2,0.9362765450323692
+FIXED,Offshore spotted dolphin,stratified,3,0.9609570820070428
+FIXED,Offshore spotted dolphin,stratified,4,0.947840260798696
+FIXED,Offshore spotted dolphin,group,0,0.7854901960784313
+FIXED,Offshore spotted dolphin,group,1,0.5946651785714285
+FIXED,Offshore spotted dolphin,group,2,0.23486052897817603
+FIXED,Offshore spotted dolphin,group,3,0.33418661205682837
+FIXED,Striped dolphin,stratified,0,0.9593262700353165
+FIXED,Striped dolphin,stratified,1,0.9612766801030861
+FIXED,Striped dolphin,stratified,2,0.9602524284675875
+FIXED,Striped dolphin,stratified,3,0.9530716535606512
+FIXED,Striped dolphin,stratified,4,0.9467499284125201
+FIXED,Striped dolphin,group,0,0.908076923076923
+FIXED,Striped dolphin,group,1,0.4695413891531875
+FIXED,Striped dolphin,group,2,0.9653490216816499
+FIXED,Striped dolphin,group,3,0.5002219324770438

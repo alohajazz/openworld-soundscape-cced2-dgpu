@@ -28,7 +28,7 @@ top_maha = set(np.argsort(-dm)[:n_select].tolist())
 top_cced = set(np.argsort(-cced2)[:n_select].tolist())
 
 fig, ax = plt.subplots(figsize=(7, 6))
-v = venn3([top_knn, top_maha, top_cced], set_labels=(r"−kNN$_z$", r"−Mahalanobis$_z$", "−CCED2"), ax=ax)
+v = venn3([top_knn, top_maha, top_cced], set_labels=(r"kNN$_z$", r"Mahalanobis$_z$", "CCED2"), ax=ax)
 for patch_id, colour in zip(["100", "010", "001", "110", "101", "011", "111"], ["#3b82f6", "#10b981", "#ef4444", "#a78bfa", "#f59e0b", "#fb7185", "#374151"]):
     p = v.get_patch_by_id(patch_id)
     if p is not None:

@@ -1,0 +1,84 @@
+{
+  "audited_utc_date": "2026-09-12",
+  "manifests": {
+    "hiceas_1706_part2_manifest_winsafe.csv": {
+      "sha256_uncompressed": "7380d2127318546dfc846f75816c8d0f2fe03a4014ad29a21b7e4a229a469957",
+      "sha256_gzip": "520caf1cac18df42b8987d52c80e7ba04aadb8d37717ec54edf2661918074912",
+      "windows": 173160,
+      "unique_files": 6660
+    },
+    "hiceas_1706_species_manifest_winsafe.csv": {
+      "sha256_uncompressed": "68a189a51b6a647b58bd0b894c42b30e3d9f7830b01c4c04cf8a11e7ae65d48c",
+      "sha256_gzip": "dc86f56f0ba84896f19872f28d471b9c1dcfd2297642239238b12b5c1a36febc",
+      "windows": 87407,
+      "unique_files": 3367
+    },
+    "hiceas_op_manifest_winaware.csv": {
+      "sha256_uncompressed": "a18083db44dee225881173f8bad15f8c6c38cd7c8b10f451de9fa7c66d117b11",
+      "sha256_gzip": "d2078c97b1d872eb0c94d0caa1163bbeb96dd17f2a76851ec1eaf57129542761",
+      "windows": 54419,
+      "unique_files": 1949
+    }
+  },
+  "labels": {
+    "neg_all.csv": {
+      "sha256": "d7198f50ee1388b50409e39a886070c29bb32cf14ef2937030c4c31fa5a7ccba",
+      "source_rows": 9501,
+      "available_in_three_manifests": 6135
+    },
+    "pos_False_killer_whale.csv": {
+      "sha256": "d73a6767dc23b8aee798019f0582bfef1018b5b1a56bf90a5c407f921ad09092",
+      "source_rows": 1637,
+      "available_in_three_manifests": 1442
+    },
+    "pos_Minke_whale.csv": {
+      "sha256": "36741b707929c89ac6ea0f6a53fd64c41b54e97b825c0cc76c6c55ddbcc3ffb8",
+      "source_rows": 1102,
+      "available_in_three_manifests": 1094
+    },
+    "pos_Offshore_spotted_dolphin.csv": {
+      "sha256": "f3016763939c283366fb406ccc35d21878481da4ea74d01a381809e6966787e3",
+      "source_rows": 281,
+      "available_in_three_manifests": 266
+    },
+    "pos_Rough-toothed_dolphin.csv": {
+      "sha256": "894b0728bf61ae22a853596c6379dfcdd45a30eff988c2f7164a80ff8b21951f",
+      "source_rows": 248,
+      "available_in_three_manifests": 246
+    },
+    "pos_Short-finned_pilot_whale.csv": {
+      "sha256": "34e6918e32d9949a4becc3e4173e8cd9c790e44bd3d2a04c31ce8eda759a6e64",
+      "source_rows": 1057,
+      "available_in_three_manifests": 1054
+    },
+    "pos_Sperm_whale.csv": {
+      "sha256": "41a57ad6512be044ef434ee5b670d25b8fbd2a76bddba794fe06d57ef4ebe9ad",
+      "source_rows": 2076,
+      "available_in_three_manifests": 1968
+    },
+    "pos_Striped_dolphin.csv": {
+      "sha256": "f6fcff2605cafcdcc5c17c5c73406c7f2d449b4e4cdb8aa49a59494f325d49b7",
+      "source_rows": 371,
+      "available_in_three_manifests": 371
+    }
+  },
+  "label_archive_sha256": "378eb1820f12fe9ee1f17852af213be8b35819e06462f5d5734518a7da3a524d",
+  "recording_header_audit": {
+    "method": "soundfile.info on every unique source file in the OP and species manifests; no failed reads",
+    "cruise_1705_OP": {
+      "files_read": 1949,
+      "exactly_60s": 1939,
+      "shorter_than_60s": 10,
+      "total_seconds": 116635.08608,
+      "total_hours": 32.39863502222222
+    },
+    "cruise_1706_species": {
+      "files_read": 3367,
+      "exactly_60s": 3356,
+      "shorter_than_60s": 11,
+      "total_seconds": 201657.321728,
+      "total_hours": 56.01592270222223
+    }
+  },
+  "scope": "Public HICEAS recording identifiers and input paths only. No restricted 56-class labels or raw audio. Absolute source paths need remapping on another computer. S3 uses its original nominal species-specific 60-second denominators, not these physical durations."
+}

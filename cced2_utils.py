@@ -30,13 +30,13 @@ Example usage:
 
     python cced2_utils.py fit \\
       --embeddings_dir /path/to/ind_embeddings \\
-      --out_dir        ./weights/cced2 \\
+      --out_dir        ./weights/cced2_step127641 \\
       --k              50
 
 2) Score CCED2 on a target dataset using the trained models:
 
     python cced2_utils.py score \\
-      --model_dir      ./weights/cced2 \\
+      --model_dir      ./weights/cced2_step127641 \\
       --embeddings_dir /path/to/target_embeddings \\
       --out_path       ./results/score_cced2.npy \\
       --save_components

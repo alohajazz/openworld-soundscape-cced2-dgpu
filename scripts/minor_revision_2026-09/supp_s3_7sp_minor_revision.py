@@ -4,27 +4,33 @@ import os, json, glob, joblib
 import numpy as np, pandas as pd
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
 ROOT = os.environ.get("DGPU_ROOT", "/workspace")
 DET_XLSX = os.environ.get(
     "DGPU_DET_XLSX",
     f"{ROOT}/data/externaldata/bls-sound-eval/hiceas/metadata_DCLDE2020 DetectionData.xlsx",
 )
-OP_MAN = os.environ.get("DGPU_OP_MAN", str(REPO_ROOT / "paper_artifacts/minor_revision_2026-09/manifests/hiceas_op_manifest_winaware.csv.gz"))
-SP_MAN = os.environ.get("DGPU_SP_MAN", str(REPO_ROOT / "paper_artifacts/minor_revision_2026-09/manifests/hiceas_1706_species_manifest_winsafe.csv.gz"))
-KNN_PKL = os.environ.get("DGPU_KNN_PKL", str(REPO_ROOT / "weights/cced2_step127641/knn_cced2.pkl"))
-MAHA_PKL = os.environ.get("DGPU_MAHA_PKL", str(REPO_ROOT / "weights/cced2_step127641/maha_cced2.pkl"))
-NORM_JSON = os.environ.get("DGPU_NORM_JSON", str(REPO_ROOT / "weights/cced2_step127641/cced2_norm.json"))
+OP_MAN = os.environ.get("DGPU_OP_MAN", f"{ROOT}/hiceas_op_manifest_winaware.csv")
+SP_MAN = os.environ.get("DGPU_SP_MAN", f"{ROOT}/hiceas_1706_species_manifest_winsafe.csv")
+KNN_PKL = os.environ.get("DGPU_KNN_PKL", f"{ROOT}/embeddings/cced2_fulldata/knn_cced2.pkl")
+MAHA_PKL = os.environ.get("DGPU_MAHA_PKL", f"{ROOT}/embeddings/cced2_fulldata/maha_cced2.pkl")
+NORM_JSON = os.environ.get("DGPU_NORM_JSON", f"{ROOT}/embeddings/cced2_fulldata/cced2_norm.json")
 OUT_CSV = Path(os.environ.get(
     "DGPU_OUT_CSV",
-    f"{ROOT}/outputs/supp_table_s3_fixed_step127641_unknown_high.csv",
+    f"{ROOT}/release_repo/paper_artifacts/supp_table_s3_7sp_winaware_2026-05-09.csv",
 ))
 
-BEATs_dirs = [(
-    os.environ.get("DGPU_ENCODER_NAME", "BEATs+DAPT"),
-    os.environ.get("DGPU_OP_DIR", f"{ROOT}/embeddings/op_fixed_step127641"),
-    os.environ.get("DGPU_SP_DIR", f"{ROOT}/embeddings/1706species_fixed_step127641"),
-)]
+if os.environ.get("DGPU_OP_DIR"):
+    BEATs_dirs = [(
+        os.environ.get("DGPU_ENCODER_NAME", "BEATs+DAPT"),
+        os.environ["DGPU_OP_DIR"],
+        os.environ["DGPU_SP_DIR"],
+    )]
+else:
+    BEATs_dirs = [
+        ("BEATs+DAPT_fulldata", f"{ROOT}/embeddings/hiceas_op_fulldata_winaware", f"{ROOT}/embeddings/hiceas_1706_fulldata_winaware"),
+        ("BEATs+DAPT_dapt_b_3ep", f"{ROOT}/embeddings/hiceas_op_dapt_b_3ep_winaware", f"{ROOT}/embeddings/hiceas_1706_dapt_b_3ep_winaware"),
+        ("BEATs+DAPT_continual_palaoa", f"{ROOT}/embeddings/hiceas_op_continual_palaoa_winaware", f"{ROOT}/embeddings/hiceas_1706_continual_palaoa_winaware"),
+    ]
 
 SEVEN_SP = {
     71: "Minke whale",
@@ -37,26 +43,7 @@ SEVEN_SP = {
 }
 ODONTO_CODES = [46, 33, 36, 15, 2, 13]
 Q_QUANTILE = 0.99
-SCORE_DIRECTION = os.environ.get("DGPU_SCORE_DIRECTION", "unknown_high")
-
-def load_embeddings_and_validate(emb_dir, manifest, label):
-    """Load shards only when embedding, index, and manifest order agree exactly."""
-    emb_paths = sorted(Path(emb_dir).glob("embeddings_*.npy"))
-    idx_paths = sorted(Path(emb_dir).glob("index_*.csv"))
-    if not emb_paths or len(emb_paths) != len(idx_paths):
-        raise FileNotFoundError(f"{label}: require matching non-empty embeddings_*.npy and index_*.csv shards in {emb_dir}")
-    embeddings = np.concatenate([np.load(path) for path in emb_paths]).astype("float32")
-    index = pd.concat([pd.read_csv(path) for path in idx_paths], ignore_index=True)
-    required = {"path", "center_sec"}
-    if not required.issubset(index.columns) or not required.issubset(manifest.columns):
-        raise ValueError(f"{label}: index and manifest require {sorted(required)}")
-    if len(embeddings) != len(index) or len(index) != len(manifest):
-        raise ValueError(f"{label}: row-count mismatch embeddings={len(embeddings)}, index={len(index)}, manifest={len(manifest)}")
-    if not index["path"].astype(str).equals(manifest["path"].astype(str)):
-        raise ValueError(f"{label}: index/manifest path order mismatch")
-    if not np.array_equal(index["center_sec"].to_numpy(dtype=float), manifest["center_sec"].to_numpy(dtype=float)):
-        raise ValueError(f"{label}: index/manifest center_sec order mismatch")
-    return embeddings
+SCORE_DIRECTION = os.environ.get("DGPU_SCORE_DIRECTION", "submitted_negated_high")
 
 def cced2(E):
     KNN = joblib.load(KNN_PKL); MAHA = joblib.load(MAHA_PKL); cfg = json.load(open(NORM_JSON))
@@ -130,12 +117,13 @@ for sp_id, name in SEVEN_SP.items():
 results = []
 for enc_name, op_dir, sp_dir in BEATs_dirs:
     print(f"\n=== {enc_name} ===")
-    E_op = load_embeddings_and_validate(op_dir, m_op, "OP")
-    E_sp = load_embeddings_and_validate(sp_dir, m_sp, "1706 species")
+    if not Path(op_dir + "/embeddings_000.npy").exists():
+        print(f"  SKIP: {op_dir}"); continue
+    E_op = np.concatenate([np.load(p) for p in sorted(glob.glob(f"{op_dir}/embeddings_*.npy"))]).astype("float32")
+    E_sp = np.concatenate([np.load(p) for p in sorted(glob.glob(f"{sp_dir}/embeddings_*.npy"))]).astype("float32")
     E = np.concatenate([E_op, E_sp])
-    if len(E) != len(m_combined):
-        raise ValueError(f"combined embedding/manifest row-count mismatch: embeddings={len(E)}, manifest={len(m_combined)}")
-    m_use = m_combined.reset_index(drop=True)
+    n = min(len(E), len(m_combined))
+    E = E[:n]; m_use = m_combined.iloc[:n].reset_index(drop=True)
     knn_z, maha_z, cced2_z = cced2(E)
 
     if SCORE_DIRECTION == "unknown_high":

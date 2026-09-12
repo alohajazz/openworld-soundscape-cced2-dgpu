@@ -1,0 +1,10 @@
+{
+  "theta": 3.0450153175874637,
+  "theta_q90": 2.447449814166355,
+  "theta_q99": 4.6343057689720935,
+  "basis": "InDval_q95",
+  "score": "cced2",
+  "source_ind": "ind_val_fixed_step127641",
+  "cced2_model": "cced2_fixed",
+  "note": "global operating threshold on CCED2 z-score for fixed=OceanBEATs backbone; recompute if models refit"
+}

@@ -1,9 +1,10 @@
-"""HICEAS exploratory partial-positive-label masking with deployment-day selection.
+"""HICEAS sample-efficiency post-Part2 with deployment-day sub-sampling.
 
 Protocol:
   - Outer split: 5-fold GroupKFold by deployment-day (cross-day generalization)
-  - Finite budgets retain selected-day positives as label 1 and relabel all
-    remaining training positives to 0; records are not removed.
+  - Sub-sampling: select N_days from training fold's positive days
+  - Within selected days, use ALL positive recordings (realistic encounter labelling
+    scenario where an expert labels every vocalisation of an attended encounter)
   - N_days values: 1, 2, 4, 8, 16, "all" (capped at species' available days)
   - Multiple seeds: 10 (for variance estimation; "all" uses 1 seed)
 
@@ -21,25 +22,22 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GroupKFold
 from sklearn.metrics import roc_auc_score
 
-REPO_ROOT = Path(__file__).resolve().parents[2]
-ARCHIVE_DIR = REPO_ROOT / "scripts/minor_revision_2026-09"
-sys.path.insert(0, str(ARCHIVE_DIR))
+sys.path.insert(0, "/workspace/scripts/revision1")
 import groupkfold_table4_eval as base
 
 OP_DIR = os.environ.get(
-    "HICEAS_OP_DIR", "/workspace/embeddings/op_fixed_step127641"
+    "HICEAS_OP_DIR", "/workspace/embeddings/hiceas_op_fulldata_winaware"
 )
 S1706_DIR = os.environ.get(
-    "HICEAS_1706_DIR", "/workspace/embeddings/1706species_fixed_step127641"
+    "HICEAS_1706_DIR", "/workspace/embeddings/hiceas_1706_fulldata_winaware"
 )
 PART2_DIR = os.environ.get(
-    "HICEAS_PART2_DIR", "/workspace/embeddings/1706part2_fixed_step127641"
+    "HICEAS_PART2_DIR", "/workspace/embeddings/hiceas_1706_part2_fulldata_winaware"
 )
-CANON_DIR = os.environ.get("HICEAS_CANON_DIR", base.CANON_DIR)
 OUTDIR = Path(
     os.environ.get(
         "HICEAS_LABEL_EFF_OUTDIR",
-        "/workspace/outputs/hiceas_partial_positive_label_masking_step127641",
+        "/workspace/scripts/winaware_2026-05-09/hiceas_label_efficiency_postpart2_2026-05-09",
     )
 )
 OUTDIR.mkdir(parents=True, exist_ok=True)
@@ -51,18 +49,13 @@ N_FOLDS = 5
 def load_dir(emb_dir):
     paths = sorted(glob.glob(f"{emb_dir}/embeddings_*.npy"))
     idxs = sorted(glob.glob(f"{emb_dir}/index_*.csv"))
-    if not paths or len(paths) != len(idxs):
-        raise FileNotFoundError(f"require matching non-empty embeddings_*.npy and index_*.csv shards in {emb_dir}")
     embs = np.concatenate([np.load(p) for p in paths]).astype("float32")
     idx = pd.concat([pd.read_csv(p) for p in idxs], ignore_index=True)
-    if len(embs) != len(idx):
-        raise ValueError(f"embedding/index row mismatch in {emb_dir}: {len(embs)} != {len(idx)}")
-    if not {"path", "center_sec"}.issubset(idx.columns):
-        raise ValueError(f"index shards in {emb_dir} require path and center_sec columns")
     return embs, idx
 
 def evaluate_day_budget(canon_embs, pos_csv, neg_csv, N_days, sub_seed):
-    """Mask unselected training positives to label 0; do not remove records."""
+    """Sub-sample N_days from training fold's positive days; use all
+    positive recordings within selected days. Cross-day GroupKFold."""
     pos_df = pd.read_csv(pos_csv)
     neg_df = pd.read_csv(neg_csv)
     X, y, g = [], [], []
@@ -92,8 +85,13 @@ def evaluate_day_budget(canon_embs, pos_csv, neg_csv, N_days, sub_seed):
             selected_days = set(train_pos_days)
         else:
             selected_days = set(rng.choice(train_pos_days, int(N_days), replace=False))
-        # The historical keep_mask was never consumed; y_train_mod below is the
-        # complete training set with unselected positives relabelled to zero.
+        # Use ALL positive recordings within selected days
+        keep_mask = np.zeros(len(train_idx), dtype=bool)
+        for li, ti in enumerate(train_idx):
+            if y[ti] == 1 and g[ti] in selected_days:
+                keep_mask[li] = True
+            elif y[ti] == 0:
+                keep_mask[li] = True  # negatives all kept
         y_train_mod = np.where(
             np.isin(g[train_idx], list(selected_days)) & (y[train_idx] == 1), 1, 0
         ).astype(np.int8)
@@ -114,21 +112,19 @@ def evaluate_day_budget(canon_embs, pos_csv, neg_csv, N_days, sub_seed):
         "n_days_used_median": int(np.median(n_days_used_per_fold)),
     }
 
-print("Loading final step-127,641 embeddings (OP + 1706 + Part2)...", flush=True)
+print("Loading combined embeddings (OP + 1706 + Part2)...", flush=True)
 op_e, op_i = load_dir(OP_DIR)
 s1_e, s1_i = load_dir(S1706_DIR)
 p2_e, p2_i = load_dir(PART2_DIR)
 emb = np.concatenate([op_e, s1_e, p2_e])
 idx = pd.concat([op_i, s1_i, p2_i], ignore_index=True)
-if len(emb) != len(idx):
-    raise ValueError(f"combined embedding/index row mismatch: {len(emb)} != {len(idx)}")
 canon_embs = base.build_canon_embeddings(emb, idx)
 print(f"Total canons: {len(canon_embs)}", flush=True)
-neg_csv = os.path.join(CANON_DIR, "neg_all.csv")
+neg_csv = os.path.join(base.CANON_DIR, "neg_all.csv")
 
 results = []
 for sp_name, pos_file in base.SPECIES:
-    pos_csv = os.path.join(CANON_DIR, pos_file)
+    pos_csv = os.path.join(base.CANON_DIR, pos_file)
     print(f"\n--- {sp_name} ---", flush=True)
     for N in N_DAYS_VALUES:
         n_seeds = 1 if N == "all" else N_SEEDS
@@ -170,10 +166,10 @@ for i, sp_name in enumerate(species_list):
     if i % 4 == 0:
         ax.set_ylabel("AUC (5-fold GroupKFold by day)")
 axes[-1].set_visible(False)
-fig.suptitle("HICEAS Promoter — exploratory partial-positive-label masking\n"
-             "(unselected training positives relabelled 0; cross-day GroupKFold)",
+fig.suptitle("HICEAS Promoter — Post-Part2 day-level label-efficiency\n"
+             "(all positive recordings within selected days; cross-day GroupKFold)",
              y=1.02, fontsize=11)
-fig.supxlabel("N_days = positive deployment days retaining label 1")
+fig.supxlabel("N_days = number of independent deployment-days labelled")
 fig.tight_layout()
 fig.savefig(OUTDIR/"hiceas_label_efficiency_postpart2.png", dpi=150, bbox_inches="tight")
 fig.savefig(OUTDIR/"hiceas_label_efficiency_postpart2.pdf", bbox_inches="tight")

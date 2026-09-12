@@ -1,19 +1,21 @@
-# CCED2 and DGPU for Open-world Discovery in Underwater Soundscapes
+# CCED2 and DGPU for Unknownness-aware Underwater Acoustic Monitoring
 
-This repository accompanies *"Discovery and promotion of unknown sounds into operational detection
-targets for underwater passive acoustic monitoring under false alarm
-constraints"* (Noda et al., Sci. Rep., **revision** in review).
+This repository accompanies *"An unknownness-aware candidate-surfacing and
+promotion framework for underwater passive acoustic monitoring under
+false-alarm constraints"* (Noda et al., *Scientific Reports*, revision in
+review).
 It provides a minimal implementation of:
 
 - **BEATs+DAPT** — a self-supervised audio encoder adapted to underwater
   soundscapes via Masked Audio Modeling (MAM) on a 5,673-h multi-site corpus.
 - **CCED2** — an embedding-space unknownness score combining z-normalised
   k-nearest-neighbour and Mahalanobis distances on InD reference statistics.
-- **DGPU** — the Detect–Group–Promote–Union pipeline that surfaces candidate
-  unknown events for triage and incorporates them into FP/h-constrained
-  detection policies.
+- **DGPU** — a proposed Detect–Group–Promote–Union architecture. The manuscript
+  evaluates candidate scoring, clustering diagnostics, and supervised
+  Promoter/Union performance as separate components; Group and CCED2-based
+  candidate selection were not inputs to the reported Promoter gain.
 
-The repository provides code, released weights, and source artifacts for the
+The repository provides code, recorded model identities, and source artifacts for the
 public-data analyses in the manuscript. Its reproducibility scope is stated
 explicitly below; in particular, the exact numerical results in Table 1 cannot
 be reproduced without the non-public 56-class dataset. The repository does not
@@ -21,66 +23,79 @@ include product-deployment workflows.
 
 The framework addresses practical PAM operational constraints — limited
 annotation budgets and multi-day deployments under variable recording
-conditions — through label-efficiency analysis of the Promoter stage
-(paper §2.2) and cross-day generalisation analysis under 5-fold
-GroupKFold by deployment day (paper §2.3).
+conditions — through an exploratory partial-positive-label masking analysis of
+the Promoter stage (paper §2.2) and cross-day generalisation analysis under
+5-fold GroupKFold by deployment day (paper §2.3; four or five usable folds
+after omissions for single-class train/test folds).
 
-> **About this revision** (May 2026). The original December 2025 submission
-> contained a numerical-instability bug in the SimCLR DAPT training (AMP
-> fp16 prevented BEATs encoder weight updates) and used an evaluation
-> dataset (DCLDE 2013) with a bandwidth mismatch against the InD reference.
-> This revision corrects both: DAPT is now Masked Audio Modeling on a
-> 5,673-h corpus with bfloat16 precision, and the species-wise HICEAS
-> evaluation is reformulated as canon-level Promoter discrimination on
-> seven cetacean species. See `REVISION2.md` for the detailed change log
-> and `legacy/` for the superseded scripts and weights.
+> **Correction history.** The original December 2025 SimCLR-style DAPT run is
+> invalid because AMP fp16 skipped encoder updates. The model used in the May
+> 2026 revision did update its encoder, but masking was applied only after the
+> unmasked waveform had passed through the encoder; it therefore did not
+> implement the stated masked-input objective. Both analyses are superseded.
+> The September 2026 revision uses a frozen teacher and replaces 75% of student
+> patch embeddings with a trainable mask token before transformer encoding.
+> All retained BEATs+DAPT results use the one-pass endpoint at step 127,641 and
+> the corrected window-aware extractor. See `MINOR_REVISION_2026-09.md`.
 
 ## Companion artifacts
 
-- **Pretrained BEATs+DAPT encoder** (`weights/beats_dapt_mam_step120000.pt`,
-  361 MB) — SHA-256 `0fe9f7dd92780c2e564f1df06a192482dbcb9a56bdab4202f4d94862b9168f89`
-- **56-class SED head** (`weights/sed_head_56_fulldata_ep8.pt`, 18 MB) —
-  SHA-256 `135d11738a6619a57769955468ce5cb6eee3f07044fa45e6c950bf25ac4f8f60`
-- **Pre-fitted CCED2 model** (`weights/cced2/`) — kNN + Mahalanobis pickled
-  models, normalisation factors, and decision thresholds (q95 of InD
-  CCED2 = 3.287, computed from the n=1,623 56-class held-out validation set
-  using the new fulldata DAPT encoder)
+- **Corrected BEATs+DAPT encoder**
+  (`BEATs_DAPT_MAM_fixed_step127641.pt`; 361 MB) — SHA-256
+  `2a2d1d93f53ec29227bdd52da087fd0abcf0ce797c3c4a8629cd1435a314a6f9`
+- **Matching seed-42 56-class SED head**
+  (`sed_head_fixed_s42_ep7.pt`; 18 MB) —
+  SHA-256 `9b2b202ab3e52b0d1efe4cd3479ee479db7646b0f42ab5b0e32f1e3ca551f119`
+- **Aggregate CCED2 parameters** (`weights/cced2_step127641/`) — normalisation
+  factors and thresholds from the fixed n=1,623 held-out 56-class reference.
+  The fitted pickle files are not included: the kNN fit retains individual
+  restricted-reference embeddings, and model-file distribution is separate.
 - **Bundled BEATs source code** (`beats_core/`)
 
-The source code is released under the MIT License. The current encoder, SED
-head, and CCED2 parameters are released under CC BY 4.0. Encoder + SED head
-are distributed via HuggingFace (`BiologgingSolutions/OceanBEATs`); CCED2 fits
-ship inside this repository. The Detect-Group-Promote-Union (DGPU) framework
+The source code is released under the MIT License. CCED2 parameters ship
+inside this repository under CC BY 4.0. The corrected encoder and SED-head
+hashes are recorded above, but their public availability depends on a
+subsequent model release. As checked on 2026-09-13, the public
+`BiologgingSolutions/OceanBEATs` main revision
+(`dbb29a3dfc4fe1605c9fdd87079723db12903849`) contains legacy step-120,000
+and epoch-8-head files, not the corrected files above. Do not use those legacy
+Hugging Face files for the corrected results; use only a subsequently released
+copy that matches the hashes above. The Detect-Group-Promote-Union (DGPU) framework
 and the CCED2 unknownness score are subject to patent applications filed by
 Biologging Solutions Inc.; these copyright licences do not grant patent
 rights.
 
 > **⚠️ Data Availability.** The internally curated 56-class underwater SED
 > dataset is **not publicly available** because its raw clips and row-level
-> metadata contain sensitive location and operational information, and no
-> controlled-access mechanism has been approved by the original collaboration.
+> metadata contain sensitive location and operational information and are
+> governed by permissions held by the original collaborating organisations.
 > Consequently, the exact Table 1 training and evaluation results, and a refit
 > of the 56-class in-distribution reference statistics, cannot be reproduced
 > from public materials alone. Supplementary Table S2 provides aggregate
-> per-class statistics and the complete label taxonomy. Released weights,
-> pre-fitted CCED2 parameters, scripts, and public evaluation datasets support
-> inference and the public-data analyses described below.
+> per-class statistics and the complete label taxonomy. The repository records
+> the corrected model identities and includes frozen aggregate outputs and
+> CCED2 normalisation/threshold parameters, not the fitted reference models;
+> a public corrected weight copy must be separately released
+> and hash-matched before it can support inference. Requests specifically
+> to verify reported results and proposals for new academic collaborations may
+> be considered individually by the data manager, subject to approval by the
+> original collaborating organisations and an appropriate Data Use Agreement.
+> Approval is not guaranteed; any approved access would prohibit redistribution
+> of raw audio, commercial use, and attempts to infer sensitive information.
 
-> **Perch baseline (optional).** Perch 2.0 baseline rows in Tables 2–3 are
-> not included in this repository. Users can supply Perch embeddings in
-> the same manifest format (see Methods §4.2 for the "win10" window
-> definition).
+> **Perch baseline (optional).** Perch 2.0 embeddings are not redistributed.
+> The frozen positive-direction Supplementary Table S3 output is included at
+> `paper_artifacts/minor_revision_2026-09/supp_table_s3_perch_unknown_high.csv`;
+> a full rerun requires users to supply Perch embeddings and matching fitted
+> Perch reference models in the documented "win10" manifest format.
 
 ## Evaluation conventions
 
 ### FRDR continuous evaluation (manuscript Methods §4.5.1)
 
-- **TP (reference-based)**: each ground-truth event is a TP if at least
-  one detected event falls within ±tol seconds.
-- **FP (prediction-based)**: a detection is an FP only if it falls outside
-  the tolerance window of all reference events.
-- Multiple detections near the same reference event do not increase TP
-  and are not counted as FPs.
+- Predictions and references are sorted and greedily matched one-to-one within
+  ±tol seconds. Each matched pair is one TP; unmatched predictions are FPs and
+  unmatched references are FNs.
 
 ### HICEAS canon-level Promoter (manuscript Methods §4.1.4 + §4.4.4 + Table 4)
 
@@ -88,18 +103,23 @@ rights.
   (e.g. `1705_20171008_191500` from `1705_20171008_191500_5400.flac`).
 - **Positives**: any canon overlapping an annotated DetectionTimeStart-End
   interval for the species.
-- **Negatives**: canons without any annotation for the species, sampled
-  at twice the positive count.
+- **Negatives**: all 6,135 common available canons without an annotation for
+  the species; they are not sampled at twice the positive count.
 - **Promoter**: scikit-learn `LogisticRegression(C=1.0, max_iter=1000)`
   on canon-mean BEATs+DAPT embeddings (768-dim).
 - **Cross-validation**: `StratifiedKFold(n_splits=5, shuffle=True, random_state=42)`.
+  The separate deployment-day GroupKFold cross-day analysis requests five
+  folds; a fold with a single-class train or test partition is omitted, leaving
+  four or five usable folds by species.
 
 ## Repository structure
 
 ```text
 .
 ├── README.md                              # This file
-├── REVISION2.md                           # Change log from v1 (Dec 2025) to v2.2 (May 2026)
+├── REVISION2.md                           # Historical change log through May 2026
+├── MINOR_REVISION_2026-09.md              # Final correction/provenance record
+├── MANUSCRIPT_ARTIFACT_MAP.md             # Item-by-item reproducibility scope
 ├── SCRIPTS.md                             # Per-script index with manuscript role
 ├── requirements.txt
 ├── LICENSE_CODE.txt
@@ -111,11 +131,10 @@ rights.
 ├── dapt_dataset.py                        # DAPT dataloader
 ├── fp_recall_helpers.py                   # FP/h-recall sweep utilities
 │
-├── dapt_train.py                          # MAM-based DAPT training (canonical, fulldata)
+├── dapt_train.py                          # Corrected input-mask MAM DAPT training
 ├── dump_known56_features.py               # Embedding + 56-class SED logits dump
-├── run_frdr_cced2_op_eval.py              # FRDR Quiet/Union/Fusion (Table 2)
-├── run_frdr_fp_recall.py                  # FRDR FP/h-recall sweep (Table 3)
-├── run_hiceas_canon_promoter.py           # HICEAS canon-level Promoter (Table 4) — fully parameterised CLI
+├── run_frdr_fp_recall.py                  # Historical FRDR FP/h-recall sweep
+├── run_hiceas_canon_promoter.py           # Historical HICEAS canon-level Promoter CLI
 │
 ├── scripts/                               # Helper / variant scripts
 │   ├── dapt_make_manifest_all.py
@@ -125,17 +144,18 @@ rights.
 │   ├── dapt_train_beats_mam_545h_legacy.py  # Earlier 545-h MAM variant
 │   ├── eval_b2_canon_promoter_compare.py  # Original analysis snapshot for Table 4
 │   ├── run_frdr_fp_recall_interp.py       # FRDR FP/h-recall, interpolation variant
+│   ├── run_table4_fixed.py                 # Final Table 4 wrapper around archived audited evaluator
+│   ├── verify_minor_revision_artifacts.py # Public frozen-artifact verifier; optional private-input audit
 │   ├── train_sed_beats_weak_plus.py       # 56-class SED head training
 │   └── export_hiceas_table6.py            # (legacy) original event-level Table 6 export
 │
 ├── weights/
-│   ├── beats_dapt_mam_step120000.pt       # Encoder (download separately, 361 MB)
-│   ├── sed_head_56_fulldata_ep8.pt        # SED head (download separately, 18 MB)
-│   └── cced2/
+│   ├── BEATs_DAPT_MAM_fixed_step127641.pt # Corrected encoder when obtained from a hash-verified release
+│   ├── sed_head_fixed_s42_ep7.pt          # Matching head when obtained from a hash-verified release
+│   └── cced2_step127641/
 │       ├── cced2_norm.json                # kNN/Maha mean+std for z-normalisation
-│       ├── knn_cced2.pkl                  # Pre-fit kNN model
-│       ├── maha_cced2.pkl                 # Pre-fit Mahalanobis (Ledoit–Wolf shrinkage)
-│       └── theta_cced2.json               # Decision threshold (InD q95 = 3.287)
+│       ├── README.md                     # Withheld fit identities and distribution limits
+│       └── theta_cced2.json               # Decision threshold (InD q95)
 │
 ├── paper_artifacts/                       # Reproducible Table CSVs
 │   ├── table2_frdr_quiet_union_fusion/
@@ -170,98 +190,97 @@ pip install -r requirements.txt
 Tested with PyTorch 2.7.1 + CUDA 12.8 (GPU recommended for DAPT training
 and embedding extraction; CCED2 / Promoter eval runs on CPU).
 
-### Downloading weights
+### Obtaining corrected weights
 
-Encoder + SED head live on HuggingFace (`BiologgingSolutions/OceanBEATs`).
-After cloning this repo:
+Obtain the corrected encoder and head only from a release or repository
+snapshot that identifies the files by the hashes in **Companion artifacts**.
+The currently visible Hugging Face main revision is legacy and must not be
+substituted. Place verified files in `weights/` if running code that requires
+them, then check them with `shasum -a 256` against the recorded values.
 
-```bash
-pip install huggingface_hub
-python - <<'PY'
-from huggingface_hub import hf_hub_download
-hf_hub_download(repo_id="BiologgingSolutions/OceanBEATs",
-                filename="beats_dapt_mam_step120000.pt",
-                local_dir="weights/")
-hf_hub_download(repo_id="BiologgingSolutions/OceanBEATs",
-                filename="sed_head_56_fulldata_ep8.pt",
-                local_dir="weights/")
-PY
-
-# Verify
-shasum -a 256 weights/beats_dapt_mam_step120000.pt
-# expect 0fe9f7dd92780c2e564f1df06a192482dbcb9a56bdab4202f4d94862b9168f89
-shasum -a 256 weights/sed_head_56_fulldata_ep8.pt
-# expect 135d11738a6619a57769955468ce5cb6eee3f07044fa45e6c950bf25ac4f8f60
-```
-
-CCED2 fits (`weights/cced2/`) are tracked directly in this repository and
-do not require separate download.
+Only CCED2 normalisation and threshold JSON files are tracked in
+`weights/cced2_step127641/`. The fitted kNN/Mahalanobis models are not supplied;
+exact CCED2 inference requires separately authorised reference inputs.
 
 ## Reproducibility scope
 
 This repository does **not** reproduce every table and figure in the
 manuscript from public materials alone.
 
-- **Table 1 (56-class SED):** the training code, configuration, released model
-  weights, and aggregate results are provided, but exact numerical
-  reproduction requires the non-public 56-class dataset.
-- **Tables 2–4:** evaluation code and source result artifacts are provided.
-  Users must obtain the public FRDR and HICEAS data from their respective
-  providers and construct the manifests described in the Methods and repository
-  documentation.
+- **Table 1 (56-class SED):** the training code, configuration, recorded
+  corrected-model identities, and aggregate results are provided, but exact
+  numerical reproduction requires the non-public 56-class dataset and any
+  future public corrected-weight release must match the recorded hashes.
+- **Tables 2 and 4:** frozen source artifacts are provided. Full re-analysis
+  requires the public datasets plus the exact corrected embeddings, manifests,
+  and other inputs described in the artifact map.
+- **Table 3 and Supplementary Tables S3–S4:** the final corrected outputs are
+  frozen verification artifacts. The retained historical scripts document prior
+  environment-specific generation, but the complete corrected input manifests,
+  embeddings, and reference pools are not all public; these results are not
+  claimed to be fully reproducible from this repository alone.
 - **Figures 1–2:** conceptual schematics rather than computational outputs.
 - **Figure 3:** the generating script and source artifacts are provided under
   `scripts/winaware_2026-05-09/` and `paper_artifacts/winaware_2026-05-09/`.
-- **Figure 4 and supplementary computational outputs:** the final frozen
-  release accompanying the revised manuscript will identify the exact scripts
-  and artifacts corresponding to the final analyses.
+- **Figure 4 and supplementary computational outputs:** the frozen release
+  identifies the exact scripts and source artifacts in
+  `MANUSCRIPT_ARTIFACT_MAP.md`. Figure 4 is exploratory partial-positive-label
+  masking: at finite budgets, unselected positive records remain in the data
+  with label 0 rather than being removed. It is not standard record-subsampling
+  label efficiency; the all-days result is unaffected.
 
 ## Reproducing manuscript analyses
 
 ### Table 1 — SED Performance (56-class)
 
 `scripts/train_sed_beats_weak_plus.py` documents the training and evaluation
-workflow for a compatible 56-class SED head. The manuscript headline value
-(Stage 1 single-seed Event F1 = 0.483) and ten-seed variance (mean ± std =
-0.475 ± 0.017) were obtained from the non-public dataset described in Methods
-§4.1.2. These exact values cannot be independently regenerated from the public
-repository because the underlying clips, labels, and splits are unavailable.
+workflow for a compatible 56-class SED head. The manuscript's seed-42 values
+are Event/Clip/2-s-segment F1 = 0.483/0.784/0.506 for BEATs AS-2M and
+0.493/0.749/0.518 for the corrected BEATs+DAPT encoder. These exact values
+cannot be independently regenerated from the public repository because the
+underlying clips, labels, and splits are unavailable.
 
 ### Table 2 — FRDR: Quiet / Union / Fusion
 
-```bash
-python run_frdr_cced2_op_eval.py \
-  --emb_dir   /path/to/frdr_fulldata_embeddings \
-  --manifest  /path/to/frdr_continuous_hop2s.csv \
-  --ann_csv   /path/to/annotations_B_cont.csv \
-  --out_dir   results/table2/
-```
+The reported operating points are discrete selector outputs, not interpolated
+values: Quiet and Promoter use the sweep point nearest 10 FP/h, Union uses the
+maximum-recall point with FP/h ≤ 10.5, and Fusion uses the alpha=1 per-file
+CCED2 selector on its finer 0.1 grid. Fusion is therefore not a combination of
+complementary signals.
 
-Compare against `paper_artifacts/table2_frdr_quiet_union_fusion/`.
+The final source outputs are
+`paper_artifacts/minor_revision_2026-09/table2_fixed_step127641.csv` and
+`table2_fusion_fixed_step127641.csv`. The retained executed provenance is
+`scripts/minor_revision_2026-09/frdr_supervised_promoter_COPY.py` and
+`run_fusion_winaware_COPY.py`; these archived, environment-specific scripts
+are not claimed as a generic top-level regeneration recipe.
 
 ### Table 3 — FRDR: FP/h–Recall
 
-```bash
-python run_frdr_fp_recall.py
-# (paths in script header — adapt to your environment)
-```
-
-Compare against `paper_artifacts/table3_frdr_fp_recall/`.
+The final values are in
+`paper_artifacts/minor_revision_2026-09/table3_fixed_step127641.csv`.
+Each score uses the nearest operating point to 10 FP/h on the discrete
+0.5-percentile sweep grid; no interpolation is applied.
+`scripts/minor_revision_2026-09/run_frdr_table3_winaware_COPY.py` preserves
+the executed generator and its original environment assumptions. The older
+`scripts/winaware_2026-05-09/run_frdr_table3_winaware.py` and
+`run_frdr_fp_recall.py` cover historical paths/parameters, not the final
+corrected recipe. The exact embedding/manifests and fitted reference inputs
+are still required; no public-input-only rerun is claimed.
+Use `scripts/verify_minor_revision_artifacts.py` to verify the frozen outputs.
 
 ### Table 4 — HICEAS canon-level Promoter (7 species)
 
-```bash
-python run_hiceas_canon_promoter.py \
-  --emb_dirs  /path/to/hiceas_op_embeddings  /path/to/hiceas_1706_embeddings \
-  --canon_dir /path/to/per_species_canon_manifests \
-  --out_json  results/table4_hiceas_canon_promoter.json
-```
-
-Per-species manifests must follow:
-- `pos_<Species>.csv` with a `canon` column
-- `neg_all.csv` with a `canon` column
-
-Compare against `paper_artifacts/table4_hiceas_canon_promoter/table4_canon_promoter_7species.csv`.
+The final values are supported by the `FIXED` arm of
+`paper_artifacts/minor_revision_2026-09/table4_fixed_and_submitted_audit.json`
+and its fold-level audit CSV. The older
+`paper_artifacts/table4_hiceas_canon_promoter/table4_canon_promoter_7species.csv`
+and `run_hiceas_canon_promoter.py` are historical and do not represent the
+final minor-revision table. The final audit can be verified from frozen
+artifacts; a full rerun needs the exact corrected embeddings and canon
+manifests. `scripts/run_table4_fixed.py` is the current path-configuring
+wrapper: it validates embedding/index row counts before calling the archived
+audited evaluator and writes a new result outside frozen artifacts by default.
 
 The `In-band signal (0–8 kHz)` column in Table 4 is anchored on primary
 literature for each species; see
@@ -273,25 +292,27 @@ and the sperm-whale low-frequency p0 pulse + IPI structure).
 
 ## DAPT training (advanced — for re-training)
 
+The exact executed implementation is
+`scripts/dapt_train_beats_mam_fixed.py`; `dapt_train.py` is a compatibility
+entry point to that audited script. Its path constants correspond to the
+Adelie execution environment and should be adapted when rerunning elsewhere.
+
 ```bash
-python dapt_train.py \
-  --train_manifest /path/to/world_dapt_train.csv \
-  --val_manifest   /path/to/world_dapt_val.csv \
-  --kmeans_labels  /path/to/labels_k1024.npy \
-  --kmeans_ckpt    /path/to/centroids_k1024.npy \
-  --out_dir        ckpts_dapt_mam_fulldata/
+python dapt_train.py
 ```
 
 Pre-requisites: BEATs PRETRAIN encoder (`BEATs_iter3_plus_AS2M.pt`) +
 k-means k=1024 cluster centroids on PRETRAIN BEATs patch features (use
 `scripts/dapt_extract_kmeans_labels.py`).
 
-Training of the published model:
-- 5,673-h World-DAPT corpus (SanctSound, US Navy USWTR, NOAA NRS/ONMS,
-  ICListen / ONC, NPS Glacier Bay, PALAOA — see Methods §4.1.1)
-- One epoch, 126,365 steps, batch size 16, learning rate 1e-4 (cosine),
-  bfloat16 precision
-- Selected checkpoint: `BEATs_DAPT_MAM_step120000.pt`
+Training of the manuscript model (identity recorded; corrected weights not yet released):
+- 2,042,268 non-overlapping 10-s windows (approximately 5,673 h)
+- One pass, batch size 16, `drop_last=True`: 127,641 optimiser steps and 12
+  unused rows from the incomplete final batch
+- AdamW, encoder learning rate 1e-4, predictor/mask-token learning rate 1e-3,
+  5% warm-up then cosine decay, bfloat16 autocast
+- No DAPT validation split, no diel-balanced runtime sampler, and no downstream
+  checkpoint selection; the final one-pass endpoint is the reported checkpoint
 
 ## Citation
 
