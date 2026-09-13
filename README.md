@@ -38,6 +38,14 @@ after omissions for single-class train/test folds).
 > All retained BEATs+DAPT results use the one-pass endpoint at step 127,641 and
 > the corrected window-aware extractor. See `MINOR_REVISION_2026-09.md`.
 
+> **FRDR correction status.** The frozen correction package at
+> `scripts/frdr_correction_2026-09-13/` completes annotations over all 50
+> FRDR manifest files (including empty-annotation files). It is release
+> `v3.0.5-sr-minor-2026-09-13`; corrected frozen results are in
+> `paper_artifacts/frdr_correction_2026-09-13/`.
+> The `v3.0.4` FRDR outputs are historical and superseded for the corrected
+> manuscript; Figure 4/HICEAS is unchanged.
+
 ## Companion artifacts
 
 - **Corrected BEATs+DAPT encoder**
@@ -211,10 +219,14 @@ manuscript from public materials alone.
   corrected-model identities, and aggregate results are provided, but exact
   numerical reproduction requires the non-public 56-class dataset despite
   the public availability of the corrected encoder/head.
-- **Tables 2 and 4:** frozen source artifacts are provided. Full re-analysis
+- **Tables 2 and 3 (FRDR):** the `v3.0.4` outputs are historical frozen
+  artifacts. The all-50-file `v3.0.5` source package is a frozen correction,
+  rerun route; exact corrected embeddings, manifests, annotations, and
+  reference inputs remain unavailable.
+- **Table 4:** frozen source artifacts are provided. Full re-analysis
   requires the public datasets plus the exact corrected embeddings, manifests,
   and other inputs described in the artifact map.
-- **Table 3 and Supplementary Tables S3–S4:** the final corrected outputs are
+- **Supplementary Tables S3–S4:** the final corrected outputs are
   frozen verification artifacts. The retained historical scripts document prior
   environment-specific generation, but the complete corrected input manifests,
   embeddings, and reference pools are not all public; these results are not
@@ -242,6 +254,11 @@ underlying clips, labels, and splits are unavailable.
 
 ### Table 2 — FRDR: Quiet / Union / Fusion
 
+The paths and values below are the historical `v3.0.4` frozen record.
+The frozen all-50-file correction is documented separately in
+`scripts/frdr_correction_2026-09-13/`; the accepted local replacement outputs
+are in `paper_artifacts/frdr_correction_2026-09-13/results/`.
+
 The reported operating points are discrete selector outputs, not interpolated
 values: Quiet and Promoter use the sweep point nearest 10 FP/h, Union uses the
 maximum-recall point with FP/h ≤ 10.5, and Fusion uses the alpha=1 per-file
@@ -256,6 +273,10 @@ The final source outputs are
 are not claimed as a generic top-level regeneration recipe.
 
 ### Table 3 — FRDR: FP/h–Recall
+
+The paths and values below are the historical `v3.0.4` frozen record.
+The frozen correction preserves the discrete selector and is in
+`paper_artifacts/frdr_correction_2026-09-13/results/table3/`.
 
 The final values are in
 `paper_artifacts/minor_revision_2026-09/table3_fixed_step127641.csv`.

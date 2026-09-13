@@ -17,6 +17,10 @@ them. For paths and runtime context see the docstrings in each file.
 
 ## Helper / support scripts (`scripts/`)
 
+| Script/package | Purpose |
+|---|---|
+| `frdr_correction_2026-09-13/` | Frozen `v3.0.5-sr-minor-2026-09-13` FRDR all-50-manifest-file annotation-completeness correction. Contains exact executed sources, exact four-file pre-correction archives, a regression test, a standard-library verifier, and no released embeddings/models. It supersedes FRDR Tables 2/3 and Figure 3 while leaving the historical `minor_revision_2026-09/` package unchanged. |
+
 | Script | Purpose |
 |---|---|
 | `dapt_make_manifest_all.py`, `dapt_make_shards.py`, `dapt_qc_manifest.py` | World-DAPT manifest construction & quality control |

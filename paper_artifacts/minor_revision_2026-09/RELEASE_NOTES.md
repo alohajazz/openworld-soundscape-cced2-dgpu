@@ -2,6 +2,16 @@
 
 Tag: `v3.0.4-sr-minor-2026-09-13`
 
+> **Historical release note.** The frozen FRDR correction under
+> `scripts/frdr_correction_2026-09-13/` and
+> `paper_artifacts/frdr_correction_2026-09-13/` is release
+> `v3.0.5-sr-minor-2026-09-13`. It corrects FRDR annotation completion from
+> 44 annotation-bearing files to all 50 manifest files while retaining the
+> nominal 25.055555555555554-h duration and the established evaluators.
+> It does not alter this `v3.0.4` historical artifact
+> set, HICEAS Figure 4, or Table 1's descriptive 6,489-train/1,623-validation
+> head-selection reporting.
+
 This follow-up changes model-availability documentation only: scientific code,
 frozen numerical outputs and the data-publication boundary are unchanged from
 `v3.0.3-sr-minor-2026-09-13`. The earlier release and tag are preserved.

@@ -1,0 +1,1293 @@
+{
+  "remote_root": "/tmp/frdr-correction-20260913-bhn8xye3",
+  "python": "3.12.10",
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "sklearn": "1.7.0"
+  },
+  "threads": 1,
+  "sources": {
+    "frdr_label_efficiency_param.py": "1c12a3ad1bc9a5385632d33964d28a444f174538537a966c364ba3edc1556958",
+    "run_frdr_table3_winaware_COPY.py": "5ba45063731f2ebacd5f0b0528ffaaaca5135a100ccf5c544a5b7a68e290c3f7",
+    "run_fusion_winaware_COPY.py": "3a0a2cd8cd5e9198d562bad936e2c431ccfe83c18d6fa52fe1e920c1664a74c3",
+    "frdr_supervised_promoter_COPY.py": "b4523fe6945a32cdd90a4895a51d3d638536a1cfc8f99b4b28eacad20ca9cf2a",
+    "frdr_file_universe.py": "4067f8f520ea73a1a8b7860ece59779e7edb02e418cdba6319b58d1f3c2821d9"
+  },
+  "runs": [
+    {
+      "tag": "table2",
+      "source_sha256": "b4523fe6945a32cdd90a4895a51d3d638536a1cfc8f99b4b28eacad20ca9cf2a",
+      "execution": "exec(compile(corrected_source)) with passive return profiler",
+      "elapsed_seconds": 19.86472773551941,
+      "evaluation_calls": 940,
+      "fit_iterations": [
+        {
+          "N": "all",
+          "seed": 0,
+          "fold": 0,
+          "n_iter": [
+            88
+          ]
+        },
+        {
+          "N": "all",
+          "seed": 0,
+          "fold": 1,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": "all",
+          "seed": 0,
+          "fold": 2,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": "all",
+          "seed": 0,
+          "fold": 3,
+          "n_iter": [
+            92
+          ]
+        },
+        {
+          "N": "all",
+          "seed": 0,
+          "fold": 4,
+          "n_iter": [
+            111
+          ]
+        }
+      ],
+      "warnings": [
+        "unclosed file <_io.TextIOWrapper name='/workspace/embeddings/cced2_fixed/cced2_norm.json' mode='r' encoding='UTF-8'>"
+      ]
+    },
+    {
+      "tag": "table3",
+      "source_sha256": "5ba45063731f2ebacd5f0b0528ffaaaca5135a100ccf5c544a5b7a68e290c3f7",
+      "execution": "exec(compile(corrected_source)) with passive return profiler",
+      "elapsed_seconds": 24.076128721237183,
+      "evaluation_calls": 600,
+      "fit_iterations": [],
+      "warnings": [
+        "unclosed file <_io.TextIOWrapper name='/workspace/embeddings/cced2_fixed/cced2_norm.json' mode='r' encoding='UTF-8'>",
+        "Trying to unpickle estimator NearestNeighbors from version 1.7.2 when using version 1.7.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:\nhttps://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations",
+        "unclosed file <_io.TextIOWrapper name='/workspace/embeddings/perch_ind_models/cced2_norm_perch.json' mode='r' encoding='UTF-8'>"
+      ]
+    },
+    {
+      "tag": "fusion",
+      "source_sha256": "3a0a2cd8cd5e9198d562bad936e2c431ccfe83c18d6fa52fe1e920c1664a74c3",
+      "execution": "exec(compile(corrected_source)) with passive return profiler",
+      "elapsed_seconds": 15.227730512619019,
+      "evaluation_calls": 3300,
+      "fit_iterations": [],
+      "warnings": [
+        "unclosed file <_io.TextIOWrapper name='/workspace/embeddings/cced2_fixed/cced2_norm.json' mode='r' encoding='UTF-8'>"
+      ]
+    },
+    {
+      "tag": "labels",
+      "source_sha256": "1c12a3ad1bc9a5385632d33964d28a444f174538537a966c364ba3edc1556958",
+      "execution": "exec(compile(corrected_source)) with passive return profiler",
+      "elapsed_seconds": 166.27557611465454,
+      "evaluation_calls": 2600,
+      "fit_iterations": [
+        {
+          "N": 10,
+          "seed": 0,
+          "fold": 0,
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 0,
+          "fold": 1,
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 0,
+          "fold": 2,
+          "n_iter": [
+            16
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 0,
+          "fold": 3,
+          "n_iter": [
+            13
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 0,
+          "fold": 4,
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 1,
+          "fold": 0,
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 1,
+          "fold": 1,
+          "n_iter": [
+            20
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 1,
+          "fold": 2,
+          "n_iter": [
+            20
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 1,
+          "fold": 3,
+          "n_iter": [
+            17
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 1,
+          "fold": 4,
+          "n_iter": [
+            12
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 2,
+          "fold": 0,
+          "n_iter": [
+            16
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 2,
+          "fold": 1,
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 2,
+          "fold": 2,
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 2,
+          "fold": 3,
+          "n_iter": [
+            17
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 2,
+          "fold": 4,
+          "n_iter": [
+            16
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 3,
+          "fold": 0,
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 3,
+          "fold": 1,
+          "n_iter": [
+            13
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 3,
+          "fold": 2,
+          "n_iter": [
+            17
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 3,
+          "fold": 3,
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 3,
+          "fold": 4,
+          "n_iter": [
+            13
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 4,
+          "fold": 0,
+          "n_iter": [
+            22
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 4,
+          "fold": 1,
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 4,
+          "fold": 2,
+          "n_iter": [
+            13
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 4,
+          "fold": 3,
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "N": 10,
+          "seed": 4,
+          "fold": 4,
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 0,
+          "fold": 0,
+          "n_iter": [
+            20
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 0,
+          "fold": 1,
+          "n_iter": [
+            22
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 0,
+          "fold": 2,
+          "n_iter": [
+            20
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 0,
+          "fold": 3,
+          "n_iter": [
+            19
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 0,
+          "fold": 4,
+          "n_iter": [
+            23
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 1,
+          "fold": 0,
+          "n_iter": [
+            21
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 1,
+          "fold": 1,
+          "n_iter": [
+            23
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 1,
+          "fold": 2,
+          "n_iter": [
+            29
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 1,
+          "fold": 3,
+          "n_iter": [
+            22
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 1,
+          "fold": 4,
+          "n_iter": [
+            21
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 2,
+          "fold": 0,
+          "n_iter": [
+            25
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 2,
+          "fold": 1,
+          "n_iter": [
+            21
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 2,
+          "fold": 2,
+          "n_iter": [
+            23
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 2,
+          "fold": 3,
+          "n_iter": [
+            21
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 2,
+          "fold": 4,
+          "n_iter": [
+            24
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 3,
+          "fold": 0,
+          "n_iter": [
+            26
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 3,
+          "fold": 1,
+          "n_iter": [
+            26
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 3,
+          "fold": 2,
+          "n_iter": [
+            25
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 3,
+          "fold": 3,
+          "n_iter": [
+            16
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 3,
+          "fold": 4,
+          "n_iter": [
+            16
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 4,
+          "fold": 0,
+          "n_iter": [
+            28
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 4,
+          "fold": 1,
+          "n_iter": [
+            19
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 4,
+          "fold": 2,
+          "n_iter": [
+            22
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 4,
+          "fold": 3,
+          "n_iter": [
+            18
+          ]
+        },
+        {
+          "N": 30,
+          "seed": 4,
+          "fold": 4,
+          "n_iter": [
+            28
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 0,
+          "fold": 0,
+          "n_iter": [
+            38
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 0,
+          "fold": 1,
+          "n_iter": [
+            47
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 0,
+          "fold": 2,
+          "n_iter": [
+            40
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 0,
+          "fold": 3,
+          "n_iter": [
+            39
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 0,
+          "fold": 4,
+          "n_iter": [
+            30
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 1,
+          "fold": 0,
+          "n_iter": [
+            47
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 1,
+          "fold": 1,
+          "n_iter": [
+            35
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 1,
+          "fold": 2,
+          "n_iter": [
+            23
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 1,
+          "fold": 3,
+          "n_iter": [
+            38
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 1,
+          "fold": 4,
+          "n_iter": [
+            43
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 2,
+          "fold": 0,
+          "n_iter": [
+            33
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 2,
+          "fold": 1,
+          "n_iter": [
+            27
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 2,
+          "fold": 2,
+          "n_iter": [
+            43
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 2,
+          "fold": 3,
+          "n_iter": [
+            33
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 2,
+          "fold": 4,
+          "n_iter": [
+            40
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 3,
+          "fold": 0,
+          "n_iter": [
+            42
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 3,
+          "fold": 1,
+          "n_iter": [
+            38
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 3,
+          "fold": 2,
+          "n_iter": [
+            40
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 3,
+          "fold": 3,
+          "n_iter": [
+            39
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 3,
+          "fold": 4,
+          "n_iter": [
+            33
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 4,
+          "fold": 0,
+          "n_iter": [
+            40
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 4,
+          "fold": 1,
+          "n_iter": [
+            31
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 4,
+          "fold": 2,
+          "n_iter": [
+            35
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 4,
+          "fold": 3,
+          "n_iter": [
+            38
+          ]
+        },
+        {
+          "N": 100,
+          "seed": 4,
+          "fold": 4,
+          "n_iter": [
+            52
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 0,
+          "fold": 0,
+          "n_iter": [
+            48
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 0,
+          "fold": 1,
+          "n_iter": [
+            56
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 0,
+          "fold": 2,
+          "n_iter": [
+            66
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 0,
+          "fold": 3,
+          "n_iter": [
+            62
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 0,
+          "fold": 4,
+          "n_iter": [
+            59
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 1,
+          "fold": 0,
+          "n_iter": [
+            59
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 1,
+          "fold": 1,
+          "n_iter": [
+            58
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 1,
+          "fold": 2,
+          "n_iter": [
+            53
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 1,
+          "fold": 3,
+          "n_iter": [
+            52
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 1,
+          "fold": 4,
+          "n_iter": [
+            71
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 2,
+          "fold": 0,
+          "n_iter": [
+            61
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 2,
+          "fold": 1,
+          "n_iter": [
+            60
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 2,
+          "fold": 2,
+          "n_iter": [
+            53
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 2,
+          "fold": 3,
+          "n_iter": [
+            46
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 2,
+          "fold": 4,
+          "n_iter": [
+            61
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 3,
+          "fold": 0,
+          "n_iter": [
+            66
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 3,
+          "fold": 1,
+          "n_iter": [
+            54
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 3,
+          "fold": 2,
+          "n_iter": [
+            51
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 3,
+          "fold": 3,
+          "n_iter": [
+            44
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 3,
+          "fold": 4,
+          "n_iter": [
+            57
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 4,
+          "fold": 0,
+          "n_iter": [
+            61
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 4,
+          "fold": 1,
+          "n_iter": [
+            52
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 4,
+          "fold": 2,
+          "n_iter": [
+            57
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 4,
+          "fold": 3,
+          "n_iter": [
+            54
+          ]
+        },
+        {
+          "N": 300,
+          "seed": 4,
+          "fold": 4,
+          "n_iter": [
+            66
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 0,
+          "fold": 0,
+          "n_iter": [
+            88
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 0,
+          "fold": 1,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 0,
+          "fold": 2,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 0,
+          "fold": 3,
+          "n_iter": [
+            92
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 0,
+          "fold": 4,
+          "n_iter": [
+            111
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 1,
+          "fold": 0,
+          "n_iter": [
+            88
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 1,
+          "fold": 1,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 1,
+          "fold": 2,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 1,
+          "fold": 3,
+          "n_iter": [
+            92
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 1,
+          "fold": 4,
+          "n_iter": [
+            111
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 2,
+          "fold": 0,
+          "n_iter": [
+            88
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 2,
+          "fold": 1,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 2,
+          "fold": 2,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 2,
+          "fold": 3,
+          "n_iter": [
+            92
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 2,
+          "fold": 4,
+          "n_iter": [
+            111
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 3,
+          "fold": 0,
+          "n_iter": [
+            88
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 3,
+          "fold": 1,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 3,
+          "fold": 2,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 3,
+          "fold": 3,
+          "n_iter": [
+            92
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 3,
+          "fold": 4,
+          "n_iter": [
+            111
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 4,
+          "fold": 0,
+          "n_iter": [
+            88
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 4,
+          "fold": 1,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 4,
+          "fold": 2,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 4,
+          "fold": 3,
+          "n_iter": [
+            92
+          ]
+        },
+        {
+          "N": 1000,
+          "seed": 4,
+          "fold": 4,
+          "n_iter": [
+            111
+          ]
+        },
+        {
+          "N": "all",
+          "seed": 0,
+          "fold": 0,
+          "n_iter": [
+            88
+          ]
+        },
+        {
+          "N": "all",
+          "seed": 0,
+          "fold": 1,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": "all",
+          "seed": 0,
+          "fold": 2,
+          "n_iter": [
+            96
+          ]
+        },
+        {
+          "N": "all",
+          "seed": 0,
+          "fold": 3,
+          "n_iter": [
+            92
+          ]
+        },
+        {
+          "N": "all",
+          "seed": 0,
+          "fold": 4,
+          "n_iter": [
+            111
+          ]
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "inputs": {
+    "/workspace/data/externaldata/frdr_upcall/manifests/frdr_B_continuous_hop2s.csv": "24bec7897693d8e49ebd5ffe458145c8c497249e58234e2b6112241484528de6",
+    "/workspace/data/externaldata/frdr_upcall/raw/data/continuous/dataset_B/annotations_B_cont.csv": "accbda6c59a48c5fd45b72c7687c318d67f103adf0780b4e990ada710b9fb1ba",
+    "/workspace/embeddings/frdr_fixed_step127641/index_000.csv": "4c497e08e5e5907230987de790a725a548113d762c7fa2a8c4b0b93539c7d956",
+    "/workspace/embeddings/frdr_fixed_step127641/embeddings_000.npy": "3c3d372186ef1c2f9d9928d3a73579ef4f865091fc13a8e9770cd2687e07c058",
+    "/workspace/embeddings/perch_frdr_hop2s/index_000.csv": "ad8cb71ea41414cdc0697d67bd8e5611bb4ae9bf0dc28e18ce86f485a7716242",
+    "/workspace/embeddings/perch_frdr_hop2s/embeddings_000.npy": "c76ca7e11fe38ee1686d993cb5c6bbdc8006602da002d10bfcc12b320c03ca00",
+    "/workspace/embeddings/cced2_fixed/knn_cced2.pkl": "ca1fa4d90c2d6c45aa0b2f7b0bb617e9d71718a7f524bd86839cf52f57d2535c",
+    "/workspace/embeddings/cced2_fixed/maha_cced2.pkl": "bdbe7866d1f65f5830566b7ebc36404158855b71421543a56764c2f8988151d1",
+    "/workspace/embeddings/cced2_fixed/cced2_norm.json": "98729dd5574f782b7d3168d40e32871bea21f2a9968b4713f90ee216f393ea8d",
+    "/workspace/embeddings/perch_ind_models/knn_perch.pkl": "c41517444d2b0043efc2709297ff5da32efc2de6288ed974a83aebf8d8d0ff54",
+    "/workspace/embeddings/perch_ind_models/maha_perch.pkl": "3183673a1e2f4216c62383832554ba4da6c1eabca6ae5627703e0e3942eaa4d6",
+    "/workspace/embeddings/perch_ind_models/cced2_norm_perch.json": "7d82b41452d35d3a02553ece622702296129fc02ae89e88c412e80869ce04581"
+  },
+  "original_output_hashes": {
+    "/workspace/scripts/audit_2026-07-30/t2_rerun_FIXED_valref/frdr_quiet_promoter_union_supervised.csv": "7e4c9041b975b3e40ca0824456ab67207e94c454ab86c3706aa806f6e2b50609",
+    "/workspace/scripts/audit_2026-07-30/t3_rerun/t3_FIXED_valref.csv": "8ccb32e9014be780353c416f182d09e0e13cc8c75010606b3b8912de40680ce0",
+    "/workspace/scripts/audit_2026-07-30/fusion_FIXED_valref.csv": "2abd81431e6f09a4c393e5d85c43d6a61967caa14d746d36f773260dfe9772b6",
+    "/workspace/logs/labeleff_fixed/label_efficiency.csv": "93f6b7c72ae7d60ceae38aef00eafcb72645d7e855164ee4a60de37d7a7c51f6",
+    "/workspace/logs/labeleff_fixed/label_efficiency_agg.csv": "5ee3f9c669980771c563756d40aa35d03609447ed36ef59207003a93ddb1af61",
+    "/workspace/scripts/audit_2026-07-30/t2_rerun_FIXED_valref/union_sweep.csv": "0df8911b034190998b6d6ff945b69d1bb6282ac9fa768b53c7bfd44387bf21bb"
+  },
+  "manifest_files": 50,
+  "annotation_files": 44,
+  "annotations": 1157,
+  "manifest_rows": 44900,
+  "nominal_hours": 25.055555555555554,
+  "empty_annotation_files": [
+    "B_cont_13.wav",
+    "B_cont_17.wav",
+    "B_cont_20.wav",
+    "B_cont_35.wav",
+    "B_cont_43.wav",
+    "B_cont_47.wav"
+  ],
+  "regression_tests": [
+    "annotation outside manifest fails closed",
+    "frdr_label_efficiency_param.py: empty-file FP, TP/FN, all-annotated equivalence, event boundaries, helpers unchanged",
+    "frdr_supervised_promoter_COPY.py: empty-file FP, TP/FN, all-annotated equivalence, event boundaries, helpers unchanged",
+    "run_frdr_table3_winaware_COPY.py: empty-file FP, TP/FN, all-annotated equivalence, event boundaries, helpers unchanged",
+    "run_fusion_winaware_COPY.py: empty-file FP, TP/FN, all-annotated equivalence, event boundaries, helpers unchanged"
+  ],
+  "environment_overrides": {
+    "FR_EMB": "/workspace/embeddings/frdr_fixed_step127641",
+    "FR_REF": "/workspace/embeddings/cced2_fixed",
+    "FR_OUT": "/tmp/frdr-correction-20260913-bhn8xye3/results/table2",
+    "T3_NAME": "OceanBEATs_fixed_valref",
+    "T3_EMB": "/workspace/embeddings/frdr_fixed_step127641",
+    "T3_REF": "/workspace/embeddings/cced2_fixed",
+    "T3_OUT": "/tmp/frdr-correction-20260913-bhn8xye3/results/table3/frdr_table3.csv",
+    "FU_EMB": "/workspace/embeddings/frdr_fixed_step127641",
+    "FU_REF": "/workspace/embeddings/cced2_fixed",
+    "FU_OUT": "/tmp/frdr-correction-20260913-bhn8xye3/results/fusion/fusion.csv",
+    "LE_EMB_DIR": "/workspace/embeddings/frdr_fixed_step127641",
+    "LE_OUT": "/tmp/frdr-correction-20260913-bhn8xye3/results/labels"
+  },
+  "fixed_threshold_check": [
+    {
+      "mode": "Quiet (CCED2)",
+      "theta": 2.163848762512206,
+      "before": [
+        0.04062229904926534,
+        9.778270509977828,
+        47,
+        245,
+        1110,
+        292
+      ],
+      "after": [
+        0.04062229904926534,
+        11.21507760532151,
+        47,
+        281,
+        1110,
+        328
+      ]
+    },
+    {
+      "mode": "Promoter (supervised LogReg, 5-fold OOF)",
+      "theta": 3.611596016883839,
+      "before": [
+        0.4840103716508211,
+        9.8980044345898,
+        560,
+        248,
+        597,
+        808
+      ],
+      "after": [
+        0.4840103716508211,
+        13.410199556541022,
+        560,
+        336,
+        597,
+        896
+      ]
+    },
+    {
+      "mode": "Union",
+      "theta_q": 2.6745355892181397,
+      "theta_p": 5.945296394824982,
+      "before": [
+        0.36646499567847884,
+        10.017738359201775,
+        424,
+        251,
+        733,
+        675
+      ],
+      "after": [
+        0.36646499567847884,
+        12.372505543237251,
+        424,
+        310,
+        733,
+        734
+      ]
+    }
+  ],
+  "elapsed_seconds": 225.95023894309998,
+  "generated_sha256": {
+    "retained_results/labels_agg.csv": "5ee3f9c669980771c563756d40aa35d03609447ed36ef59207003a93ddb1af61",
+    "retained_results/fusion.csv": "2abd81431e6f09a4c393e5d85c43d6a61967caa14d746d36f773260dfe9772b6",
+    "retained_results/labels.csv": "93f6b7c72ae7d60ceae38aef00eafcb72645d7e855164ee4a60de37d7a7c51f6",
+    "retained_results/table3.csv": "8ccb32e9014be780353c416f182d09e0e13cc8c75010606b3b8912de40680ce0",
+    "retained_results/table2.csv": "7e4c9041b975b3e40ca0824456ab67207e94c454ab86c3706aa806f6e2b50609",
+    "retained_results/union_sweep.csv": "0df8911b034190998b6d6ff945b69d1bb6282ac9fa768b53c7bfd44387bf21bb",
+    "results/labels/all_evaluations.csv": "0b53aeb25337ae91d8565bbf61d729d9eb05526e0cac23dff964e3561dea61eb",
+    "results/labels/label_efficiency.png": "a6d561f844929305d694b18d380db7a499c02ecc13c4093ac3b112535b9f5fac",
+    "results/labels/label_efficiency.pdf": "76a9c3081db93c6b0815aabdfd0ea5d8f9458560af5e7ce32fc1d668618b6003",
+    "results/labels/label_efficiency_agg.csv": "4628075a5f670da629e8e473d1c7944abe4c0ff4cd7c26b872d54c07c6688e6e",
+    "results/labels/execution.log": "9112f0a34541f0d96379089ec1c97d3f4fd0f98dd78f1a85e81b2169fe56d106",
+    "results/labels/label_efficiency.csv": "53fb4d4b1606ea537a8a15dd515843595fb454986be51da33238f08fc738ec4e",
+    "results/fusion/all_evaluations.csv": "aca42a3479aeca93d52676b19c41272a5e4a1b66f19d73750ec1690240dd3533",
+    "results/fusion/fusion.csv": "7210b13f4e2c48ce51166058f113150eda5970377a82dd5991c4c2f6af285791",
+    "results/fusion/execution.log": "f25e5f1ce19213204dc6cbefec1034fc35e55923ee6684a0e48076945bf383c5",
+    "results/table2/quiet_sweep.csv": "55a9447a2be279f4836610c5eb8c743e89fccfc594208838bf5b739b360624e3",
+    "results/table2/frdr_quiet_promoter_union_supervised.csv": "ac2e4924ce1f8684ef439b5aeb4e1bf1e1f8a969f87d6fb81c5926e383f94e60",
+    "results/table2/all_evaluations.csv": "a728e4f92436e1ffae91bc7ae3637342cabebfa84f503395208e2545723469fe",
+    "results/table2/promoter_sweep.csv": "51d97dbeb4e7bb76bb616902d84bb208fe31dbc566b396476cc196428d788c74",
+    "results/table2/fig3_frdr_supervised.png": "ed5103098eb8c1eeb08f4dbe403da68cf424a6b44e755b754618766f1b4122d2",
+    "results/table2/execution.log": "f951a19df3245ed31669e37cbcee1e9cf9871595583230053b63d5b81e6865c8",
+    "results/table2/fig3_frdr_supervised.pdf": "73bb78aa73f576fd48c983777936bd7f105b919d9a5195daa2f1f5da09bfabdd",
+    "results/table2/union_sweep.csv": "5bb331c620f79adeb23bc519edd3ea651b9a367f2c0fb916f56c8cc2f3e085f8",
+    "results/table3/all_evaluations.csv": "2903af973e261f0d37fe0593b1f81d2fa1c31f648453b8976b90ea71b3d3c424",
+    "results/table3/execution.log": "26f4f2024f55b2f1ed73f613865782f3235700dde1f62d8ad991b24b7e057e9d",
+    "results/table3/frdr_table3.csv": "f8390d7d033a2bf654ad808b7839ad3e30b6b60312144c2d40498f4338f7bfc0"
+  }
+}

@@ -1,0 +1,81 @@
+--- original/frdr_label_efficiency_param.py
++++ source/frdr_label_efficiency_param.py
+@@ -24,6 +24,7 @@
+ """
+ import glob
+ from pathlib import Path
++from frdr_file_universe import complete_annotations
+ 
+ import numpy as np
+ import pandas as pd
+@@ -38,7 +39,7 @@
+ EMB_DIR = _os.environ.get("LE_EMB_DIR","/workspace/embeddings/frdr_fulldata_winaware")
+ MAN_CSV = "/workspace/data/externaldata/frdr_upcall/manifests/frdr_B_continuous_hop2s.csv"
+ ANN_CSV = "/workspace/data/externaldata/frdr_upcall/raw/data/continuous/dataset_B/annotations_B_cont.csv"
+-OUTDIR = Path("/workspace/logs/labeleff_"+_os.environ.get("LE_TAG","x"))
++OUTDIR = Path(_os.environ.get("LE_OUT", "/workspace/logs/labeleff_"+_os.environ.get("LE_TAG","x")))
+ OUTDIR.mkdir(parents=True, exist_ok=True)
+ 
+ # --------------------------------------------------------------------------
+@@ -150,6 +151,7 @@
+ tc = next(c for c in ann.columns if "time" in c)
+ ann["base"] = ann[fc].apply(lambda p: Path(str(p)).name)
+ gt_by_file = {b: g[tc].astype(float).tolist() for b, g in ann.groupby("base")}
++gt_by_file = complete_annotations(m, gt_by_file)
+ total_GT = sum(len(v) for v in gt_by_file.values())
+ hours = sum((g["center_sec"].max() + 5.0) / 3600.0 for _, g in m.groupby("base"))
+ print(f"  E={E.shape}, manifest={len(m)}, GT events={total_GT}, hours={hours:.2f}")
+--- original/frdr_supervised_promoter_COPY.py
++++ source/frdr_supervised_promoter_COPY.py
+@@ -12,6 +12,7 @@
+ matplotlib.use("Agg")
+ import matplotlib.pyplot as plt
+ from pathlib import Path
++from frdr_file_universe import complete_annotations
+ from sklearn.linear_model import LogisticRegression
+ from sklearn.model_selection import GroupKFold
+ 
+@@ -118,6 +119,7 @@
+ tc = next(c for c in ann.columns if "time" in c)
+ ann["base"] = ann[fc].apply(lambda p: Path(str(p)).name)
+ gt_by_file = {b: g[tc].astype(float).tolist() for b, g in ann.groupby("base")}
++gt_by_file = complete_annotations(m, gt_by_file)
+ total_GT = sum(len(v) for v in gt_by_file.values())
+ print(f"  E={E.shape}, manifest={len(m)}, GT={total_GT}")
+ hours = sum((g["center_sec"].max() + 5.0) / 3600.0 for _, g in m.groupby("base"))
+--- original/run_frdr_table3_winaware_COPY.py
++++ source/run_frdr_table3_winaware_COPY.py
+@@ -5,6 +5,7 @@
+ import os, json, glob, joblib
+ import numpy as np, pandas as pd
+ from pathlib import Path
++from frdr_file_universe import complete_annotations
+ 
+ # Paths
+ MAN_CSV = "/workspace/data/externaldata/frdr_upcall/manifests/frdr_B_continuous_hop2s.csv"
+@@ -111,6 +112,7 @@
+ fc = next(c for c in ann.columns if "file" in c); tc = next(c for c in ann.columns if "time" in c)
+ ann["base"] = ann[fc].apply(lambda p: Path(str(p)).name)
+ gt_by = {b: g[tc].astype(float).tolist() for b, g in ann.groupby("base")}
++gt_by = complete_annotations(m, gt_by)
+ hours = sum((g["center_sec"].max()+5.0)/3600.0 for _, g in m.groupby("base"))
+ print(f"Hours: {hours:.2f}, GT events: {sum(len(v) for v in gt_by.values())}")
+ 
+--- original/run_fusion_winaware_COPY.py
++++ source/run_fusion_winaware_COPY.py
+@@ -4,6 +4,7 @@
+ import os, json, glob, joblib
+ import numpy as np, pandas as pd
+ from pathlib import Path
++from frdr_file_universe import complete_annotations
+ 
+ import os as _os  # 2026-07-31 コピー（原本無変更）
+ EMB_DIR = _os.environ.get("FU_EMB","/workspace/embeddings/frdr_fulldata_winaware")
+@@ -67,6 +68,7 @@
+ fc = next(c for c in ann.columns if "file" in c); tc = next(c for c in ann.columns if "time" in c)
+ ann["base"] = ann[fc].apply(lambda p: Path(str(p)).name)
+ gt_by = {b: g[tc].astype(float).tolist() for b, g in ann.groupby("base")}
++gt_by = complete_annotations(m, gt_by)
+ hours = sum((g["center_sec"].max()+5.0)/3600.0 for _, g in m.groupby("base"))
+ 
+ KNN = joblib.load(KNN_PKL); MAHA = joblib.load(MAHA_PKL); cfg = json.load(open(NORM_JSON))

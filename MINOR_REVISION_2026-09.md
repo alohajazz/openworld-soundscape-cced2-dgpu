@@ -3,6 +3,20 @@
 This record distinguishes invalid or superseded analyses from the corrected
 analyses used in the revised manuscript.
 
+> **FRDR correction frozen (2026-09-13).** Release
+> `v3.0.5-sr-minor-2026-09-13` package at
+> `scripts/frdr_correction_2026-09-13/` completes the annotation dictionary
+> across all 50 FRDR manifest files, assigning empty lists to files without
+> annotations and failing closed for annotations outside the manifest. It
+> retains the 25.055555555555554-h nominal-duration convention and all event
+> processing, references, encoders, folds, labels, grids, and selectors.
+> The corrected numerical outputs have passed independent and parent review
+> and are frozen in `paper_artifacts/frdr_correction_2026-09-13/` as
+> `v3.0.5-sr-minor-2026-09-13`. The old `v3.0.4` FRDR outputs remain historical
+> and are superseded for the corrected manuscript. This has no effect on HICEAS
+> Figure 4 or Table 1's descriptive 6,489-train/1,623-validation head
+> selection (not an independent test set).
+
 ## DAPT checkpoint history
 
 | Manuscript stage | Status | Audit result |

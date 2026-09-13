@@ -1,0 +1,28 @@
+{
+  "kind": "guarded remote dry-run receipt",
+  "date": "2026-09-13",
+  "status": "PASS; four modes validated without evaluator execution or numerical output",
+  "remote_temp": "/tmp/frdr-guarded-dryrun-ie3xqfz1",
+  "receipt_input_count": 12,
+  "modes": {
+    "table2": "PASS",
+    "table3": "PASS",
+    "fusion": "PASS",
+    "labels": "PASS"
+  },
+  "validated_runtime_inputs": {
+    "manifest": "/workspace/data/externaldata/frdr_upcall/manifests/frdr_B_continuous_hop2s.csv",
+    "annotations": "/workspace/data/externaldata/frdr_upcall/raw/data/continuous/dataset_B/annotations_B_cont.csv",
+    "beats_embeddings": "/workspace/embeddings/frdr_fixed_step127641",
+    "beats_reference": "/workspace/embeddings/cced2_fixed",
+    "perch_for_table3": "/workspace/embeddings/perch_frdr_hop2s and /workspace/embeddings/perch_ind_models"
+  },
+  "source_sha256": {
+    "frdr_file_universe.py": "4067f8f520ea73a1a8b7860ece59779e7edb02e418cdba6319b58d1f3c2821d9",
+    "frdr_label_efficiency_param.py": "1c12a3ad1bc9a5385632d33964d28a444f174538537a966c364ba3edc1556958",
+    "frdr_supervised_promoter_COPY.py": "b4523fe6945a32cdd90a4895a51d3d638536a1cfc8f99b4b28eacad20ca9cf2a",
+    "run_frdr_table3_winaware_COPY.py": "5ba45063731f2ebacd5f0b0528ffaaaca5135a100ccf5c544a5b7a68e290c3f7",
+    "run_fusion_winaware_COPY.py": "3a0a2cd8cd5e9198d562bad936e2c431ccfe83c18d6fa52fe1e920c1664a74c3"
+  }
+}
+

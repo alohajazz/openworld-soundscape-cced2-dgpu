@@ -1,5 +1,11 @@
 # Frozen source artifacts for the September 2026 minor revision
 
+> **Historical frozen record.** This directory remains the `v3.0.4`
+> historical artifact set. The frozen `v3.0.5` FRDR-only correction is at
+> `scripts/frdr_correction_2026-09-13/` and
+> `paper_artifacts/frdr_correction_2026-09-13/`. Do not mix its correction
+> outputs with the hashes or CSVs in this historical directory.
+
 These files are source outputs used to populate the revised tables and figures.
 They are verification artifacts, not substitutes for the original evaluation
 datasets.

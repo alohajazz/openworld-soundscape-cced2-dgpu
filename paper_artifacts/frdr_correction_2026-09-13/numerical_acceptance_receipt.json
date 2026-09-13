@@ -1,0 +1,422 @@
+{
+  "status": "PASS",
+  "scope": "numerical FRDR correction on retained embeddings/references, not entire training/extraction pipeline",
+  "runtime": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3"
+  },
+  "checks": [
+    "all selected thresholds reproduce exact original selectors/grids from complete saved evaluations",
+    "all 26 label conditions and original seeds; aggregate mean/sample SD and full-label equivalence",
+    "all 7,440 saved evaluations use TP/1157 and FP/25.055555555555554h",
+    "all retained input and fitted-reference hashes still match execution receipt",
+    "executed corrected-source and all output hashes match receipt",
+    "135 logistic fits (5 Table2 + 130 label-efficiency) below max_iter; no convergence warnings"
+  ],
+  "selections": [
+    {
+      "table": "table2",
+      "row": "quiet",
+      "pctl": 96.0,
+      "theta": 2.249312744140625,
+      "nearest_ties": 1
+    },
+    {
+      "table": "table2",
+      "row": "promoter",
+      "pctl": 90.0,
+      "theta": 4.612645578384398,
+      "nearest_ties": 1
+    },
+    {
+      "table": "table2",
+      "row": "union",
+      "pctl_q": 98.0,
+      "pctl_p": 94.5,
+      "theta_q": 2.6745355892181393,
+      "theta_p": 7.767701828479767,
+      "first_max_recall_ties": 1
+    },
+    {
+      "table": "table3",
+      "row": "OceanBEATs_fixed_valref/kNN_z",
+      "pctl": 96.0,
+      "theta": 2.270799446105958,
+      "nearest_ties": 1
+    },
+    {
+      "table": "table3",
+      "row": "OceanBEATs_fixed_valref/Mahalanobis_z",
+      "pctl": 96.0,
+      "theta": 2.256752347946167,
+      "nearest_ties": 1
+    },
+    {
+      "table": "table3",
+      "row": "OceanBEATs_fixed_valref/CCED2_z",
+      "pctl": 96.0,
+      "theta": 2.249312744140625,
+      "nearest_ties": 1
+    },
+    {
+      "table": "table3",
+      "row": "Perch 2.0/kNN_z",
+      "pctl": 93.5,
+      "theta": 3.1085978257656106,
+      "nearest_ties": 1
+    },
+    {
+      "table": "table3",
+      "row": "Perch 2.0/Mahalanobis_z",
+      "pctl": 93.5,
+      "theta": 3.980320152044297,
+      "nearest_ties": 1
+    },
+    {
+      "table": "table3",
+      "row": "Perch 2.0/CCED2_z",
+      "pctl": 93.0,
+      "theta": 3.4886963462829588,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 0.0,
+      "pctl": 91.59999999999877,
+      "theta": 1.5592711423061552,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 0.1,
+      "pctl": 93.19999999999868,
+      "theta": 1.6136352118942168,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 0.2,
+      "pctl": 93.59999999999866,
+      "theta": 1.5783847560284316,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 0.3,
+      "pctl": 94.5999999999986,
+      "theta": 1.6308410035722523,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 0.4,
+      "pctl": 95.39999999999856,
+      "theta": 1.6782366468686234,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 0.5,
+      "pctl": 96.09999999999852,
+      "theta": 1.7509417317437863,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 0.6,
+      "pctl": 96.2999999999985,
+      "theta": 1.8045273164223665,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 0.7,
+      "pctl": 96.4999999999985,
+      "theta": 1.8951173636367606,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 0.8,
+      "pctl": 96.09999999999852,
+      "theta": 1.9499571499873727,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 0.9,
+      "pctl": 96.09999999999852,
+      "theta": 2.086377215455123,
+      "nearest_ties": 1
+    },
+    {
+      "table": "fusion",
+      "row": 1.0,
+      "pctl": 95.89999999999853,
+      "theta": 2.2311145427220564,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "10",
+      "seed": 0,
+      "pctl": 90.5,
+      "theta": 4.390398037433629,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "10",
+      "seed": 1,
+      "pctl": 91.5,
+      "theta": 3.726195061206816,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "10",
+      "seed": 2,
+      "pctl": 92.0,
+      "theta": 4.390745353698732,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "10",
+      "seed": 3,
+      "pctl": 92.5,
+      "theta": 6.034490227699285,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "10",
+      "seed": 4,
+      "pctl": 90.5,
+      "theta": 3.807360212802888,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "30",
+      "seed": 0,
+      "pctl": 90.5,
+      "theta": 4.628314259052278,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "30",
+      "seed": 1,
+      "pctl": 91.0,
+      "theta": 4.083369193077092,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "30",
+      "seed": 2,
+      "pctl": 91.5,
+      "theta": 4.586899905204773,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "30",
+      "seed": 3,
+      "pctl": 91.0,
+      "theta": 5.258851485252386,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "30",
+      "seed": 4,
+      "pctl": 91.0,
+      "theta": 4.769278631210331,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "100",
+      "seed": 0,
+      "pctl": 90.0,
+      "theta": 4.003461503982542,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "100",
+      "seed": 1,
+      "pctl": 90.0,
+      "theta": 4.363433980941772,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "100",
+      "seed": 2,
+      "pctl": 90.5,
+      "theta": 4.378705534935,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "100",
+      "seed": 3,
+      "pctl": 91.0,
+      "theta": 4.594776535034181,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "100",
+      "seed": 4,
+      "pctl": 91.0,
+      "theta": 4.710915555953981,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "300",
+      "seed": 0,
+      "pctl": 91.5,
+      "theta": 5.118621306419373,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "300",
+      "seed": 1,
+      "pctl": 90.5,
+      "theta": 4.5189792561531075,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "300",
+      "seed": 2,
+      "pctl": 90.0,
+      "theta": 4.27694110870361,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "300",
+      "seed": 3,
+      "pctl": 90.5,
+      "theta": 4.562176246643068,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "300",
+      "seed": 4,
+      "pctl": 90.5,
+      "theta": 4.750662298202517,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "1000",
+      "seed": 0,
+      "pctl": 90.0,
+      "theta": 4.612645578384398,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "1000",
+      "seed": 1,
+      "pctl": 90.0,
+      "theta": 4.612645578384398,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "1000",
+      "seed": 2,
+      "pctl": 90.0,
+      "theta": 4.612645578384398,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "1000",
+      "seed": 3,
+      "pctl": 90.0,
+      "theta": 4.612645578384398,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "1000",
+      "seed": 4,
+      "pctl": 90.0,
+      "theta": 4.612645578384398,
+      "nearest_ties": 1
+    },
+    {
+      "table": "labels",
+      "row": "all",
+      "seed": 0,
+      "pctl": 90.0,
+      "theta": 4.612645578384398,
+      "nearest_ties": 1
+    }
+  ],
+  "source_sha256": "ecdab153a13df43ed009856864c58d7392fd2fb57e96da6d96c96ceda3afc0b4",
+  "source_identity_basis": "SHA-256 of unchanged local verify_executed_results.py sent over stdin; added to returned receipt locally because remote __file__ was <stdin>.",
+  "invocation": "ssh -o BatchMode=yes adelie-linux 'docker exec -i -e FRDR_CORRECTION_ROOT=/tmp/frdr-correction-20260913-bhn8xye3 inspiring_tharp python -u - --perch' < verify_executed_results.py > numerical_acceptance_receipt.json",
+  "perch_compatibility": {
+    "status": "PASS",
+    "sklearn": "1.7.0",
+    "loaded_params": {
+      "algorithm": "auto",
+      "leaf_size": 30,
+      "metric": "euclidean",
+      "metric_params": null,
+      "n_jobs": null,
+      "n_neighbors": 50,
+      "p": 2,
+      "radius": 1.0
+    },
+    "reference_shape": [
+      6781,
+      1536
+    ],
+    "query_shape": [
+      44900,
+      1536
+    ],
+    "distance_shape": [
+      44900,
+      50
+    ],
+    "all_query_max_abs_distance_error": 0.0,
+    "all_query_index_differences": 0,
+    "all_query_mean_scores_exact": true,
+    "independent_float64_query_indices": [
+      0,
+      4081,
+      8163,
+      12245,
+      16326,
+      20408,
+      24490,
+      28572,
+      32653,
+      36735,
+      40817,
+      44899
+    ],
+    "independent_float64_max_abs_distance_error": 3.037063507349558e-07,
+    "independent_float64_rank_position_differences": 0,
+    "independent_float64_top50_membership_query_differences": 0,
+    "warnings": [
+      "Trying to unpickle estimator NearestNeighbors from version 1.7.2 when using version 1.7.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:\nhttps://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations"
+    ],
+    "downstream_implication": "Exact distances/means on every query imply unchanged deterministic kNN_z and CCED2_z inputs, hence unchanged per-file scores, thresholds and evaluations; no second full sweep was run."
+  },
+  "elapsed_seconds": 28.817209243774414
+}
