@@ -53,14 +53,13 @@ after omissions for single-class train/test folds).
 - **Bundled BEATs source code** (`beats_core/`)
 
 The source code is released under the MIT License. CCED2 parameters ship
-inside this repository under CC BY 4.0. The corrected encoder and SED-head
-hashes are recorded above, but their public availability depends on a
-subsequent model release. As checked on 2026-09-13, the public
-`BiologgingSolutions/OceanBEATs` main revision
-(`dbb29a3dfc4fe1605c9fdd87079723db12903849`) contains legacy step-120,000
-and epoch-8-head files, not the corrected files above. Do not use those legacy
-Hugging Face files for the corrected results; use only a subsequently released
-copy that matches the hashes above. The Detect-Group-Promote-Union (DGPU) framework
+inside this repository under CC BY 4.0. The corrected encoder and matching
+SED head are publicly distributed on
+[Hugging Face](https://huggingface.co/BiologgingSolutions/OceanBEATs/tree/v3.0.3-sr-minor-2026-09-13),
+not as GitHub release attachments. Their exact model revision, download links
+and verification evidence are recorded in `MODEL_AVAILABILITY.json`.
+The legacy step-120,000 and epoch-8-head files remain unchanged for provenance;
+do not use them for corrected results. The Detect-Group-Promote-Union (DGPU) framework
 and the CCED2 unknownness score are subject to patent applications filed by
 Biologging Solutions Inc.; these copyright licences do not grant patent
 rights.
@@ -75,8 +74,8 @@ rights.
 > per-class statistics and the complete label taxonomy. The repository records
 > the corrected model identities and includes frozen aggregate outputs and
 > CCED2 normalisation/threshold parameters, not the fitted reference models;
-> a public corrected weight copy must be separately released
-> and hash-matched before it can support inference. Requests specifically
+> the corrected encoder/head are available separately on Hugging Face and
+> must be hash-matched before use. Requests specifically
 > to verify reported results and proposals for new academic collaborations may
 > be considered individually by the data manager, subject to approval by the
 > original collaborating organisations and an appropriate Data Use Agreement.
@@ -192,11 +191,12 @@ and embedding extraction; CCED2 / Promoter eval runs on CPU).
 
 ### Obtaining corrected weights
 
-Obtain the corrected encoder and head only from a release or repository
-snapshot that identifies the files by the hashes in **Companion artifacts**.
-The currently visible Hugging Face main revision is legacy and must not be
-substituted. Place verified files in `weights/` if running code that requires
-them, then check them with `shasum -a 256` against the recorded values.
+Obtain the corrected encoder and head from the immutable Hugging Face revision
+in `MODEL_AVAILABILITY.json` (tag `v3.0.3-sr-minor-2026-09-13`). Use the exact
+case-sensitive filenames in **Companion artifacts**; the retained legacy
+filenames are not substitutes. Place verified files in `weights/` if running
+code that requires them, then check them with `shasum -a 256` against the
+recorded values.
 
 Only CCED2 normalisation and threshold JSON files are tracked in
 `weights/cced2_step127641/`. The fitted kNN/Mahalanobis models are not supplied;
@@ -209,8 +209,8 @@ manuscript from public materials alone.
 
 - **Table 1 (56-class SED):** the training code, configuration, recorded
   corrected-model identities, and aggregate results are provided, but exact
-  numerical reproduction requires the non-public 56-class dataset and any
-  future public corrected-weight release must match the recorded hashes.
+  numerical reproduction requires the non-public 56-class dataset despite
+  the public availability of the corrected encoder/head.
 - **Tables 2 and 4:** frozen source artifacts are provided. Full re-analysis
   requires the public datasets plus the exact corrected embeddings, manifests,
   and other inputs described in the artifact map.
@@ -305,7 +305,7 @@ Pre-requisites: BEATs PRETRAIN encoder (`BEATs_iter3_plus_AS2M.pt`) +
 k-means k=1024 cluster centroids on PRETRAIN BEATs patch features (use
 `scripts/dapt_extract_kmeans_labels.py`).
 
-Training of the manuscript model (identity recorded; corrected weights not yet released):
+Training of the manuscript model (corrected weights available on Hugging Face):
 - 2,042,268 non-overlapping 10-s windows (approximately 5,673 h)
 - One pass, batch size 16, `drop_last=True`: 127,641 optimiser steps and 12
   unused rows from the incomplete final batch

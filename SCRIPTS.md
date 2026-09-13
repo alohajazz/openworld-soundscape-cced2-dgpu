@@ -59,8 +59,9 @@ python scripts/verify_minor_revision_artifacts.py
 
 A full re-analysis additionally requires exact step-127,641 corrected
 embeddings aligned to the three archived HICEAS manifests and the recording
-labels. The corrected encoder/head hashes are recorded, but their public
-distribution is not yet claimed. The legacy OceanBEATs files are not substitutes.
+labels. The corrected encoder/head are distributed on Hugging Face at the
+immutable revision in `MODEL_AVAILABILITY.json`. The legacy OceanBEATs files
+are not substitutes; model availability does not supply all evaluation inputs.
 Once the required inputs are available, configure `scripts/run_table4_fixed.py`
 with `--op-dir`, `--species-dir`, `--part2-dir`, `--canon-dir`, and `--out-json`.
 Compare its FIXED stratified results against the minor-revision audit, not the

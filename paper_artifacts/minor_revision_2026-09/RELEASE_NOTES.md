@@ -1,6 +1,10 @@
 # September 2026 corrected code and aggregate-results release
 
-Tag: `v3.0.3-sr-minor-2026-09-13`
+Tag: `v3.0.4-sr-minor-2026-09-13`
+
+This follow-up changes model-availability documentation only: scientific code,
+frozen numerical outputs and the data-publication boundary are unchanged from
+`v3.0.3-sr-minor-2026-09-13`. The earlier release and tag are preserved.
 
 This release supersedes the public May 2026 analysis route with the corrected
 step-127,641 input-mask MAM implementation, window-aware analysis entrypoints,
@@ -14,12 +18,13 @@ original private analysis history is not an ancestor of this release. Aggregate
 CCED2 normalisation and threshold JSON files are included; they do not replace
 the fitted reference models needed for exact CCED2 scoring.
 
-Corrected encoder and SED-head hashes are recorded in `release_manifest.json`,
-but the files are not attached to this GitHub release. The public OceanBEATs
-Hugging Face revision `dbb29a3dfc4fe1605c9fdd87079723db12903849`, checked on
-2026-09-13, contains legacy weights, not the corrected encoder/head. A later
-model publication must identify its own immutable revision and match the
-recorded SHA-256 hashes before being used for the corrected manuscript results.
+Corrected encoder and SED-head hashes are recorded in `release_manifest.json`.
+The files are publicly available on Hugging Face, not attached to this GitHub
+release. `MODEL_AVAILABILITY.json` records the immutable model revision, tag,
+download URLs, sizes and SHA-256 values. Both files were downloaded without
+authentication from that revision and their full byte hashes verified.
+The older OceanBEATs revision `dbb29a3dfc4fe1605c9fdd87079723db12903849` and
+its two legacy weight files remain unchanged; they are not the corrected pair.
 
 Run `python scripts/verify_minor_revision_artifacts.py` for the public frozen
 artifact checks. Optional private-input checks are separately labelled;

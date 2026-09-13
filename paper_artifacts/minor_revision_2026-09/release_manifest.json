@@ -1,6 +1,6 @@
 {
-  "tag": "v3.0.3-sr-minor-2026-09-13",
-  "scope": "corrected code, aggregate results, and HICEAS recording identifiers/windows/species labels",
+  "tag": "v3.0.4-sr-minor-2026-09-13",
+  "scope": "corrected code, aggregate results, HICEAS recording identifiers/windows/species labels, and verified external model availability",
   "corrected_encoder_and_head_attached": false,
   "corrected_model_sha256": {
     "BEATs_DAPT_MAM_fixed_step127641.pt": "2a2d1d93f53ec29227bdd52da087fd0abcf0ce797c3c4a8629cd1435a314a6f9",
@@ -10,24 +10,28 @@
   "legacy_hugging_face_is_not_a_corrected_model_source": true,
   "files": {
     "MANUSCRIPT_ARTIFACT_MAP.md": {
-      "bytes": 7035,
-      "sha256": "801744143a76d6a3d6b273489354b69d4da8bb38eb0bc7d25636196d7b70ddbe"
+      "bytes": 7329,
+      "sha256": "ee0f6b2286472426f11b454f62a1483aef6fb908dde8d7d3bcbf72723b8ae11e"
     },
     "MINOR_REVISION_2026-09.md": {
       "bytes": 5545,
       "sha256": "7975140da8df0c9578b45d05d961259cc803ba8c5143ecffba3b4a3d19f52b89"
     },
+    "MODEL_AVAILABILITY.json": {
+      "bytes": 1546,
+      "sha256": "fdfc514fed753c3bf4776ddf4e8d185c8fa98ab4d8b9129256ec2ef70fd37aa2"
+    },
     "README.md": {
-      "bytes": 18212,
-      "sha256": "5528b144ba465f54b6e3aa88c7d55d2b8f722bfe002a8f497e3b334d27fa38d1"
+      "bytes": 18165,
+      "sha256": "f7837066cb832226e2a4f42e2cb4e4998706a0440d27b8f356984f59a8184f6d"
     },
     "REVISION2.md": {
       "bytes": 11901,
       "sha256": "71850977f2e82381a931dc3e443c2612755bd371346e75ca21363f64d8766a00"
     },
     "SCRIPTS.md": {
-      "bytes": 4721,
-      "sha256": "2ab84d37ecd399dc564c3047693e6be4c2d6df6e000c7feb9a2a51746b0b9390"
+      "bytes": 4796,
+      "sha256": "192d5b360f1da0aa979644496f52b9f0bbc077a623909b89e6a06d952320c2ab"
     },
     "analysis/cced2_component_overlap/README.md": {
       "bytes": 4183,
@@ -58,8 +62,8 @@
       "sha256": "2e29a3d73299af0b5d41bf1ed4febe496a1e70cfc182baab55b922d7bfe00305"
     },
     "paper_artifacts/minor_revision_2026-09/RELEASE_NOTES.md": {
-      "bytes": 1778,
-      "sha256": "327b676face78bc98a75f659e4e82dec9cceef3564ea66fd16a63b0aef6d83cc"
+      "bytes": 2084,
+      "sha256": "0c4756863c86ccf9a4bcef0a1ff52651e4fe25db833d209345b7d756ba5422da"
     },
     "paper_artifacts/minor_revision_2026-09/fig4_label_efficiency_fixed.csv": {
       "bytes": 24473,
@@ -231,6 +235,13 @@
     "corrected fitted reference pickle files",
     "window-level score/membership NPZ",
     "raw audio",
-    "corrected encoder and SED-head files (separate model distribution pending)"
-  ]
+    "encoder/head GitHub attachments (files distributed separately on Hugging Face)"
+  ],
+  "corrected_encoder_and_head_public_on_hugging_face": true,
+  "corrected_model_source": {
+    "repository": "BiologgingSolutions/OceanBEATs",
+    "revision": "1dbc3eddf973c3ce59fed607cf78b8881bb191bd",
+    "tag": "v3.0.3-sr-minor-2026-09-13",
+    "details": "MODEL_AVAILABILITY.json"
+  }
 }
