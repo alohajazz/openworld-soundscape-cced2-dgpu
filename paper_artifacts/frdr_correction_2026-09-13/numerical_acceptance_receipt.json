@@ -367,7 +367,7 @@
   ],
   "source_sha256": "ecdab153a13df43ed009856864c58d7392fd2fb57e96da6d96c96ceda3afc0b4",
   "source_identity_basis": "SHA-256 of unchanged local verify_executed_results.py sent over stdin; added to returned receipt locally because remote __file__ was <stdin>.",
-  "invocation": "ssh -o BatchMode=yes adelie-linux 'docker exec -i -e FRDR_CORRECTION_ROOT=/tmp/frdr-correction-20260913-bhn8xye3 inspiring_tharp python -u - --perch' < verify_executed_results.py > numerical_acceptance_receipt.json",
+  "invocation": "ssh -o BatchMode=yes <analysis-server> 'docker exec -i -e FRDR_CORRECTION_ROOT=/tmp/frdr-correction-20260913-bhn8xye3 <container> python -u - --perch' < verify_executed_results.py > numerical_acceptance_receipt.json",
   "perch_compatibility": {
     "status": "PASS",
     "sklearn": "1.7.0",

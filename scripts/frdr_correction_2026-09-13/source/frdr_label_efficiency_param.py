@@ -18,9 +18,8 @@ Outputs (written to OUTDIR):
   label_efficiency_agg.csv  — mean ± std aggregated over seeds
   label_efficiency.png/pdf  — recall vs N plot
 
-Run on adelie-linux Docker container `pytorch-beats`:
-  docker exec -it pytorch-beats bash -lc \
-    'python /workspace/release_repo/scripts/winaware_2026-05-09/frdr_label_efficiency.py'
+Run inside the analysis container:
+  python /workspace/release_repo/scripts/winaware_2026-05-09/frdr_label_efficiency.py
 """
 import glob
 from pathlib import Path

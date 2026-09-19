@@ -162,8 +162,8 @@
       "sha256": "440fda98bfbe02d47ad58bfead4c28f2d07b9b3002b16953709a7aabb98e689d"
     },
     "scripts/minor_revision_2026-09/frdr_label_efficiency_param.py": {
-      "bytes": 10760,
-      "sha256": "da3202e3be8c8d87f233255dd9336fa3851a46fb27d46a75b7d2b1dcaae1914c"
+      "bytes": 10694,
+      "sha256": "0361c1536dd1bae48a1db12e000afc5060990760b684fe2e8f0a7ed9557a64b3"
     },
     "scripts/minor_revision_2026-09/frdr_supervised_promoter_COPY.py": {
       "bytes": 12080,

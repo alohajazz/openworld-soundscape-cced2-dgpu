@@ -13,8 +13,8 @@ from sklearn.metrics import roc_auc_score, f1_score, precision_score, recall_sco
 CANON_DIR = "/workspace/revision1_species_canons"
 
 # PRETRAIN embeddings (旧DAPT = PRETRAIN)
-PRETRAIN_OP_EMB = "/mnt/extssd/acousticdata/externaldata/bls-sound-eval/hiceas-op/embeddings/op2s_dapt/embeddings_000.npy"
-PRETRAIN_OP_IDX = "/mnt/extssd/acousticdata/externaldata/bls-sound-eval/hiceas-op/embeddings/op2s_dapt/index_000.csv"
+PRETRAIN_OP_EMB = "/workspace/embeddings/hiceas_op_pretrain/op2s_dapt/embeddings_000.npy"
+PRETRAIN_OP_IDX = "/workspace/embeddings/hiceas_op_pretrain/op2s_dapt/index_000.csv"
 PRETRAIN_1706_EMB = "/workspace/embeddings/hiceas_1706_species/embeddings_000.npy"
 PRETRAIN_1706_IDX = "/workspace/embeddings/hiceas_1706_species/index_000.csv"
 

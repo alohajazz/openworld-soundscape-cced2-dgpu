@@ -32,6 +32,15 @@ are otherwise preserved. The nominal duration remains
 reversing the allowed edits recovers each original and exercises the relevant
 boundary behavior.
 
+## Note on release `v3.1.4`
+
+The usage note in the docstring of `source/frdr_label_efficiency_param.py` and `original/frdr_label_efficiency_param.py`
+and the `invocation` field of `numerical_acceptance_receipt.json` named the host and container of the original
+environment; these names were replaced by neutral wording or placeholders. No code line changed, and
+`regression_tests.py` and `verify_frdr_correction_package.py` pass on the distributed files. `artifact_manifest.json`
+and the release manifest list the distributed files; `execution_receipt.json` and `guarded_dry_run_receipt.json` keep
+the SHA-256 of the file as executed.
+
 ## Layout
 
 - `source/` — executed corrected sources plus the small annotation-universe helper
