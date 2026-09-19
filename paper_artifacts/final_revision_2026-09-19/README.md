@@ -23,6 +23,9 @@ embeddings. Values are in `encoder/encoder_and_embedding_diagnostics.json`.
 | Table 2, Fig. 3 | `frdr/table2/frdr_quiet_promoter_union_supervised.csv`, `frdr/fusion/fusion.csv`, `figures/Fig3.png` |
 | Table 3 | `frdr/table3/table3_interp_at_fph10.json` (recall at FP/h = 10 by linear interpolation of the sweep in `frdr/table3/all_evaluations.csv`; script `scripts/final_revision_2026-09-19/table3_interpolate_fph10.py`). `frdr/table3/frdr_table3.csv` holds the nearest evaluated points. |
 | 300-label result | `frdr/labels/label_efficiency_agg.csv` |
+| Share of labels in the 300-label result (~32%) | `frdr/labels/training_fold_event_counts.json` (script `scripts/final_revision_2026-09-19/frdr_fold_event_counts.py`) |
+| Table 1, Methods 4.6 (eight-seed means and paired differences) | `table1/summary.csv` (per-seed values written by the executed launchers), `table1/table1_seed_summary.json` (script `scripts/final_revision_2026-09-19/table1_seed_summary.py`); seed-42 detail in `paper_artifacts/minor_revision_2026-09/table1_*_s42_metrics.json`; executed launchers, trainer and evaluator in `scripts/final_revision_2026-09-19/executed/` |
+| CCED2 reference (Stage 2) | executed `dump_known56_features.py`, `cced2_utils.py` and `run_stage2_downstream_commands.sh` in `scripts/final_revision_2026-09-19/executed/` |
 | Table 4 (within-day) | `hiceas/table4_stage2.json` (`stratified`) |
 | Cross-day results, Fig. 4 | `hiceas/table4_stage2.json` (`group`), `hiceas/crossday_classifier_normalisation_grid.csv` (exploratory 3 x 3 grid), `hiceas/fig4_label_efficiency_agg.csv`, `figures/Fig4.png` |
 | Supplementary Table S3 | `hiceas/supp_table_s3_stage2_unknown_high.csv`; Perch block unchanged from `paper_artifacts/minor_revision_2026-09/supp_table_s3_perch_unknown_high.csv` |

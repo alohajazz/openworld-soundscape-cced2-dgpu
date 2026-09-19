@@ -3,10 +3,12 @@
 Frozen release for the final revision: `v3.1.0-sr-minor-2026-09-19`.
 Preceding public correction release: `v3.0.5-sr-minor-2026-09-13`.
 
-> **Final revision.** Table 1 uses the Stage 1 encoder and is unchanged. Tables 2-4, Figures 3-4, Supplementary
+> **Final revision.** Table 1 uses the Stage 1 encoder and reports the mean of eight SED-head seeds
+> (`paper_artifacts/final_revision_2026-09-19/table1/`). Tables 2-4, Figures 3-4, Supplementary
 > Tables S3-S4 and Supplementary Figures S1-S3 of the final revision use the Stage 2 encoder
 > (`BEATs_DAPT_MAM_fixed_palaoa_step6385.pt`, SHA-256 `4f7869751d7f15e3a806fb062902654597ca5566be610fedc1762c440d5c2a89`);
-> their files are listed item by item in `paper_artifacts/final_revision_2026-09-19/README.md`. The rows below keep the
+> their files are listed item by item in `paper_artifacts/final_revision_2026-09-19/README.md`. The executed Table 1 launcher, trainer and
+> evaluator and the executed CCED2-reference sources are in `scripts/final_revision_2026-09-19/executed/`. The rows below keep the
 > code paths and the reproducibility limits, which are unchanged; the Stage 1 field values they point to are
 > superseded for those items.
 The preceding `v3.0.4-sr-minor-2026-09-13` FRDR outputs remain preserved as
@@ -29,7 +31,7 @@ conceptual figures.
 |---|---|---|---|
 | Figure 1 | Conceptual schematic | None | Conceptual; not generated from numerical data |
 | Figure 2 | Conceptual schematic | None | Conceptual; not generated from numerical data |
-| Table 1 | `paper_artifacts/minor_revision_2026-09/table1_beats_as2m_s42_metrics.json`; `table1_dapt_fixed_s42_metrics.json`; exact model identities/hashes | Restricted 56-class audio, labels, splits | Aggregate values can be hash- and schema-verified. The corrected encoder/head are public on Hugging Face (see `MODEL_AVAILABILITY.json`), but exact retraining/evaluation is not independently reproducible without restricted data. |
+| Table 1 | `paper_artifacts/final_revision_2026-09-19/table1/summary.csv` (per-seed values) and `table1_seed_summary.json` (eight-seed means and paired differences); seed-42 detail in `paper_artifacts/minor_revision_2026-09/table1_beats_as2m_s42_metrics.json` and `table1_dapt_fixed_s42_metrics.json`; exact model identities/hashes | Restricted 56-class audio, labels, splits | Aggregate values can be hash- and schema-verified. The corrected encoder/head are public on Hugging Face (see `MODEL_AVAILABILITY.json`), but exact retraining/evaluation is not independently reproducible without restricted data. |
 | Table 2 | `paper_artifacts/frdr_correction_2026-09-13/results/table2/frdr_quiet_promoter_union_supervised.csv`; `results/fusion/fusion.csv` under the same correction root; executed sources in `scripts/frdr_correction_2026-09-13/source/` | Public FRDR plus exact corrected embeddings, manifest, and fixed parameters | Accepted local all-50-file correction. Quiet/Promoter select nearest 10 FP/h; Union maximum recall at FP/h ≤ 10.5; Fusion highest recall across its alpha grid after nearest-10-FP/h selection at each alpha on the 0.1-percentile grid (selected alpha=1.0). Exact embeddings/reference fits remain unavailable, so no public-input-only rerun is claimed. |
 | Table 3 | `paper_artifacts/frdr_correction_2026-09-13/results/table3/frdr_table3.csv`; `scripts/frdr_correction_2026-09-13/source/run_frdr_table3_winaware_COPY.py` | Public FRDR plus exact corrected embeddings/manifests and fitted reference inputs | Accepted local all-50-file correction. Discrete nearest-10-FP/h selector on the 0.5-percentile grid, without interpolation. It is not a generic public-input-only regeneration route. |
 | Table 4 | `paper_artifacts/minor_revision_2026-09/table4_fixed_and_submitted_audit.json` (the `FIXED` arm), `table4_fold_auc_audit.csv`, and `scripts/run_table4_fixed.py` | Public HICEAS plus the exact corrected embeddings and canon manifests | Frozen audit data can verify the reported stratified-fold means, population SDs, and record counts. The wrapper validates embedding/index alignment before calling the archived audited evaluator. Each species uses all 6,135 common available negative records, not a twice-positive negative sample. The older `paper_artifacts/table4_hiceas_canon_promoter/` CSV is not the final minor-revision table. |

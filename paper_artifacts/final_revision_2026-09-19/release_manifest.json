@@ -1,7 +1,7 @@
 {
  "paper_artifacts/final_revision_2026-09-19/README.md": {
-  "bytes": 3546,
-  "sha256": "f28ae84ce7d02a153bdae18f3d87c2ce6b0586172d09356f14c186b1956587cd"
+  "bytes": 4314,
+  "sha256": "67698d7b7aa8c63e40d5217ea9e6919c7f09573fb2b144158682e402769217b6"
  },
  "paper_artifacts/final_revision_2026-09-19/encoder/encoder_and_embedding_diagnostics.json": {
   "bytes": 1980,
@@ -62,6 +62,10 @@
  "paper_artifacts/final_revision_2026-09-19/frdr/labels/label_efficiency_agg.csv": {
   "bytes": 390,
   "sha256": "1e1655ab6e36aac42d9fa657dbc093bcb76feef6ac2b20c308a21e4d1c2be6ff"
+ },
+ "paper_artifacts/final_revision_2026-09-19/frdr/labels/training_fold_event_counts.json": {
+  "bytes": 778,
+  "sha256": "493961c0f11e175c949a373970e877b54a55e0bac22dd34ca988bf702ba00fd1"
  },
  "paper_artifacts/final_revision_2026-09-19/frdr/table2/all_evaluations.csv": {
   "bytes": 134372,
@@ -139,6 +143,14 @@
   "bytes": 164,
   "sha256": "e273ffe0aae506752c3e8efaa4600fabc0dc31c7515cdbbdf6f1a34730be0071"
  },
+ "paper_artifacts/final_revision_2026-09-19/table1/summary.csv": {
+  "bytes": 1021,
+  "sha256": "c13e1c517e9a7d4b819f923c9db236aed8c0ba77bf3c2d079beff9658dac2435"
+ },
+ "paper_artifacts/final_revision_2026-09-19/table1/table1_seed_summary.json": {
+  "bytes": 2420,
+  "sha256": "be259bfcb6296e7c88ecb416921eb2147f8923ed35ad3e62290ac6b94bdfaea6"
+ },
  "scripts/final_revision_2026-09-19/dapt_train_beats_mam_fixed_STAGE2_COPY.py": {
   "bytes": 8046,
   "sha256": "f600838afc7169e881f35e497402b8a2a979b0f1821977e364c7362034dd6244"
@@ -146,6 +158,50 @@
  "scripts/final_revision_2026-09-19/encoder_and_embedding_diagnostics.py": {
   "bytes": 3553,
   "sha256": "76f199e1d8df7f2642b4b4a7628be79e48e00ebd408421fe9c5aa4a396ae23af"
+ },
+ "scripts/final_revision_2026-09-19/executed/README.md": {
+  "bytes": 2352,
+  "sha256": "9581c22d62ea8730b5111688f5500b3a4423f755d4bcd878700d1e728f928d2c"
+ },
+ "scripts/final_revision_2026-09-19/executed/cced2_utils.py": {
+  "bytes": 8408,
+  "sha256": "de20b5d5213ca221da55b44cb157d45f415b2f57248723ce81df358c8b6f6f10"
+ },
+ "scripts/final_revision_2026-09-19/executed/dump_known56_features.py": {
+  "bytes": 11718,
+  "sha256": "acd383e2682e673afb36f278794f0fd325f4322fd0c923aa88197965c99ef2d1"
+ },
+ "scripts/final_revision_2026-09-19/executed/eval_sed_beats_report.py": {
+  "bytes": 18142,
+  "sha256": "fd2f3bb9dff5151aac0229247e143ad43f790a030a0ad49d5c18d9eb86f68e56"
+ },
+ "scripts/final_revision_2026-09-19/executed/gate40k.sh": {
+  "bytes": 1509,
+  "sha256": "db189fb6d7e478fd03cd891819b23db82bd1960f4d1ffbe0c1520f7c0b39a671"
+ },
+ "scripts/final_revision_2026-09-19/executed/run_stage2_downstream_commands.sh": {
+  "bytes": 6453,
+  "sha256": "5f6aab5157d7c8aa576a6d3b85f50ed42adda77ecf8bd256440c00f6e2344308"
+ },
+ "scripts/final_revision_2026-09-19/executed/sedgate.sh": {
+  "bytes": 2559,
+  "sha256": "b277ed1d2799dac8293cc6ac079916fdb0396f1a3daef00a59ab8589e59732b6"
+ },
+ "scripts/final_revision_2026-09-19/executed/sedgate_buggy.sh": {
+  "bytes": 2688,
+  "sha256": "eeedd470cd166249883e32c4180908be6d13516f2c705db3f266b0865fa3137d"
+ },
+ "scripts/final_revision_2026-09-19/executed/sedgate_more.sh": {
+  "bytes": 2721,
+  "sha256": "e12dfced0e8f331fcc85c7a5a1cadb5f6811536dd814921dff9c76bbfdb707bb"
+ },
+ "scripts/final_revision_2026-09-19/executed/train_sed_beats_weak_plus.py": {
+  "bytes": 21753,
+  "sha256": "4887bdcc0d22294b6cd6f5b254251a1d623cb267c4e243af1dff201061a918b8"
+ },
+ "scripts/final_revision_2026-09-19/frdr_fold_event_counts.py": {
+  "bytes": 1798,
+  "sha256": "70e1fd9f98c8771bca6943dc7ab9393bd23fb2bdc5dda2f06bdb9bec2a25ba68"
  },
  "scripts/final_revision_2026-09-19/hiceas_label_efficiency_stage2.py": {
   "bytes": 7681,
@@ -166,6 +222,10 @@
  "scripts/final_revision_2026-09-19/supp_fig_s1_ood_stage2.py": {
   "bytes": 4918,
   "sha256": "753f235934d83c8688f251234ca7b8b96e37e5e5754f6a28c84d284719d48e74"
+ },
+ "scripts/final_revision_2026-09-19/table1_seed_summary.py": {
+  "bytes": 2041,
+  "sha256": "37c14580e07a1cdf5c257649fb98de3078f34e2afb3e0682989ed712ff499529"
  },
  "scripts/final_revision_2026-09-19/table3_interpolate_fph10.py": {
   "bytes": 733,

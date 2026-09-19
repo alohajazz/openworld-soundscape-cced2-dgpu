@@ -120,7 +120,11 @@ input-mask trainer from the Stage 1 endpoint (2021 PALAOA subset; 102,168 traini
 - The corrected Stage 2 does not preserve the Stage 1 embedding space: mean cosine similarity 0.913 (minimum 0.793)
   on the 1,623 validation clips, maximum absolute weight change 0.0108. The earlier statements that Stage 2 preserves
   Stage 1, and the ten-seed Stage 1 versus Stage 2 comparison, belonged to the superseded encoders and were removed.
-- Table 1 is unchanged (Stage 1, seed 42). FRDR, HICEAS and the CCED2 reference use Stage 2.
+- Table 1 uses Stage 1 and reports the mean of eight SED-head seeds (42, 123, 777, 101, 202, 303, 404, 505):
+  Event/Clip/2-s-segment F1 = 0.478/0.746/0.499 for BEATs AS-2M and 0.493/0.739/0.523 for BEATs+DAPT. Paired
+  differences: +0.015 (event) and +0.023 (segment), positive for all eight seeds; -0.007 (clip), positive for three.
+  The seed-42 values given earlier in this file (0.483/0.784/0.506 and 0.493/0.749/0.518) are one of the eight seeds.
+  FRDR, HICEAS and the CCED2 reference use Stage 2.
 - FRDR near 10 FP/h: Quiet 0.027, Promoter 0.390, Union 0.276, Fusion 0.044. Union is below the Promoter alone
   because both thresholds are raised to keep the combined detections near 10 FP/h.
 - Table 3 reports recall at FP/h = 10 by linear interpolation of the threshold sweep, as its note states.

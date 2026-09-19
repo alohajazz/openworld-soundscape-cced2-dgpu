@@ -260,9 +260,11 @@ manuscript from public materials alone.
 ### Table 1 — SED Performance (56-class)
 
 `scripts/train_sed_beats_weak_plus.py` documents the training and evaluation
-workflow for a compatible 56-class SED head. The manuscript's seed-42 values
-are Event/Clip/2-s-segment F1 = 0.483/0.784/0.506 for BEATs AS-2M and
-0.493/0.749/0.518 for the corrected BEATs+DAPT encoder. These exact values
+workflow for a compatible 56-class SED head. The manuscript reports the mean
+of eight SED-head seeds: Event/Clip/2-s-segment F1 = 0.478/0.746/0.499 for
+BEATs AS-2M and 0.493/0.739/0.523 for the corrected BEATs+DAPT encoder
+(seed 42 alone: 0.483/0.784/0.506 and 0.493/0.749/0.518; per-seed values in
+`paper_artifacts/final_revision_2026-09-19/table1/`). These exact values
 cannot be independently regenerated from the public repository because the
 underlying clips, labels, and splits are unavailable.
 

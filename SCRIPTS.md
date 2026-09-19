@@ -83,4 +83,7 @@ older `paper_artifacts/table4_hiceas_canon_promoter/` CSV.
 | `encoder_and_embedding_diagnostics.py` | Sections 2.1, 2.3, 4.1.4, 4.2.2 | Weight changes between checkpoints and InD/OOD embedding diagnostics. |
 | `table3_interpolate_fph10.py` | Table 3 | Recall at FP/h = 10 by linear interpolation of the sweep. |
 | `make_figures_main.py`, `make_figures_supp.py` | Figures 3-4, Supplementary Figures S1-S4 | Figure generation. |
+| `frdr_fold_event_counts.py` | Abstract, Section 2.2 (~32%) | Annotated events per training fold of the FRDR label-budget analysis. |
+| `table1_seed_summary.py` | Table 1, Methods 4.6 | Eight-seed means, sample standard deviations and paired differences from `table1/summary.csv`. |
+| `executed/` | Table 1; CCED2 reference | Executed bytes of `sedgate.sh`, `sedgate_more.sh` (and `sedgate_buggy.sh`, `gate40k.sh`), `train_sed_beats_weak_plus.py`, `eval_sed_beats_report.py`, `dump_known56_features.py`, `cced2_utils.py`, and the commands of the Stage 2 driver. The same-named files elsewhere in this repository are generic versions and differ. |
 
