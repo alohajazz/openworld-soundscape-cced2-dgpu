@@ -27,7 +27,7 @@ for i, sp_name in enumerate(species_list):
     ax.axhline(0.5, color="red", linestyle="--", alpha=0.3)
     if i % 4 == 0: ax.set_ylabel("AUC (5-fold GroupKFold by day)")
 axes[-1].set_visible(False)
-fig.suptitle("HICEAS Promoter — Post-Part2 day-level label-efficiency\n(all positive recordings within selected days; cross-day GroupKFold)", y=1.02, fontsize=11)
+fig.suptitle("HICEAS Promoter — deployment-day label efficiency\n(all positive recordings within selected days; cross-day GroupKFold)", y=1.02, fontsize=11)
 fig.supxlabel("N_days = number of independent deployment-days labelled")
 fig.tight_layout()
 fig.savefig(OUT / "Fig4.png", dpi=150, bbox_inches="tight"); plt.close(fig)

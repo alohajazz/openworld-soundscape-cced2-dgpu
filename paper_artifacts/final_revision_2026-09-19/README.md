@@ -42,4 +42,4 @@ FRDR sources are the files in `scripts/frdr_correction_2026-09-13/source/` (hash
 The limits stated in `MANUSCRIPT_ARTIFACT_MAP.md` apply unchanged. The Stage 2 embeddings, the fitted CCED2 reference
 models and the window-level score arrays are not distributed, so `figures/SuppFigS1.png` and `figures/SuppFigS3.png`
 cannot be redrawn from this directory alone; Fig. 3, Fig. 4 and Supplementary Fig. S2 can
-(`scripts/final_revision_2026-09-19/make_figures_main.py`, `scripts/final_revision_2026-09-19/make_figures_supp.py`). File hashes are in `release_manifest.json`.
+(`scripts/final_revision_2026-09-19/make_figures_main.py`, `scripts/final_revision_2026-09-19/make_figures_supp.py`). File hashes are in `release_manifest.json`. The title printed on Fig. 4 was reworded in release `v3.1.2` ("deployment-day label efficiency"); the plotted values are unchanged, and the executed label-efficiency script keeps its original title string.

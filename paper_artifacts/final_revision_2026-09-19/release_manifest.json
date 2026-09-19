@@ -1,7 +1,7 @@
 {
  "paper_artifacts/final_revision_2026-09-19/README.md": {
-  "bytes": 4314,
-  "sha256": "67698d7b7aa8c63e40d5217ea9e6919c7f09573fb2b144158682e402769217b6"
+  "bytes": 4520,
+  "sha256": "15afa9f6e1a0cd05073873f440fdd07f906d270712cc11c3aa0086a8a090179d"
  },
  "paper_artifacts/final_revision_2026-09-19/encoder/encoder_and_embedding_diagnostics.json": {
   "bytes": 1980,
@@ -16,8 +16,8 @@
   "sha256": "8a6a365e7d27a869755f97d951451c1eddcbe71f0da298e082db63882caa0cf8"
  },
  "paper_artifacts/final_revision_2026-09-19/figures/Fig4.png": {
-  "bytes": 138547,
-  "sha256": "6a1d9e586cf5578bd8dc9210ceea4ebc2c03bc3633333695a7a16975028416ec"
+  "bytes": 137499,
+  "sha256": "7d9ff89d1ae1054f4f673ba40da20c36502ebc6670ec939d054e3dcf48a735d7"
  },
  "paper_artifacts/final_revision_2026-09-19/figures/SuppFigS1.png": {
   "bytes": 44695,
@@ -212,8 +212,8 @@
   "sha256": "c3a69866806e2606daed73d0b6423dbffc5e3e05ec3131455c1379ad541c7477"
  },
  "scripts/final_revision_2026-09-19/make_figures_main.py": {
-  "bytes": 4052,
-  "sha256": "c715872fbe1b1a7b804f2a68e581ecd381fce79e6973451131c1f0049345a60f"
+  "bytes": 4046,
+  "sha256": "440d0a9879e11b049008153df7c7e39e34a183f7ab0797ff011cdca080aeff0f"
  },
  "scripts/final_revision_2026-09-19/make_figures_supp.py": {
   "bytes": 5476,
