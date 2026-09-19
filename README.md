@@ -1,8 +1,8 @@
 # CCED2 and DGPU for Unknownness-aware Underwater Acoustic Monitoring
 
-This repository accompanies *"An unknownness-aware candidate-surfacing and
-promotion framework for underwater passive acoustic monitoring under
-false-alarm constraints"* (Noda et al., *Scientific Reports*, revision in
+This repository accompanies *"Discovery and promotion of unknown sounds into operational detection
+targets for underwater passive acoustic monitoring under false alarm
+constraints"* (Noda et al., *Scientific Reports*, revision in
 review).
 It provides a minimal implementation of:
 
@@ -35,8 +35,19 @@ after omissions for single-class train/test folds).
 > implement the stated masked-input objective. Both analyses are superseded.
 > The September 2026 revision uses a frozen teacher and replaces 75% of student
 > patch embeddings with a trainable mask token before transformer encoding.
-> All retained BEATs+DAPT results use the one-pass endpoint at step 127,641 and
-> the corrected window-aware extractor. See `MINOR_REVISION_2026-09.md`.
+> Table 1 uses the one-pass Stage 1 endpoint at step 127,641. The FRDR and
+> HICEAS results of the final revision use the Stage 2 endpoint (step 6,385,
+> continued on the 2021 PALAOA subset) and the corrected window-aware
+> extractor. See `MINOR_REVISION_2026-09.md`.
+
+> **Final revision (release `v3.1.0-sr-minor-2026-09-19`).** The manuscript keeps its two-stage
+> DAPT design. The field results reported in the final revision are in
+> `paper_artifacts/final_revision_2026-09-19/`, with the executed sources in `scripts/final_revision_2026-09-19/`.
+> Where the sections below describe the Stage 1 field results of release
+> `v3.0.5-sr-minor-2026-09-13`, those values are superseded for Tables 2-4,
+> Figures 3-4, Supplementary Tables S3-S4 and Supplementary Figures S1-S3.
+> Table 3 of the final revision reports recall at FP/h = 10 by linear
+> interpolation of the threshold sweep.
 
 > **FRDR correction status.** The frozen correction package at
 > `scripts/frdr_correction_2026-09-13/` completes annotations over all 50
@@ -51,6 +62,9 @@ after omissions for single-class train/test folds).
 - **Corrected BEATs+DAPT encoder**
   (`BEATs_DAPT_MAM_fixed_step127641.pt`; 361 MB) — SHA-256
   `2a2d1d93f53ec29227bdd52da087fd0abcf0ce797c3c4a8629cd1435a314a6f9`
+- **Stage 2 BEATs+DAPT encoder**
+  (`BEATs_DAPT_MAM_fixed_palaoa_step6385.pt`; 361 MB) — SHA-256
+  `4f7869751d7f15e3a806fb062902654597ca5566be610fedc1762c440d5c2a89`
 - **Matching seed-42 56-class SED head**
   (`sed_head_fixed_s42_ep7.pt`; 18 MB) —
   SHA-256 `9b2b202ab3e52b0d1efe4cd3479ee479db7646b0f42ab5b0e32f1e3ca551f119`

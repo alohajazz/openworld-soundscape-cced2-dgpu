@@ -1,0 +1,80 @@
+{
+ "stage2_ind_vs_ood": {
+  "n_ind": 1623,
+  "n_ood": 2959,
+  "dim": 768,
+  "centroid_cosine": 0.8044081753602617,
+  "l2norm_mean_ind": 2.295864376160964,
+  "l2norm_mean_ood": 2.379017126784849,
+  "dims_with_range_overlap": 768
+ },
+ "stage2_auroc": 1.0,
+ "pretrain_sets": {
+  "hiceas_ood_pretrain": {
+   "diag": {
+    "n_ind": 1623,
+    "n_ood": 2973,
+    "dim": 768,
+    "centroid_cosine": 0.8833857120977862,
+    "l2norm_mean_ind": 6.900462185598379,
+    "l2norm_mean_ood": 7.098984646896384,
+    "dims_with_range_overlap": 768
+   },
+   "auroc": 1.0,
+   "summary": {
+    "total_samples": 2973,
+    "embedding": true,
+    "logits": false,
+    "fps": 49.6,
+    "in_dim": 768,
+    "target_seconds": 10.0,
+    "shards_written": 1
+   }
+  },
+  "ood_pretrain": {
+   "diag": {
+    "n_ind": 1623,
+    "n_ood": 2959,
+    "dim": 768,
+    "centroid_cosine": 0.8843012909428432,
+    "l2norm_mean_ind": 6.900462185598379,
+    "l2norm_mean_ood": 7.0993773374396225,
+    "dims_with_range_overlap": 768
+   },
+   "auroc": 1.0,
+   "summary": {
+    "total_samples": 2959,
+    "embedding": true,
+    "logits": false,
+    "fps": 49.6,
+    "in_dim": 768,
+    "target_seconds": 10.0,
+    "shards_written": 1
+   }
+  }
+ },
+ "weights": {
+  "stage1_vs_pretrain": {
+   "tensors": 250,
+   "max_abs": 0.8575726747512817,
+   "rel_fro": 0.25657004113769916
+  },
+  "stage2_vs_stage1": {
+   "tensors": 250,
+   "max_abs": 0.010759055614471436,
+   "rel_fro": 0.013205615980476676
+  },
+  "stage2_vs_pretrain": {
+   "tensors": 250,
+   "max_abs": 0.8510768413543701,
+   "rel_fro": 0.25664540661602864
+  }
+ },
+ "sha256": {
+  "S1": "2a2d1d93f53ec29227bdd52da087fd0abcf0ce797c3c4a8629cd1435a314a6f9",
+  "S2": "4f7869751d7f15e3a806fb062902654597ca5566be610fedc1762c440d5c2a89",
+  "PRE": "d43cbfad4d7b56381c061d7a24774f908d4d94c72961f6eb1d9090ff18cd8d34",
+  "ood2_emb": "ccec559b4de659e9f871774e810b0cd2ea29f0dc03b943f0e2962bb7191f8d37",
+  "ind2_emb": "1f06fceaf622729e467d501ca805a30da8efc901917823658913dd7917a3d066"
+ }
+}

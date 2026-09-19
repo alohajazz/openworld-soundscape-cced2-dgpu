@@ -1,0 +1,72 @@
+{
+  "remote_root": "/tmp/dgpu-stage2-hiceas-20260919-in5v37l0",
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "scipy": "1.13.1",
+    "sklearn": "1.7.0"
+  },
+  "inputs": {
+    "/workspace/embeddings/op_stage2/embeddings_000.npy": "00005d2a65d21920fe4e9183d7cdd82ab2218e2c8caaf3ea9de78c5c37586d93",
+    "/workspace/embeddings/op_stage2/index_000.csv": "963b6e373ebf861de0be85c53ffc703050f9a5fcd1e359699811549b068bc94a",
+    "/workspace/embeddings/op_stage2/summary.json": "968b430f2c2d6724658fa87a788713dad6f38895adaaeb3a7cb7ad50048f4d48",
+    "/workspace/embeddings/1706species_stage2/embeddings_000.npy": "0a536f073c9e4d2bb1dfa8619e2a7ee7e459a3c9eb4750c7f611dde26151a4dd",
+    "/workspace/embeddings/1706species_stage2/index_000.csv": "fa9cee31e8d83953500ce65d9d3ef216a9a038d046058b0057e878fe08e63621",
+    "/workspace/embeddings/1706species_stage2/summary.json": "4d26d18b83db84b55429645988247d4874935452a4b7ea6cf7f8e04fe6eb6a1f",
+    "/workspace/embeddings/1706part2_stage2/embeddings_000.npy": "7463e5b9d76448fac0351bd0f2018cdc052968f6498f5b2cbf951b384a735bdf",
+    "/workspace/embeddings/1706part2_stage2/index_000.csv": "5302f6f41ccce0d018bd9c9b10ee2933d2e51afd96ce4515921d7cc569ede92c",
+    "/workspace/embeddings/1706part2_stage2/summary.json": "5ce92bd82be3a0c2f960ae7e1ddb57e2fe599e6cf53ca88c9d702d53545c71f9",
+    "/workspace/embeddings/cced2_stage2/cced2_norm.json": "cf2b824213b36967a82b3efdcd3168a93001d5b4e0a89fbe1abe4c67846cd5e1",
+    "/workspace/embeddings/cced2_stage2/knn_cced2.pkl": "8aafa560b9deab6565939caf143d6f6c1870badca18d46909dbe47ad76cf896a",
+    "/workspace/embeddings/cced2_stage2/maha_cced2.pkl": "5a10866ccbdec27a1dfce3433839ce45f407800c6544293fe6ff6814d5d36024",
+    "/workspace/scripts/revision1/groupkfold_table4_eval.py": "37e02bfc3a8999f2272754aac42f6b727684a5b80a6347d0acdb90d783c53e81",
+    "/workspace/revision1_species_canons/pos_Rough-toothed_dolphin.csv": "894b0728bf61ae22a853596c6379dfcdd45a30eff988c2f7164a80ff8b21951f",
+    "/workspace/revision1_species_canons/neg_all_silent.csv": "809c0c21aada94e18ac0f574f972e03585892e61b2e900c44700971d6c0e4781",
+    "/workspace/revision1_species_canons/pos_False_killer_whale.csv": "d73a6767dc23b8aee798019f0582bfef1018b5b1a56bf90a5c407f921ad09092",
+    "/workspace/revision1_species_canons/pos_Minke_whale.csv": "36741b707929c89ac6ea0f6a53fd64c41b54e97b825c0cc76c6c55ddbcc3ffb8",
+    "/workspace/revision1_species_canons/neg_all.csv": "d7198f50ee1388b50409e39a886070c29bb32cf14ef2937030c4c31fa5a7ccba",
+    "/workspace/revision1_species_canons/pos_Offshore_spotted_dolphin.csv": "f3016763939c283366fb406ccc35d21878481da4ea74d01a381809e6966787e3",
+    "/workspace/revision1_species_canons/pos_Sperm_whale.csv": "41a57ad6512be044ef434ee5b670d25b8fbd2a76bddba794fe06d57ef4ebe9ad",
+    "/workspace/revision1_species_canons/pos_Striped_dolphin.csv": "f6fcff2605cafcdcc5c17c5c73406c7f2d449b4e4cdb8aa49a59494f325d49b7",
+    "/workspace/revision1_species_canons/pos_Short-finned_pilot_whale.csv": "34e6918e32d9949a4becc3e4173e8cd9c790e44bd3d2a04c31ce8eda759a6e64"
+  },
+  "runs": [
+    {
+      "source": "s4.py",
+      "sha256": "c3a69866806e2606daed73d0b6423dbffc5e3e05ec3131455c1379ad541c7477",
+      "seconds": 4.480837821960449
+    },
+    {
+      "source": "labels.py",
+      "sha256": "6af56eb51d8c07fd1878bd481dfa293a00886c643bd11aaef6489d3961d07517",
+      "seconds": 159.19541120529175
+    },
+    {
+      "source": "plot4.py",
+      "sha256": "46a586ce4dd9c87454cc95657d544fd257589297a06b0ed7bf464c1c2729c2b6",
+      "seconds": 0.14420294761657715
+    }
+  ],
+  "threads": 1,
+  "outputs": {
+    "s4.py.log": "8fdbb457cff5f4b45811ea0a4edc633cdc51aa529275d71cffd30d7223763e72",
+    "labels.py.log": "08108b36e6afa968144eadd2c0a89b153585983f1effb24822a0caf1b0dbf9a4",
+    "s4.py": "c3a69866806e2606daed73d0b6423dbffc5e3e05ec3131455c1379ad541c7477",
+    "plot4.py.log": "6c7888a78fe1498eb3cb70567976584e69f73da604fc6467fff9fe65d8f4a763",
+    "plot4.py": "46a586ce4dd9c87454cc95657d544fd257589297a06b0ed7bf464c1c2729c2b6",
+    "table4.json": "ff188e96e37ac4ecea34533f340dfb483536b84aa65bbdbb6cdc0ffad989a63e",
+    "labels.py": "6af56eb51d8c07fd1878bd481dfa293a00886c643bd11aaef6489d3961d07517",
+    "fig4/Fig4_stage2.png": "e60e006979b1ed18fcb7f61b74e79d9a36e163bfa844856118e5705d76b5ea07",
+    "fig4/hiceas_label_efficiency_postpart2.pdf": "460b0661d25f03902ec30b66f7569a0387c33958260ddd5f9b30d8db35664a29",
+    "fig4/hiceas_label_efficiency_postpart2.png": "c3144098c3628667f2b7d6ed0641bab5a5d6a277bbb868713333ca51bc075288",
+    "fig4/hiceas_label_efficiency_postpart2_agg.csv": "e0f421ac62221c2d22a9102aa208e08eb8f5854fdc3d0654eb5921c7f69868ce",
+    "fig4/hiceas_label_efficiency_postpart2.csv": "7e86e2b0fb37acac5fbf5db73cb3148c5d933907319a26171ce6fb328b43544b",
+    "s4/SuppFigS3_scatter_top1pct_stage2.png": "b9b8e0be3135c92a99256a98578e4fd0eb279a0268b997234be132678d351964",
+    "s4/supp_fig_s2_s3_data_stage2.npz": "8b842000736ee82184de760a15a9ded64e4bd7186cee3270465d9e4ea7bbaf78",
+    "s4/full_overlap.json": "1109cd36ee68d1a00b6be518588a28ac2122f6e247752c4c25cf2372a4c233e3",
+    "s4/SuppFigS2_venn_top1pct_stage2.pdf": "9f05c1e7f0a2d52f94397e1377a8e5eedcd58eda99002efa00864e842e03cd0d",
+    "s4/SuppFigS2_venn_top1pct_stage2.png": "e28b967086765e6ab86eb1e7010ceb776e2920683d7a26bbc2fb03bc3ed31be1",
+    "s4/supp_fig_s2_s3_summary_stage2.json": "3b17185e30323e5e3128de13a92a6f15e1e29376d76acd8e278a0db76ae056e4",
+    "s4/SuppFigS3_scatter_top1pct_stage2.pdf": "92b9c7c71b73b5e070da8f1287f74695fc6f95f27f0848f96cb579c0b8489509"
+  }
+}

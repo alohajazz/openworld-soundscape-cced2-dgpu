@@ -70,3 +70,17 @@ Once the required inputs are available, configure `scripts/run_table4_fixed.py`
 with `--op-dir`, `--species-dir`, `--part2-dir`, `--canon-dir`, and `--out-json`.
 Compare its FIXED stratified results against the minor-revision audit, not the
 older `paper_artifacts/table4_hiceas_canon_promoter/` CSV.
+
+## Final revision (`scripts/final_revision_2026-09-19/`)
+
+| Script | Manuscript artifact | Purpose |
+|---|---|---|
+| `dapt_train_beats_mam_fixed_STAGE2_COPY.py` | Supplementary Table S1 (Stage 2) | Executed Stage 2 trainer (input masking, frozen teacher, PALAOA subset). |
+| `hiceas_table4_s4_stage2.py` | Table 4, Supplementary Table S4 | Within-day and cross-day Promoter evaluation and top-1% overlap with Stage 2 embeddings. |
+| `hiceas_label_efficiency_stage2.py` | Figure 4 | Deployment-day label-budget analysis. |
+| `unified_promoter_audit_FIXED_stage2.py` | Section 2.3 (exploratory grid) | 3 x 3 classifier/normalisation cross-day grid. |
+| `supp_fig_s1_ood_stage2.py` | Supplementary Figure S1 | Dataset-level InD/OOD CCED2 scores and AUROC. |
+| `encoder_and_embedding_diagnostics.py` | Sections 2.1, 2.3, 4.1.4, 4.2.2 | Weight changes between checkpoints and InD/OOD embedding diagnostics. |
+| `table3_interpolate_fph10.py` | Table 3 | Recall at FP/h = 10 by linear interpolation of the sweep. |
+| `make_figures_main.py`, `make_figures_supp.py` | Figures 3-4, Supplementary Figures S1-S4 | Figure generation. |
+

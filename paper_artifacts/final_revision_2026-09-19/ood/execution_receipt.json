@@ -1,0 +1,62 @@
+{
+  "remote_root": "/tmp/dgpu-stage2-s1-20260919-6nholyam",
+  "args": {
+    "beats-ind": "/workspace/embeddings/ind_val_stage2",
+    "beats-ood": "/tmp/dgpu-stage2-ood-20260919-2spn1uac/embeddings",
+    "beats-models": "/workspace/embeddings/cced2_stage2",
+    "perch-ind-a": "/workspace/embeddings/perch_known56_train",
+    "perch-ind-b": "/workspace/embeddings/perch_hiceas_pr_dev",
+    "perch-ood": "/workspace/embeddings/perch_hiceas_op2s_10s_win10",
+    "perch-models": "/workspace/embeddings/perch_ind_models"
+  },
+  "inputs": {
+    "/workspace/embeddings/ind_val_stage2/embeddings_000.npy": "1f06fceaf622729e467d501ca805a30da8efc901917823658913dd7917a3d066",
+    "/workspace/embeddings/ind_val_stage2/index_000.csv": "59f05696ebc9ec640e316b348e146bdea3bce0b8d65bfecb59a1e82e2fcb3a89",
+    "/workspace/embeddings/ind_val_stage2/summary.json": "7c686cd6c4036913281dd81598e728b5ef3b548e1ac5531662612f3ce419a3fe",
+    "/tmp/dgpu-stage2-ood-20260919-2spn1uac/embeddings/embeddings_000.npy": "ccec559b4de659e9f871774e810b0cd2ea29f0dc03b943f0e2962bb7191f8d37",
+    "/tmp/dgpu-stage2-ood-20260919-2spn1uac/embeddings/index_000.csv": "9f2945ac59394c2ca5a471acc809450bc879428ab0fa146643c675b51a0b0c2c",
+    "/tmp/dgpu-stage2-ood-20260919-2spn1uac/embeddings/summary.json": "8cade51010dae2a5a2de78f8783729d75584bebd86391d81d0b1c18d88f5d181",
+    "/workspace/embeddings/cced2_stage2/cced2_norm.json": "cf2b824213b36967a82b3efdcd3168a93001d5b4e0a89fbe1abe4c67846cd5e1",
+    "/workspace/embeddings/cced2_stage2/knn_cced2.pkl": "8aafa560b9deab6565939caf143d6f6c1870badca18d46909dbe47ad76cf896a",
+    "/workspace/embeddings/cced2_stage2/maha_cced2.pkl": "5a10866ccbdec27a1dfce3433839ce45f407800c6544293fe6ff6814d5d36024",
+    "/workspace/embeddings/perch_known56_train/embeddings_000.npy": "31e1b72c402de27c42933d9222745af5a4e911cd0cd4d995be463627481b9568",
+    "/workspace/embeddings/perch_known56_train/index_000.csv": "686db57dd25cefd4b44b5c876457c7255b1074d2a38c08c822cbbc24ff304d88",
+    "/workspace/embeddings/perch_known56_train/summary.json": "207b820d9d6a5fbd3ae0a3d698165b20c4069eda6f1bed076d68873f11ada1fc",
+    "/workspace/embeddings/perch_hiceas_pr_dev/embeddings_000.npy": "79cc3cbe51706024b0570ba77b6f1a99888482d502c2855f220971b699d578fd",
+    "/workspace/embeddings/perch_hiceas_pr_dev/index_000.csv": "654c36389123df61dcf778893cae4945a3adcb551d2ae35e8d7fe2357d32fb89",
+    "/workspace/embeddings/perch_hiceas_pr_dev/summary.json": "dedb4231c407cf9aa8b8284ce45dd1a57a715b8baf780fae8bab359353b3eb2b",
+    "/workspace/embeddings/perch_hiceas_op2s_10s_win10/embeddings_000.npy": "a725f7a59a3b1007aeaef75511fcc9dcc74aea22f514cad77bb37659e656d13c",
+    "/workspace/embeddings/perch_hiceas_op2s_10s_win10/index_000.csv": "77a59fe6f8ba8a3cfd7ff5f9896e88e8a150cd67bcd5ebaac9ee3c306229095f",
+    "/workspace/embeddings/perch_hiceas_op2s_10s_win10/summary.json": "a366c59a96689937f689326018c9c9897e8170d0321b2d83a40376b61ad3cce7",
+    "/workspace/embeddings/perch_ind_models/cced2_norm_perch.json": "7d82b41452d35d3a02553ece622702296129fc02ae89e88c412e80869ce04581",
+    "/workspace/embeddings/perch_ind_models/dclde_table_perch.csv": "2f8e5c93b9ff300f5876988c6b03ac52440bdf580a6f62c4c84c3d6652ef05a9",
+    "/workspace/embeddings/perch_ind_models/frdr_table5_perch.csv": "94755d71b10a5c223314c056d211929ea4426f47ac0d60f02e88f24078e8dcd6",
+    "/workspace/embeddings/perch_ind_models/frdr_table5_perch_events.csv": "b1a653dbf637b2e51df70f8c93e81f1965ea77f366820a8682cf2961740d0c42",
+    "/workspace/embeddings/perch_ind_models/frdr_table5_perch_events_FP10.csv": "d56f438f728e9e03945f08aed6c04a3612fd46f42a677f5bc950bd0a5720e10b",
+    "/workspace/embeddings/perch_ind_models/ind_comp_knn.npy": "a72f39ac880d04e9df9fc22ebaf578b08e95c32ddae69cbfaf723bc1dc1ef05a",
+    "/workspace/embeddings/perch_ind_models/ind_comp_maha.npy": "d79e28927eb77e21495c354c40caaeccb48832fbfc64c72339c8478c09d92524",
+    "/workspace/embeddings/perch_ind_models/knn_perch.pkl": "c41517444d2b0043efc2709297ff5da32efc2de6288ed974a83aebf8d8d0ff54",
+    "/workspace/embeddings/perch_ind_models/maha_perch.pkl": "3183673a1e2f4216c62383832554ba4da6c1eabca6ae5627703e0e3942eaa4d6"
+  },
+  "source_sha256": "753f235934d83c8688f251234ca7b8b96e37e5e5754f6a28c84d284719d48e74",
+  "summary": {
+    "beats": {
+      "n_ind": 1623,
+      "n_ood": 2959,
+      "auroc": 1.0
+    },
+    "perch": {
+      "n_ind": 6781,
+      "n_ood": 54419,
+      "auroc": 0.8614837258794072
+    }
+  },
+  "outputs": {
+    "s1.py": "753f235934d83c8688f251234ca7b8b96e37e5e5754f6a28c84d284719d48e74",
+    "run.log": "4158163b02bac47b7d72a6847a1a224226c205a6af5fddee0cf3a806958ae770",
+    "results/SuppFigS1_dataset_ood_stage2.pdf": "6777bf03c8090a31225deed9ca4339943895ca0a8d798ca3df55636d076328f8",
+    "results/supp_fig_s1_summary_stage2.json": "e273ffe0aae506752c3e8efaa4600fabc0dc31c7515cdbbdf6f1a34730be0071",
+    "results/supp_fig_s1_scores_stage2.npz": "0e60840ff079a3df5a91035e592f1031eb745b560ccc114e6ef3aa3196307f7c",
+    "results/SuppFigS1_dataset_ood_stage2.png": "302f779c25644dac17441e782b12c28039addf2189117200e52a58f4f01a6a6e"
+  }
+}

@@ -20,5 +20,13 @@
   },
   "legacy_revision": "dbb29a3dfc4fe1605c9fdd87079723db12903849",
   "legacy_models_preserved": true,
-  "data_limits_unchanged": "Restricted 56-class data and individual reference embeddings, corrected fitted CCED2 pickle files and window-level score arrays remain unavailable in this release. No complete public retraining or evaluation claim is made."
+  "data_limits_unchanged": "Restricted 56-class data and individual reference embeddings, corrected fitted CCED2 pickle files and window-level score arrays remain unavailable in this release. No complete public retraining or evaluation claim is made.",
+  "final_revision_stage2_encoder": {
+    "file": "BEATs_DAPT_MAM_fixed_palaoa_step6385.pt",
+    "bytes": 361346274,
+    "sha256": "4f7869751d7f15e3a806fb062902654597ca5566be610fedc1762c440d5c2a89",
+    "huggingface_tag": "v3.1.0-sr-minor-2026-09-19",
+    "url": "https://huggingface.co/BiologgingSolutions/OceanBEATs/resolve/v3.1.0-sr-minor-2026-09-19/BEATs_DAPT_MAM_fixed_palaoa_step6385.pt",
+    "used_for": "FRDR and HICEAS analyses and their CCED2 reference in the final revision"
+  }
 }

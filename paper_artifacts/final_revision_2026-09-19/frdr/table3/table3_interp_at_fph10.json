@@ -1,0 +1,8 @@
+{
+ "OceanBEATs_stage2|CCED2_z": 0.0265,
+ "OceanBEATs_stage2|Mahalanobis_z": 0.0267,
+ "OceanBEATs_stage2|kNN_z": 0.0323,
+ "Perch 2.0|CCED2_z": 0.0719,
+ "Perch 2.0|Mahalanobis_z": 0.0654,
+ "Perch 2.0|kNN_z": 0.0778
+}

@@ -1,0 +1,848 @@
+{
+  "cpu_only": true,
+  "embeddings": {
+    "1706part2_stage2": {
+      "dim": 768,
+      "rows": 173160,
+      "shards": 1
+    },
+    "1706species_stage2": {
+      "dim": 768,
+      "rows": 87407,
+      "shards": 1
+    },
+    "frdr_stage2": {
+      "dim": 768,
+      "rows": 44900,
+      "shards": 1
+    },
+    "ind_val_stage2": {
+      "dim": 768,
+      "rows": 1623,
+      "shards": 1
+    },
+    "op_stage2": {
+      "dim": 768,
+      "rows": 54419,
+      "shards": 1
+    },
+    "perch_frdr_hop2s": {
+      "dim": 1536,
+      "rows": 44900,
+      "shards": 1
+    }
+  },
+  "frdr_manifest": {
+    "annotation_files": 44,
+    "annotations": 1157,
+    "files": 50,
+    "rows": 44900
+  },
+  "inputs": {
+    "/workspace/data/externaldata/bls-sound-eval/hiceas/metadata_DCLDE2020 DetectionData.xlsx": "ab8d868a0ba0c9f9485bf46f5d6c12d98cfba4ef405680c3b5ecbb4c6e43895c",
+    "/workspace/data/externaldata/frdr_upcall/manifests/frdr_B_continuous_hop2s.csv": "24bec7897693d8e49ebd5ffe458145c8c497249e58234e2b6112241484528de6",
+    "/workspace/data/externaldata/frdr_upcall/raw/data/continuous/dataset_B/annotations_B_cont.csv": "accbda6c59a48c5fd45b72c7687c318d67f103adf0780b4e990ada710b9fb1ba",
+    "/workspace/embeddings/1706part2_stage2/embeddings_000.npy": "7463e5b9d76448fac0351bd0f2018cdc052968f6498f5b2cbf951b384a735bdf",
+    "/workspace/embeddings/1706species_stage2/embeddings_000.npy": "0a536f073c9e4d2bb1dfa8619e2a7ee7e459a3c9eb4750c7f611dde26151a4dd",
+    "/workspace/embeddings/1706species_stage2/index_000.csv": "fa9cee31e8d83953500ce65d9d3ef216a9a038d046058b0057e878fe08e63621",
+    "/workspace/embeddings/cced2_stage2/cced2_norm.json": "cf2b824213b36967a82b3efdcd3168a93001d5b4e0a89fbe1abe4c67846cd5e1",
+    "/workspace/embeddings/cced2_stage2/knn_cced2.pkl": "8aafa560b9deab6565939caf143d6f6c1870badca18d46909dbe47ad76cf896a",
+    "/workspace/embeddings/cced2_stage2/maha_cced2.pkl": "5a10866ccbdec27a1dfce3433839ce45f407800c6544293fe6ff6814d5d36024",
+    "/workspace/embeddings/frdr_stage2/embeddings_000.npy": "062fce5580457ed36c1b45ce436562d4152a7fdbca207ca1e7aa83c07885dfd6",
+    "/workspace/embeddings/frdr_stage2/index_000.csv": "4c497e08e5e5907230987de790a725a548113d762c7fa2a8c4b0b93539c7d956",
+    "/workspace/embeddings/ind_val_stage2/embeddings_000.npy": "1f06fceaf622729e467d501ca805a30da8efc901917823658913dd7917a3d066",
+    "/workspace/embeddings/op_stage2/embeddings_000.npy": "00005d2a65d21920fe4e9183d7cdd82ab2218e2c8caaf3ea9de78c5c37586d93",
+    "/workspace/embeddings/op_stage2/index_000.csv": "963b6e373ebf861de0be85c53ffc703050f9a5fcd1e359699811549b068bc94a",
+    "/workspace/embeddings/perch_frdr_hop2s/embeddings_000.npy": "c76ca7e11fe38ee1686d993cb5c6bbdc8006602da002d10bfcc12b320c03ca00",
+    "/workspace/embeddings/perch_frdr_hop2s/index_000.csv": "ad8cb71ea41414cdc0697d67bd8e5611bb4ae9bf0dc28e18ce86f485a7716242",
+    "/workspace/embeddings/perch_ind_models/cced2_norm_perch.json": "7d82b41452d35d3a02553ece622702296129fc02ae89e88c412e80869ce04581",
+    "/workspace/embeddings/perch_ind_models/knn_perch.pkl": "c41517444d2b0043efc2709297ff5da32efc2de6288ed974a83aebf8d8d0ff54",
+    "/workspace/embeddings/perch_ind_models/maha_perch.pkl": "3183673a1e2f4216c62383832554ba4da6c1eabca6ae5627703e0e3942eaa4d6",
+    "/workspace/hiceas_1706_species_manifest_winsafe.csv": "68a189a51b6a647b58bd0b894c42b30e3d9f7830b01c4c04cf8a11e7ae65d48c",
+    "/workspace/hiceas_op_manifest_winaware.csv": "a18083db44dee225881173f8bad15f8c6c38cd7c8b10f451de9fa7c66d117b11"
+  },
+  "outputs_sha256": {
+    "logs/fusion.log": "be0d94e94fc0b0927d5f104d31610536bc7159b1a9e7d7308d03271127d2c589",
+    "logs/labels.log": "5fec64144c2f56d2bd1297e8d0bad1d2f533e28478f1dccee5750ddff41768a9",
+    "logs/s3_unknown_high.log": "5aa68170a96e1b5a018508943acf0382fb1e5c4707bd57bdafe816cf5b31a53f",
+    "logs/table2.log": "d69b2deccecd49434e39deb323b1f30e562f97a0bce187ff77e89da30b529b2b",
+    "logs/table3.log": "943b87a97a55068698ade149778a4bed2f4c560bdd054360cdd062cbf5597b29",
+    "results/fusion/all_evaluations.csv": "6c502b15cef16a506a302707138a4be2a1934aa113df287b73b9672bc42b84c1",
+    "results/fusion/fusion.csv": "81177c3bfcdae4a91ccfe43daefc2633c65cf5b3081bf42c16841bc4633a4b70",
+    "results/labels/all_evaluations.csv": "06ca61766a11b9b87bd47b8a06f67411b842af437fd2d568a00868e8d9f250eb",
+    "results/labels/label_efficiency.csv": "8ea4bb372c7f45520e0ae7a773abb7a0d498d766d74f414e520a0122b5203713",
+    "results/labels/label_efficiency.pdf": "777217be0aea1ca2235f92236f530e1600e68b232019eb2bb78a18feed2d53a6",
+    "results/labels/label_efficiency.png": "3496e66e6cadd7172d2dd70d4f6321e04f8a3b712884b900328d5cde2abd7b25",
+    "results/labels/label_efficiency_agg.csv": "1e1655ab6e36aac42d9fa657dbc093bcb76feef6ac2b20c308a21e4d1c2be6ff",
+    "results/s3/s3_stage2_unknown_high.csv": "d2da075223efaa52fbe2c47235c2a02af551d77870317c9cecb4ebc4ca429d3e",
+    "results/table2/all_evaluations.csv": "84bc2983b0d4ab4483e0541cc4726d7f0b6a5124b4454e8e23340521bd31cbdf",
+    "results/table2/fig3_frdr_supervised.pdf": "378905db43d464f8b37ee555ae223853e3b4e673227d88b732e520739999ed17",
+    "results/table2/fig3_frdr_supervised.png": "36464b196c86e2fb1209392c7530d4debb6b973e0558843aebd3658ebab804bf",
+    "results/table2/frdr_quiet_promoter_union_supervised.csv": "1cb53d2e110e069087bba7434544e8ec95d2fe6f8135fbcc543c4e6e9360bfc5",
+    "results/table2/promoter_sweep.csv": "ab9c69d8356bd77a23a7cd5b0d2bd4e298d1dac060ace27d44585bef4f2d394c",
+    "results/table2/quiet_sweep.csv": "658a2c4777cf7727ce15d8e0bd02f51250bb5f0a3178d332108781df7b5ed43d",
+    "results/table2/union_sweep.csv": "b099c22ef0d71079154d355da6baaf5ca62be37a94fd54af05af8aba4cbfd795",
+    "results/table3/all_evaluations.csv": "ec3527ec0b0d13a54ced22681f9171595e2ccba73be46e4d6ee9b502b8ee545e",
+    "results/table3/frdr_table3.csv": "dcbd0e583a64ae80eab9ba03bb84ee527ace6e3a755b5a683d8dd1522c0bf29b"
+  },
+  "python": "3.12.10",
+  "regression_tests": [
+    "annotation outside manifest fails closed",
+    "frdr_label_efficiency_param.py: empty-file FP, TP/FN, all-annotated equivalence, event boundaries, helpers unchanged",
+    "frdr_supervised_promoter_COPY.py: empty-file FP, TP/FN, all-annotated equivalence, event boundaries, helpers unchanged",
+    "run_frdr_table3_winaware_COPY.py: empty-file FP, TP/FN, all-annotated equivalence, event boundaries, helpers unchanged",
+    "run_fusion_winaware_COPY.py: empty-file FP, TP/FN, all-annotated equivalence, event boundaries, helpers unchanged"
+  ],
+  "remote_root": "/tmp/stage2-restoration-20260919-tqlpvl9y",
+  "run_id": "stage2-restoration-20260919-tqlpvl9y",
+  "runs": [
+    {
+      "elapsed_seconds": 20.513347148895264,
+      "evaluation_calls": 940,
+      "fit_iterations": [
+        {
+          "n_iter": [
+            91
+          ]
+        },
+        {
+          "n_iter": [
+            98
+          ]
+        },
+        {
+          "n_iter": [
+            84
+          ]
+        },
+        {
+          "n_iter": [
+            114
+          ]
+        },
+        {
+          "n_iter": [
+            100
+          ]
+        }
+      ],
+      "source_sha256": "b4523fe6945a32cdd90a4895a51d3d638536a1cfc8f99b4b28eacad20ca9cf2a",
+      "tag": "table2",
+      "warnings": [
+        "unclosed file <_io.TextIOWrapper name='/workspace/embeddings/cced2_stage2/cced2_norm.json' mode='r' encoding='UTF-8'>"
+      ]
+    },
+    {
+      "elapsed_seconds": 24.9069344997406,
+      "evaluation_calls": 600,
+      "fit_iterations": [],
+      "source_sha256": "5ba45063731f2ebacd5f0b0528ffaaaca5135a100ccf5c544a5b7a68e290c3f7",
+      "tag": "table3",
+      "warnings": [
+        "unclosed file <_io.TextIOWrapper name='/workspace/embeddings/cced2_stage2/cced2_norm.json' mode='r' encoding='UTF-8'>",
+        "Trying to unpickle estimator NearestNeighbors from version 1.7.2 when using version 1.7.0. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:\nhttps://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations",
+        "unclosed file <_io.TextIOWrapper name='/workspace/embeddings/perch_ind_models/cced2_norm_perch.json' mode='r' encoding='UTF-8'>"
+      ]
+    },
+    {
+      "elapsed_seconds": 15.609407424926758,
+      "evaluation_calls": 3300,
+      "fit_iterations": [],
+      "source_sha256": "3a0a2cd8cd5e9198d562bad936e2c431ccfe83c18d6fa52fe1e920c1664a74c3",
+      "tag": "fusion",
+      "warnings": [
+        "unclosed file <_io.TextIOWrapper name='/workspace/embeddings/cced2_stage2/cced2_norm.json' mode='r' encoding='UTF-8'>"
+      ]
+    },
+    {
+      "elapsed_seconds": 177.90065097808838,
+      "evaluation_calls": 2600,
+      "fit_iterations": [
+        {
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "n_iter": [
+            13
+          ]
+        },
+        {
+          "n_iter": [
+            20
+          ]
+        },
+        {
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "n_iter": [
+            17
+          ]
+        },
+        {
+          "n_iter": [
+            17
+          ]
+        },
+        {
+          "n_iter": [
+            17
+          ]
+        },
+        {
+          "n_iter": [
+            12
+          ]
+        },
+        {
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "n_iter": [
+            19
+          ]
+        },
+        {
+          "n_iter": [
+            18
+          ]
+        },
+        {
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "n_iter": [
+            13
+          ]
+        },
+        {
+          "n_iter": [
+            16
+          ]
+        },
+        {
+          "n_iter": [
+            19
+          ]
+        },
+        {
+          "n_iter": [
+            22
+          ]
+        },
+        {
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "n_iter": [
+            15
+          ]
+        },
+        {
+          "n_iter": [
+            14
+          ]
+        },
+        {
+          "n_iter": [
+            18
+          ]
+        },
+        {
+          "n_iter": [
+            18
+          ]
+        },
+        {
+          "n_iter": [
+            29
+          ]
+        },
+        {
+          "n_iter": [
+            18
+          ]
+        },
+        {
+          "n_iter": [
+            24
+          ]
+        },
+        {
+          "n_iter": [
+            20
+          ]
+        },
+        {
+          "n_iter": [
+            22
+          ]
+        },
+        {
+          "n_iter": [
+            25
+          ]
+        },
+        {
+          "n_iter": [
+            21
+          ]
+        },
+        {
+          "n_iter": [
+            21
+          ]
+        },
+        {
+          "n_iter": [
+            21
+          ]
+        },
+        {
+          "n_iter": [
+            24
+          ]
+        },
+        {
+          "n_iter": [
+            21
+          ]
+        },
+        {
+          "n_iter": [
+            23
+          ]
+        },
+        {
+          "n_iter": [
+            20
+          ]
+        },
+        {
+          "n_iter": [
+            18
+          ]
+        },
+        {
+          "n_iter": [
+            26
+          ]
+        },
+        {
+          "n_iter": [
+            25
+          ]
+        },
+        {
+          "n_iter": [
+            25
+          ]
+        },
+        {
+          "n_iter": [
+            21
+          ]
+        },
+        {
+          "n_iter": [
+            28
+          ]
+        },
+        {
+          "n_iter": [
+            26
+          ]
+        },
+        {
+          "n_iter": [
+            28
+          ]
+        },
+        {
+          "n_iter": [
+            26
+          ]
+        },
+        {
+          "n_iter": [
+            19
+          ]
+        },
+        {
+          "n_iter": [
+            24
+          ]
+        },
+        {
+          "n_iter": [
+            24
+          ]
+        },
+        {
+          "n_iter": [
+            41
+          ]
+        },
+        {
+          "n_iter": [
+            32
+          ]
+        },
+        {
+          "n_iter": [
+            43
+          ]
+        },
+        {
+          "n_iter": [
+            34
+          ]
+        },
+        {
+          "n_iter": [
+            34
+          ]
+        },
+        {
+          "n_iter": [
+            34
+          ]
+        },
+        {
+          "n_iter": [
+            43
+          ]
+        },
+        {
+          "n_iter": [
+            29
+          ]
+        },
+        {
+          "n_iter": [
+            41
+          ]
+        },
+        {
+          "n_iter": [
+            32
+          ]
+        },
+        {
+          "n_iter": [
+            35
+          ]
+        },
+        {
+          "n_iter": [
+            44
+          ]
+        },
+        {
+          "n_iter": [
+            43
+          ]
+        },
+        {
+          "n_iter": [
+            29
+          ]
+        },
+        {
+          "n_iter": [
+            40
+          ]
+        },
+        {
+          "n_iter": [
+            37
+          ]
+        },
+        {
+          "n_iter": [
+            38
+          ]
+        },
+        {
+          "n_iter": [
+            31
+          ]
+        },
+        {
+          "n_iter": [
+            39
+          ]
+        },
+        {
+          "n_iter": [
+            31
+          ]
+        },
+        {
+          "n_iter": [
+            30
+          ]
+        },
+        {
+          "n_iter": [
+            40
+          ]
+        },
+        {
+          "n_iter": [
+            46
+          ]
+        },
+        {
+          "n_iter": [
+            37
+          ]
+        },
+        {
+          "n_iter": [
+            41
+          ]
+        },
+        {
+          "n_iter": [
+            72
+          ]
+        },
+        {
+          "n_iter": [
+            61
+          ]
+        },
+        {
+          "n_iter": [
+            64
+          ]
+        },
+        {
+          "n_iter": [
+            54
+          ]
+        },
+        {
+          "n_iter": [
+            61
+          ]
+        },
+        {
+          "n_iter": [
+            68
+          ]
+        },
+        {
+          "n_iter": [
+            69
+          ]
+        },
+        {
+          "n_iter": [
+            62
+          ]
+        },
+        {
+          "n_iter": [
+            51
+          ]
+        },
+        {
+          "n_iter": [
+            64
+          ]
+        },
+        {
+          "n_iter": [
+            65
+          ]
+        },
+        {
+          "n_iter": [
+            70
+          ]
+        },
+        {
+          "n_iter": [
+            58
+          ]
+        },
+        {
+          "n_iter": [
+            55
+          ]
+        },
+        {
+          "n_iter": [
+            60
+          ]
+        },
+        {
+          "n_iter": [
+            58
+          ]
+        },
+        {
+          "n_iter": [
+            66
+          ]
+        },
+        {
+          "n_iter": [
+            50
+          ]
+        },
+        {
+          "n_iter": [
+            66
+          ]
+        },
+        {
+          "n_iter": [
+            71
+          ]
+        },
+        {
+          "n_iter": [
+            66
+          ]
+        },
+        {
+          "n_iter": [
+            66
+          ]
+        },
+        {
+          "n_iter": [
+            62
+          ]
+        },
+        {
+          "n_iter": [
+            54
+          ]
+        },
+        {
+          "n_iter": [
+            55
+          ]
+        },
+        {
+          "n_iter": [
+            91
+          ]
+        },
+        {
+          "n_iter": [
+            98
+          ]
+        },
+        {
+          "n_iter": [
+            84
+          ]
+        },
+        {
+          "n_iter": [
+            114
+          ]
+        },
+        {
+          "n_iter": [
+            100
+          ]
+        },
+        {
+          "n_iter": [
+            91
+          ]
+        },
+        {
+          "n_iter": [
+            98
+          ]
+        },
+        {
+          "n_iter": [
+            84
+          ]
+        },
+        {
+          "n_iter": [
+            114
+          ]
+        },
+        {
+          "n_iter": [
+            100
+          ]
+        },
+        {
+          "n_iter": [
+            91
+          ]
+        },
+        {
+          "n_iter": [
+            98
+          ]
+        },
+        {
+          "n_iter": [
+            84
+          ]
+        },
+        {
+          "n_iter": [
+            114
+          ]
+        },
+        {
+          "n_iter": [
+            100
+          ]
+        },
+        {
+          "n_iter": [
+            91
+          ]
+        },
+        {
+          "n_iter": [
+            98
+          ]
+        },
+        {
+          "n_iter": [
+            84
+          ]
+        },
+        {
+          "n_iter": [
+            114
+          ]
+        },
+        {
+          "n_iter": [
+            100
+          ]
+        },
+        {
+          "n_iter": [
+            91
+          ]
+        },
+        {
+          "n_iter": [
+            98
+          ]
+        },
+        {
+          "n_iter": [
+            84
+          ]
+        },
+        {
+          "n_iter": [
+            114
+          ]
+        },
+        {
+          "n_iter": [
+            100
+          ]
+        },
+        {
+          "n_iter": [
+            91
+          ]
+        },
+        {
+          "n_iter": [
+            98
+          ]
+        },
+        {
+          "n_iter": [
+            84
+          ]
+        },
+        {
+          "n_iter": [
+            114
+          ]
+        },
+        {
+          "n_iter": [
+            100
+          ]
+        }
+      ],
+      "source_sha256": "1c12a3ad1bc9a5385632d33964d28a444f174538537a966c364ba3edc1556958",
+      "tag": "labels",
+      "warnings": []
+    },
+    {
+      "elapsed_seconds": 49.38701057434082,
+      "evaluation_calls": 0,
+      "fit_iterations": [],
+      "source_sha256": "4e381beea9fb9b0aa5550226670c0e6172bc1c6eab1d295caadaaeae22a616c9",
+      "tag": "s3_unknown_high",
+      "warnings": [
+        "datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).",
+        "datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).",
+        "unclosed file <_io.TextIOWrapper name='/workspace/embeddings/cced2_stage2/cced2_norm.json' mode='r' encoding='UTF-8'>"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "frdr_file_universe.py": "4067f8f520ea73a1a8b7860ece59779e7edb02e418cdba6319b58d1f3c2821d9",
+    "frdr_label_efficiency_param.py": "1c12a3ad1bc9a5385632d33964d28a444f174538537a966c364ba3edc1556958",
+    "frdr_supervised_promoter_COPY.py": "b4523fe6945a32cdd90a4895a51d3d638536a1cfc8f99b4b28eacad20ca9cf2a",
+    "run_frdr_table3_winaware_COPY.py": "5ba45063731f2ebacd5f0b0528ffaaaca5135a100ccf5c544a5b7a68e290c3f7",
+    "run_fusion_winaware_COPY.py": "3a0a2cd8cd5e9198d562bad936e2c431ccfe83c18d6fa52fe1e920c1664a74c3",
+    "supp_s3_7sp_minor_revision.py": "4e381beea9fb9b0aa5550226670c0e6172bc1c6eab1d295caadaaeae22a616c9"
+  },
+  "stage2": {
+    "checkpoint": "/workspace/ckpts_dapt_mam_fixed_palaoa/BEATs_DAPT_MAM_fixed_palaoa_step6385.pt",
+    "sha256": "4f7869751d7f15e3a806fb062902654597ca5566be610fedc1762c440d5c2a89"
+  },
+  "threads": 1,
+  "versions": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "scipy": "1.13.1",
+    "sklearn": "1.7.0"
+  }
+}

@@ -1,0 +1,219 @@
+[
+  {
+    "species": "Minke whale",
+    "stratified": {
+      "n_pos": 1094,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.9915363163119671,
+      "auc_std": 0.000965651292018839,
+      "f1_mean": 0.8762568131137133,
+      "f1_std": 0.00988095875459057,
+      "p_mean": 0.8444154864412496,
+      "r_mean": 0.9113401198106489,
+      "n_folds_used": 5,
+      "median_train_groups": 65,
+      "median_test_groups": 55
+    },
+    "group": {
+      "n_pos": 1094,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.9709150009053309,
+      "auc_std": 0.02338325949670829,
+      "f1_mean": 0.7873839875873816,
+      "f1_std": 0.03307427263544268,
+      "p_mean": 0.7895742249602544,
+      "r_mean": 0.8078802915842792,
+      "n_folds_used": 4,
+      "median_train_groups": 52,
+      "median_test_groups": 13
+    }
+  },
+  {
+    "species": "Sperm whale",
+    "stratified": {
+      "n_pos": 1968,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.9243049604619973,
+      "auc_std": 0.004686401610356065,
+      "f1_mean": 0.6798242024221622,
+      "f1_std": 0.005315218957387785,
+      "p_mean": 0.8129238469627575,
+      "r_mean": 0.584349207579339,
+      "n_folds_used": 5,
+      "median_train_groups": 66,
+      "median_test_groups": 55
+    },
+    "group": {
+      "n_pos": 1968,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.724154622816327,
+      "auc_std": 0.14338864596957185,
+      "f1_mean": 0.43626265438186423,
+      "f1_std": 0.16322259992881613,
+      "p_mean": 0.6631066600332258,
+      "r_mean": 0.3430238391267636,
+      "n_folds_used": 5,
+      "median_train_groups": 53,
+      "median_test_groups": 13
+    }
+  },
+  {
+    "species": "False killer whale",
+    "stratified": {
+      "n_pos": 1442,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.9862875192664597,
+      "auc_std": 0.0020880495625139957,
+      "f1_mean": 0.867051732396393,
+      "f1_std": 0.01268162693207934,
+      "p_mean": 0.9293850399225857,
+      "r_mean": 0.8127715301806997,
+      "n_folds_used": 5,
+      "median_train_groups": 65,
+      "median_test_groups": 55
+    },
+    "group": {
+      "n_pos": 1442,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.8806982462402928,
+      "auc_std": 0.14845994154293765,
+      "f1_mean": 0.6436154704595463,
+      "f1_std": 0.26433534324696223,
+      "p_mean": 0.7961821880804795,
+      "r_mean": 0.5852168974353423,
+      "n_folds_used": 5,
+      "median_train_groups": 52,
+      "median_test_groups": 14
+    }
+  },
+  {
+    "species": "Short-finned pilot whale",
+    "stratified": {
+      "n_pos": 1054,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.9619985480528476,
+      "auc_std": 0.0027561077195626957,
+      "f1_mean": 0.7116982607221181,
+      "f1_std": 0.028201449668101022,
+      "p_mean": 0.8649033546394209,
+      "r_mean": 0.6052854886030241,
+      "n_folds_used": 5,
+      "median_train_groups": 65,
+      "median_test_groups": 55
+    },
+    "group": {
+      "n_pos": 1054,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.7984599442011013,
+      "auc_std": 0.09875978135570222,
+      "f1_mean": 0.37002519898711694,
+      "f1_std": 0.19009986734591305,
+      "p_mean": 0.5690519823366149,
+      "r_mean": 0.3166427517499441,
+      "n_folds_used": 5,
+      "median_train_groups": 53,
+      "median_test_groups": 13
+    }
+  },
+  {
+    "species": "Rough-toothed dolphin",
+    "stratified": {
+      "n_pos": 246,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.9856028474959666,
+      "auc_std": 0.0051192510348053765,
+      "f1_mean": 0.5856273102848444,
+      "f1_std": 0.017590175851450233,
+      "p_mean": 0.9185530250747641,
+      "r_mean": 0.4308571428571429,
+      "n_folds_used": 5,
+      "median_train_groups": 64,
+      "median_test_groups": 55
+    },
+    "group": {
+      "n_pos": 246,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.6370268917843733,
+      "auc_std": 0.29839620110385695,
+      "f1_mean": 0.07142857142857142,
+      "f1_std": 0.12371791482634838,
+      "p_mean": 0.05,
+      "r_mean": 0.125,
+      "n_folds_used": 4,
+      "median_train_groups": 53,
+      "median_test_groups": 13
+    }
+  },
+  {
+    "species": "Offshore spotted dolphin",
+    "stratified": {
+      "n_pos": 266,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.9541391370611281,
+      "auc_std": 0.009934755280258752,
+      "f1_mean": 0.4289303078945507,
+      "f1_std": 0.07494393120866306,
+      "p_mean": 0.9505050505050505,
+      "r_mean": 0.28169112508735145,
+      "n_folds_used": 5,
+      "median_train_groups": 64,
+      "median_test_groups": 54
+    },
+    "group": {
+      "n_pos": 266,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.5080368063339927,
+      "auc_std": 0.20663813775348588,
+      "f1_mean": 0.0,
+      "f1_std": 0.0,
+      "p_mean": 0.0,
+      "r_mean": 0.0,
+      "n_folds_used": 4,
+      "median_train_groups": 53,
+      "median_test_groups": 13
+    }
+  },
+  {
+    "species": "Striped dolphin",
+    "stratified": {
+      "n_pos": 371,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.9609134415589183,
+      "auc_std": 0.005675361514569578,
+      "f1_mean": 0.42269883040935674,
+      "f1_std": 0.04096178323490886,
+      "p_mean": 0.9347985347985347,
+      "r_mean": 0.274990990990991,
+      "n_folds_used": 5,
+      "median_train_groups": 65,
+      "median_test_groups": 55
+    },
+    "group": {
+      "n_pos": 371,
+      "n_neg": 6135,
+      "n_unique_groups": 66,
+      "auc_mean": 0.7176992669103098,
+      "auc_std": 0.19806751166192768,
+      "f1_mean": 0.2532560032560033,
+      "f1_std": 0.3518073444015615,
+      "p_mean": 0.4838112858464385,
+      "r_mean": 0.2105245901639344,
+      "n_folds_used": 4,
+      "median_train_groups": 53,
+      "median_test_groups": 13
+    }
+  }
+]

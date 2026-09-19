@@ -1,6 +1,14 @@
 # Manuscript–artifact map
 
-Frozen public correction release: `v3.0.5-sr-minor-2026-09-13`.
+Frozen release for the final revision: `v3.1.0-sr-minor-2026-09-19`.
+Preceding public correction release: `v3.0.5-sr-minor-2026-09-13`.
+
+> **Final revision.** Table 1 uses the Stage 1 encoder and is unchanged. Tables 2-4, Figures 3-4, Supplementary
+> Tables S3-S4 and Supplementary Figures S1-S3 of the final revision use the Stage 2 encoder
+> (`BEATs_DAPT_MAM_fixed_palaoa_step6385.pt`, SHA-256 `4f7869751d7f15e3a806fb062902654597ca5566be610fedc1762c440d5c2a89`);
+> their files are listed item by item in `paper_artifacts/final_revision_2026-09-19/README.md`. The rows below keep the
+> code paths and the reproducibility limits, which are unchanged; the Stage 1 field values they point to are
+> superseded for those items.
 The preceding `v3.0.4-sr-minor-2026-09-13` FRDR outputs remain preserved as
 historical artifacts.
 
@@ -39,8 +47,10 @@ conceptual figures.
 
 ## Frozen model identities
 
-- Encoder: `BEATs_DAPT_MAM_fixed_step127641.pt`
+- Stage 1 encoder (Table 1): `BEATs_DAPT_MAM_fixed_step127641.pt`
 - Encoder SHA-256: `2a2d1d93f53ec29227bdd52da087fd0abcf0ce797c3c4a8629cd1435a314a6f9`
+- Stage 2 encoder (FRDR, HICEAS, CCED2 reference): `BEATs_DAPT_MAM_fixed_palaoa_step6385.pt`
+- Stage 2 encoder SHA-256: `4f7869751d7f15e3a806fb062902654597ca5566be610fedc1762c440d5c2a89`
 - Seed-42 SED head: `sed_head_fixed_s42_ep7.pt`
 - SED-head SHA-256: `9b2b202ab3e52b0d1efe4cd3479ee479db7646b0f42ab5b0e32f1e3ca551f119`
 - Corrected CCED2 aggregate normalisation/threshold parameters: `weights/cced2_step127641/`; fitted kNN/Mahalanobis pickle files are not included.

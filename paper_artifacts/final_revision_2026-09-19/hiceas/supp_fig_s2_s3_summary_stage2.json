@@ -1,0 +1,24 @@
+{
+  "n_total": 54419,
+  "n_select": 545,
+  "shared": 507,
+  "knn_only": 38,
+  "cced2_only": 38,
+  "union": 583,
+  "jaccard": 0.869639794168096,
+  "symmetric_difference": 76,
+  "mean_scores": {
+    "knn_only": {
+      "d_knn_z": 3.546515064220686,
+      "d_maha_z": 17.877742767333984
+    },
+    "cced2_only": {
+      "d_knn_z": 3.3398001597935325,
+      "d_maha_z": 19.881067276000977
+    },
+    "shared": {
+      "d_knn_z": 4.021692095360424,
+      "d_maha_z": 22.74077033996582
+    }
+  }
+}

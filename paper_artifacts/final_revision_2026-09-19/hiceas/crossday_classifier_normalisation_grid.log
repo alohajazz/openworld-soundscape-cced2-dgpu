@@ -1,0 +1,65 @@
+Device: cuda
+Loading combined embeddings (OP + 1706 + Part2)...
+Total canons: 11976
+
+Processing 7 species, 5-fold GroupKFold by day, 3 seeds for MLP/DANN...
+
+Minke whale (folds=4):
+           raw    z      rank   wd_AUC
+  lr    : 0.971  0.642  0.577  0.672
+  mlp   : 0.972  0.697  0.588  0.719
+  dann  : 0.955  0.597  0.546  0.603
+  ensemble_rank: 0.585
+
+Sperm whale (folds=5):
+           raw    z      rank   wd_AUC
+  lr    : 0.724  0.583  0.558  0.574
+  mlp   : 0.701  0.563  0.547  0.591
+  dann  : 0.724  0.578  0.575  0.607
+  ensemble_rank: 0.567
+
+False killer whale (folds=5):
+           raw    z      rank   wd_AUC
+  lr    : 0.881  0.695  0.625  0.891
+  mlp   : 0.847  0.683  0.610  0.849
+  dann  : 0.902  0.678  0.629  0.885
+  ensemble_rank: 0.635
+
+Short-finned pilot whale (folds=5):
+           raw    z      rank   wd_AUC
+  lr    : 0.798  0.683  0.693  0.799
+  mlp   : 0.780  0.611  0.636  0.722
+  dann  : 0.783  0.661  0.671  0.768
+  ensemble_rank: 0.683
+
+Rough-toothed dolphin (folds=4):
+           raw    z      rank   wd_AUC
+  lr    : 0.637  0.567  0.612  0.672
+  mlp   : 0.744  0.617  0.623  0.647
+  dann  : 0.660  0.577  0.573  0.673
+  ensemble_rank: 0.625
+
+Offshore spotted dolphin (folds=4):
+           raw    z      rank   wd_AUC
+  lr    : 0.508  0.627  0.667  0.644
+  mlp   : 0.648  0.612  0.651  0.629
+  dann  : 0.519  0.515  0.533  0.514
+  ensemble_rank: 0.638
+
+Striped dolphin (folds=4):
+           raw    z      rank   wd_AUC
+  lr    : 0.718  0.588  0.579  0.538
+  mlp   : 0.772  0.715  0.745  0.671
+  dann  : 0.744  0.705  0.705  0.674
+  ensemble_rank: 0.714
+
+Saved /workspace/scripts/winaware_2026-05-09/unified_promoter_audit_stage2/unified_promoter_compare.csv
+
+=== Per-species best ===
+  Minke whale                  best=mlp_raw        AUC=0.972  Δ=+0.001  (wd_AUC=0.719)
+  Sperm whale                  best=dann_raw       AUC=0.724  Δ=+0.000  (wd_AUC=0.607)
+  False killer whale           best=dann_raw       AUC=0.902  Δ=+0.021  (wd_AUC=0.891)
+  Short-finned pilot whale     best=lr_raw         AUC=0.798  Δ=+0.000  (wd_AUC=0.799)
+  Rough-toothed dolphin        best=mlp_raw        AUC=0.744  Δ=+0.107  (wd_AUC=0.673)
+  Offshore spotted dolphin     best=lr_rank        AUC=0.667  Δ=+0.159  (wd_AUC=0.644)
+  Striped dolphin              best=mlp_raw        AUC=0.772  Δ=+0.054  (wd_AUC=0.674)

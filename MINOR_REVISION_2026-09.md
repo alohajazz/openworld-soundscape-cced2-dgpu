@@ -109,3 +109,22 @@ The 56-class raw clips and row-level metadata remain non-public because of
 sensitive location and operational information and permissions held by the
 original collaborating organisations. See `MANUSCRIPT_ARTIFACT_MAP.md` for
 the exact reproducibility boundary of every reported item.
+
+## Final revision (19 September 2026, release `v3.1.0-sr-minor-2026-09-19`)
+
+The manuscript keeps the two-stage DAPT design of the previous revision. Stage 2 was rerun with the corrected
+input-mask trainer from the Stage 1 endpoint (2021 PALAOA subset; 102,168 training windows, 1,032 held out by
+`random_split` with seed 42; 6,385 steps; learning rate 1e-5; final checkpoint SHA-256
+`4f7869751d7f15e3a806fb062902654597ca5566be610fedc1762c440d5c2a89`).
+
+- The corrected Stage 2 does not preserve the Stage 1 embedding space: mean cosine similarity 0.913 (minimum 0.793)
+  on the 1,623 validation clips, maximum absolute weight change 0.0108. The earlier statements that Stage 2 preserves
+  Stage 1, and the ten-seed Stage 1 versus Stage 2 comparison, belonged to the superseded encoders and were removed.
+- Table 1 is unchanged (Stage 1, seed 42). FRDR, HICEAS and the CCED2 reference use Stage 2.
+- FRDR near 10 FP/h: Quiet 0.027, Promoter 0.390, Union 0.276, Fusion 0.044. Union is below the Promoter alone
+  because both thresholds are raised to keep the combined detections near 10 FP/h.
+- Table 3 reports recall at FP/h = 10 by linear interpolation of the threshold sweep, as its note states.
+- Cross-day: the fixed logistic regression on raw embeddings is the primary estimate; the 3 x 3
+  classifier/normalisation grid is exploratory and not nested-validated.
+
+Files: `paper_artifacts/final_revision_2026-09-19/` and `scripts/final_revision_2026-09-19/`.
