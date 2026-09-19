@@ -27,6 +27,27 @@ conceptual figures.
 > The old `minor_revision_2026-09` FRDR outputs are retained as historical,
 > superseded results and must not be used for the corrected Tables 2/3 or Figure 3.
 
+## Final revision: where each reported value is
+
+All paths are under `paper_artifacts/final_revision_2026-09-19/`. These are the values printed in the final revision.
+
+| Manuscript item | File |
+|---|---|
+| Table 1, Methods 4.6 | `table1/summary.csv`, `table1/table1_seed_summary.json` |
+| Table 2, Fig. 3 | `frdr/table2/frdr_quiet_promoter_union_supervised.csv`, `frdr/fusion/fusion.csv`, `figures/Fig3.png` |
+| Table 3 | `frdr/table3/table3_interp_at_fph10.json` (from `frdr/table3/all_evaluations.csv`) |
+| 300-label result and its share of labels | `frdr/labels/label_efficiency_agg.csv`, `frdr/labels/training_fold_event_counts.json` |
+| Table 4, cross-day results, Fig. 4 | `hiceas/table4_stage2.json`, `hiceas/crossday_classifier_normalisation_grid.csv`, `hiceas/fig4_label_efficiency_agg.csv`, `figures/Fig4.png` |
+| Supplementary Tables S3, S4 | `hiceas/supp_table_s3_stage2_unknown_high.csv`, `hiceas/supp_table_s4_overlap_stage2.json` |
+| Supplementary Figs S1-S3 | `ood/supp_fig_s1_summary_stage2.json`, `hiceas/supp_fig_s2_s3_summary_stage2.json`, `figures/` |
+| Encoder diagnostics (weight change, Stage 1 vs Stage 2 similarity) | `encoder/encoder_and_embedding_diagnostics.json`, `encoder/stage2_training.log` |
+
+## Stage 1 record (`v3.0.5`): code paths and reproducibility limits
+
+The rows below keep the code paths and the limits, which still apply. For Tables 2-4, Figures 3-4, Supplementary
+Tables S3-S4 and Supplementary Figures S1-S3 the *values* in the files they name are the superseded Stage 1 values
+and differ from the final revision.
+
 | Manuscript item | Code or artifact | Required data | Reproducibility scope |
 |---|---|---|---|
 | Figure 1 | Conceptual schematic | None | Conceptual; not generated from numerical data |

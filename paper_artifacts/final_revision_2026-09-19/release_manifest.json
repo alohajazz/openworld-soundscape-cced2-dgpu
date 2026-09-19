@@ -1,7 +1,7 @@
 {
  "paper_artifacts/final_revision_2026-09-19/README.md": {
-  "bytes": 4520,
-  "sha256": "15afa9f6e1a0cd05073873f440fdd07f906d270712cc11c3aa0086a8a090179d"
+  "bytes": 4585,
+  "sha256": "0e411d34a6065fd48cd623aca5ac648e74d1737ee86cb19b1e6b12c718ab98a8"
  },
  "paper_artifacts/final_revision_2026-09-19/encoder/encoder_and_embedding_diagnostics.json": {
   "bytes": 1980,
@@ -96,8 +96,8 @@
   "sha256": "dcbd0e583a64ae80eab9ba03bb84ee527ace6e3a755b5a683d8dd1522c0bf29b"
  },
  "paper_artifacts/final_revision_2026-09-19/frdr/table3/table3_interp_at_fph10.json": {
-  "bytes": 214,
-  "sha256": "5220da4bb317eef904f7f4f28e04784736df632e0ad03434c9920960da4c84dd"
+  "bytes": 226,
+  "sha256": "b7efea224cf59ac0859c07a927ac58d17482026c2a23332e954aa95a042da610"
  },
  "paper_artifacts/final_revision_2026-09-19/hiceas/crossday_classifier_normalisation_grid.csv": {
   "bytes": 1982,
@@ -216,8 +216,8 @@
   "sha256": "440d0a9879e11b049008153df7c7e39e34a183f7ab0797ff011cdca080aeff0f"
  },
  "scripts/final_revision_2026-09-19/make_figures_supp.py": {
-  "bytes": 5476,
-  "sha256": "bccc6d07fbd45bda7c480b8c7a3300a4545aa987989aea7a40f71366828e3898"
+  "bytes": 5860,
+  "sha256": "2ddd3f42bd08a363be4a98b2afa7b198fc4785fb8c7d19b26758514d014fe3e0"
  },
  "scripts/final_revision_2026-09-19/supp_fig_s1_ood_stage2.py": {
   "bytes": 4918,
@@ -228,8 +228,8 @@
   "sha256": "37c14580e07a1cdf5c257649fb98de3078f34e2afb3e0682989ed712ff499529"
  },
  "scripts/final_revision_2026-09-19/table3_interpolate_fph10.py": {
-  "bytes": 733,
-  "sha256": "12be18feea75763560b13fb24a431063dda8be8b48786b9be230d03741dde9f2"
+  "bytes": 993,
+  "sha256": "2bd15962450a423e4b7fb496266006eac8a8026dbb3b082043ab1e4975ff7141"
  },
  "scripts/final_revision_2026-09-19/unified_promoter_audit_FIXED_stage2.py": {
   "bytes": 12812,
