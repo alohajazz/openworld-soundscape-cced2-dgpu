@@ -40,7 +40,7 @@ after omissions for single-class train/test folds).
 > continued on the 2021 PALAOA subset) and the corrected window-aware
 > extractor. See `MINOR_REVISION_2026-09.md`.
 
-> **Final revision (releases `v3.1.x-sr-minor-2026-09-19`; the manuscript cites the latest, `v3.1.4`).** The manuscript keeps its two-stage
+> **Final revision (releases `v3.1.x-sr-minor-2026-09-19`; the manuscript cites the latest, `v3.1.5`).** The manuscript keeps its two-stage
 > DAPT design. The field results reported in the final revision are in
 > `paper_artifacts/final_revision_2026-09-19/`, with the executed sources in `scripts/final_revision_2026-09-19/`.
 > Where the sections below describe the Stage 1 field results of release

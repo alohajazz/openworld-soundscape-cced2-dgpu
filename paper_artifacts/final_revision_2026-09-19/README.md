@@ -12,9 +12,12 @@ teacher. Stage 2 continues from the Stage 1 checkpoint on the 2021 PALAOA subset
 out by `random_split` with seed 42, learning rate 1e-5). The executed trainer and its log are
 `scripts/final_revision_2026-09-19/dapt_train_beats_mam_fixed_STAGE2_COPY.py` and `encoder/stage2_training.log`.
 
-Stage 2 does not preserve the Stage 1 embedding space (mean cosine similarity 0.913, minimum 0.793 on the 1,623
-validation clips; maximum absolute weight change 0.0108). The CCED2 reference was therefore refitted on Stage 2
-embeddings. Values are in `encoder/encoder_and_embedding_diagnostics.json`.
+Stage 2 changes the embeddings relative to Stage 1: for the same 1,623 validation clips the mean cosine similarity
+between Stage 1 and Stage 2 embeddings is 0.913 (minimum 0.793; maximum absolute weight change 0.0108). The CCED2
+reference was therefore refitted on Stage 2 embeddings, so that the encoder and the reference match in the FRDR and
+HICEAS analyses. The weight changes and the InD/OOD diagnostics are in
+`encoder/encoder_and_embedding_diagnostics.json`; the Stage 1 versus Stage 2 cosine similarity (n = 1,623; mean
+0.91310202, minimum 0.79302312) was computed on embeddings that are not distributed and is not in that file.
 
 ## Contents
 

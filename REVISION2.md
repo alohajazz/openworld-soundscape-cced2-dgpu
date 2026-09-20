@@ -37,6 +37,9 @@ Revision 2.2 replaces both with a corrected pipeline:
    (Stage 2 vs Stage 1: cosine similarity 0.999995, no significant SED
    metric change at p > 0.67 across n=10 random seeds; statistically
    indistinguishable).
+   [Superseded: with the corrected input-mask pretraining the Stage 1 versus
+   Stage 2 cosine similarity is 0.913 (minimum 0.793), and the ten-seed
+   comparison was removed; see `MINOR_REVISION_2026-09.md`.]
 2. **HICEAS as the OOD benchmark**, using a held-out 56-class validation
    InD reference (n = 1,623) and the HICEAS multi-species archive as OOD
    (n = 2,973). All bandwidth-matched at the 0–8 kHz analysis band.

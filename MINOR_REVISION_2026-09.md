@@ -117,9 +117,12 @@ input-mask trainer from the Stage 1 endpoint (2021 PALAOA subset; 102,168 traini
 `random_split` with seed 42; 6,385 steps; learning rate 1e-5; final checkpoint SHA-256
 `4f7869751d7f15e3a806fb062902654597ca5566be610fedc1762c440d5c2a89`).
 
-- The corrected Stage 2 does not preserve the Stage 1 embedding space: mean cosine similarity 0.913 (minimum 0.793)
-  on the 1,623 validation clips, maximum absolute weight change 0.0108. The earlier statements that Stage 2 preserves
-  Stage 1, and the ten-seed Stage 1 versus Stage 2 comparison, belonged to the superseded encoders and were removed.
+- The corrected Stage 2 changes the embeddings relative to Stage 1: for the same 1,623 validation clips the mean
+  cosine similarity between Stage 1 and Stage 2 embeddings is 0.913 (minimum 0.793; maximum absolute weight change
+  0.0108), whereas the superseded encoders had given 0.999995, that is, practically identical embeddings. The CCED2
+  reference of the final revision was therefore refitted on Stage 2 embeddings. The earlier statements that Stage 2
+  preserves Stage 1, and the ten-seed Stage 1 versus Stage 2 comparison, belonged to the superseded encoders and
+  were removed.
 - Table 1 uses Stage 1 and reports the mean of eight SED-head seeds (42, 123, 777, 101, 202, 303, 404, 505):
   Event/Clip/2-s-segment F1 = 0.478/0.746/0.499 for BEATs AS-2M and 0.493/0.739/0.523 for BEATs+DAPT. Paired
   differences: +0.015 (event) and +0.023 (segment), positive for all eight seeds; -0.007 (clip), positive for three.
