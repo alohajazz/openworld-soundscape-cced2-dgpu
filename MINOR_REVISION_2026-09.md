@@ -49,6 +49,12 @@ this rule and the final encoder.
 
 ## Supplementary Table S3 correction
 
+> **Stage 1 values (release `v3.0.5-sr-minor-2026-09-13`).** The numbers and statements in this section describe the
+> Stage 1 field analyses. For the final revision they are superseded by the section "Final revision" below: FRDR and
+> HICEAS use the Stage 2 encoder, Table 3 is obtained by linear interpolation at 10 FP/h, and the best Fusion weight is
+> alpha = 0.
+
+
 The submitted S3 generator negated distance scores and then selected their
 upper 1% tail. That combination selects the low-unknownness direction. The
 final analysis treats `kNN_z`, `Mahalanobis_z`, and `CCED2` as
@@ -74,6 +80,12 @@ denominator (including short recordings), not a continuous negative-recording
 false-alarm estimate.
 
 ## Interpretation boundaries
+
+> **Stage 1 values (release `v3.0.5-sr-minor-2026-09-13`).** The numbers and statements in this section describe the
+> Stage 1 field analyses. For the final revision they are superseded by the section "Final revision" below: FRDR and
+> HICEAS use the Stage 2 encoder, Table 3 is obtained by linear interpolation at 10 FP/h, and the best Fusion weight is
+> alpha = 0.
+
 
 - FRDR operating points are discrete selector outputs. Table 3 uses the point
   nearest 10 FP/h on a 0.5-percentile grid; Table 2 Quiet and Promoter use the
